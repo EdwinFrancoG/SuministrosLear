@@ -1,0 +1,155 @@
+﻿@model IEnumerable<SuministrosProject.Models.Stock>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <br />
+<h2>Stock de inventario de suministros</h2>
+<br />
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+    @*<button onclick="NewStock()" class="btn btn-space btn-primary hover"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><div class="icon"><span class="s7-plus"></span></div>  Nuevo</font></font></button>*@
+    <button onclick="NewStock()" class="btn btn-rounded btn-space btn-info"><i class="s7-plus"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  Nuevo</font></font></button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Suministro
+        </th>
+        <th>
+            Stok inicial
+        </th>
+        <th>
+            Fecha
+        </th>
+        <th>
+            Entradas
+        </th>
+        <th>
+            Salidas
+        </th>
+        <th>
+            Cantidad Actual
+        </th>
+        <th>
+            Pendientes
+        </th>
+        <th>
+            Total
+        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        if (item.Estado == true)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdSuministroNavigation.Serie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StockInicial)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Entradas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salidas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadActual)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pendientes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdStock })|
+
+                    @if (item.Pendientes != 0)
+                    {
+                        @Html.ActionLink("Details", "Details", new { id = item.IdStock })
+                    }
+
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+
+<div class="modal fade" id="CreateStock" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="max-width: 750px;">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Ingreso de Stock de Suministros</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="createStockBody" class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modal ok*@
+<div id="idAlertPositive" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
+                    <h3 class="mb-4">Awesome!</h3>
+                    <p id="StockBodyPositive"></p>
+                    <div class="mt-6">
+                        <button type="button" onclick="redireccionarIndex()" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                        <button type="button" onclick="redireccionarIndex()" data-dismiss="modal" class="btn btn-sm btn-space btn-primary">Stock</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modal error*@
+<div id="idAlertNegative" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-danger"><span class="modal-main-icon s7-close-circle"></span></div>
+                    <h3 class="mb-4">Danger!</h3>
+                    <p id="StockBodyNegative"></p>
+                    <div class="mt-6">
+                        <button type="button" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/JavaS/StockFuntions.js"></script>

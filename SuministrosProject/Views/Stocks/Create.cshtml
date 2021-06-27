@@ -1,0 +1,42 @@
+﻿@model SuministrosProject.Models.Stock
+
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <div class="row">
+        <hr />
+        <br />
+        <div class="form-group col-md-12">
+            <br />
+            <p class="col-md-2">Suministro </p>
+            <div class="col-md-8">
+                @Html.DropDownList("IdSuministro", null, htmlAttributes: new { @class = "form-control", @id = "idSuministro" })
+                @Html.ValidationMessageFor(model => model.IdSuministro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-sm-12">
+            <br />
+            <br />
+            <p class="col-md-4">Stock Inicial</p>
+            <div class="col-sm-8">
+                @Html.EditorFor(model => model.StockInicial, new { htmlAttributes = new { @class = "form-control", @id = "StockInitial" } })
+                @Html.ValidationMessageFor(model => model.StockInicial, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+}
+
+<div class="modal-footer">
+    <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+    <button type="button" onclick="guardarStock()" class="btn btn-primary" data-dismiss="modal">Guardar Cambios</button>
+</div>
+
+<script src="~/Content/JavaS/StockFuntions.js"></script>

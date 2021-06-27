@@ -1,0 +1,51 @@
+﻿@model SuministrosProject.Models.Categoria
+
+@{
+    Layout = null;
+}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <h2>Agregar Tipo de Suministro</h2>
+    </div>
+</div>
+
+<br />
+<br />
+<form id="idCategoriaForm" asp-action="create">
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="IdCategoria" />
+        <div class="form-group col-sm-6">
+            <label asp-for="CategoriaDescripcion" class="control-label">Descripcion</label>
+            <input id="des" asp-for="CategoriaDescripcion" class="form-control" />
+            <span asp-validation-for="CategoriaDescripcion" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-6">
+            <label asp-for="Observacion" class="control-label">Observacion</label>
+            <input id="obs" asp-for="Observacion" class="form-control" />
+            <span asp-validation-for="Observacion" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-6">
+            <br />
+            <label asp-for="Estado" class="control-label">Estado</label>
+            <select id="sta" asp-for="Estado" class="form-control custom-select" asp-items="">
+                <option value="null">Chose one please</option>
+                <option value="True">True</option>
+                <option value="False">False</option>
+            </select>
+            <span asp-validation-for="Estado" class="text-danger"></span>
+        </div>
+
+    </div>
+</form>
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+    <button type="button" onclick="GuardarCategoria()" class="btn btn-primary" data-dismiss="modal">Guardar Cambios</button>
+</div>
+
+
+
+
+<script src="~/Content/JavaS/categoriaFuntions.js"></script>

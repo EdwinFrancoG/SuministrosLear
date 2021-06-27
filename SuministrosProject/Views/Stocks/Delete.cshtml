@@ -1,0 +1,151 @@
+﻿@model SuministrosProject.Models.Stock
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h3>Esta seguro que desea Eliminar?</h3>
+<div>
+
+    <hr />
+
+    <dl class="row">   
+        <dt class="col-sm-6">
+            <br />
+            Suministro
+        </dt>
+        <dd class="col-sm-6">
+            <br />
+            @Html.DisplayFor(model => model.IdSuministro)
+        </dd>
+
+        <dt class="col-sm-6">
+            <br />
+            Stock Inicial
+        </dt>
+        <dd class="col-sm-6">
+            <br />
+            @Html.DisplayFor(model => model.StockInicial)
+        </dd>
+
+        <dt class="col-sm-6">
+            <br />
+            Fecha de Ingreso
+        </dt>
+        <dd class="col-sm-6">
+            <br />
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt class="col-sm-6">
+            <br />
+            Entradas
+        </dt>
+        <dd class="col-sm-6">
+            <br />
+            @Html.DisplayFor(model => model.Entradas)
+        </dd>
+
+        <dt class="col-sm-6">
+            <br />
+            Salidas
+        </dt>
+        <dd class="col-sm-6">
+            <br />
+            @Html.DisplayFor(model => model.Salidas)
+        </dd>
+
+        <dt class="col-sm-6">
+            <br />
+            Cantidad Actual
+        </dt>
+        <dd class="col-sm-6">
+            <br />
+            @Html.DisplayFor(model => model.CantidadActual)
+        </dd>
+
+        <dt class="col-sm-6">
+            <br />
+            Suministros pendientes
+        </dt>
+        <dd class="col-sm-6">
+            <br />
+            @Html.DisplayFor(model => model.Pendientes)
+        </dd>
+
+        <dt class="col-sm-6">
+            <br />
+            Suministros Total
+        </dt>
+        <dd class="col-sm-6">
+            <br />
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt class="col-sm-6">
+            <br />
+            Estado
+        </dt>
+        <dd class="col-sm-6">
+            <br />
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <button type="button" onclick="DeleteStock('@Model.IdStock')" class="btn btn-primary" data-dismiss="modal">Delete</button>
+            <button type="button" onclick="redireccionarIndexStock()" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        </div>
+    }
+</div>
+
+@*Modal ok*@
+<div id="idAlertPositiveStockDelete" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
+                    <h3 class="mb-4"> Deleted!</h3>
+                    <p id="StockDeleteBodyPositive"></p>
+                    <div class="mt-6">
+                        <button type="button" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                        <button type="button" onclick="redireccionarIndexStock()" data-dismiss="modal" class="btn btn-sm btn-space btn-primary">Stock</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modal error*@
+<div id="idAlertNegativeStockDelete" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-danger"><span class="modal-main-icon s7-close-circle"></span></div>
+                    <h3 class="mb-4">Danger!</h3>
+                    <p id="StockDeleteBodyNegative"></p>
+                    <div class="mt-6">
+                        <button type="button" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/JavaS/StockFuntions.js"></script>

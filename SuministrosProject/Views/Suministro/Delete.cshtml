@@ -1,0 +1,127 @@
+﻿@model SuministrosProject.Models.Suministro
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<h3>Esta seguro que desea eliminar este suministro?</h3>
+<div>
+    <h4>Suministro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            <br />
+            @Html.DisplayNameFor(model => model.IdCategoriaNavigation.CategoriaDescripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCategoriaNavigation.CategoriaDescripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Serie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Serie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroParte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroParte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
+
+@*Modal ok*@
+<div id="idAlertPositiveSuministroDelete" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
+                    <h3 class="mb-4"> Deleted!</h3>
+                    <p id="SuministroDeleteBodyPositive"></p>
+                    <div class="mt-6">
+                        <button type="button" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                        <button type="button" onclick="redireccionarIndexStock()" data-dismiss="modal" class="btn btn-sm btn-space btn-primary">Suministro</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Modal error*@
+<div id="idAlertNegativeSuministroDelete" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-danger"><span class="modal-main-icon s7-close-circle"></span></div>
+                    <h3 class="mb-4">Danger!</h3>
+                    <p id="SuministroDeleteBodyNegative"></p>
+                    <div class="mt-6">
+                        <button type="button" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/JavaS/SuministrosFuntions.js"></script>

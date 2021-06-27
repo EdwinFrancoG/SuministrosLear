@@ -1,0 +1,98 @@
+﻿@model IEnumerable<SuministrosProject.Models.Suministro>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+        <br />
+        <h2>Lista de Suministros</h2>
+    </div>
+</div>
+
+
+<button type="button" onclick="NewSuministroGet()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">Nuevo</i></button>
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Tipo
+        </th>
+        <th>
+            Serie
+        </th>
+        <th>
+            Modelo
+        </th>
+        <th>
+            #Parte
+        </th>
+        <th>
+            Descripcion
+        </th>
+        @*<th>
+                Observacion
+            </th>*@
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.CategoriaDescripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeroParte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Observacion)
+                </td>*@
+            <td>
+                <button onclick="EditSuministro(@item.IdSuministro)" class="btn btn-rounded btn-space btn-info"> Editar</button>
+                @*<button class="btn btn-rounded btn-space btn-danger">Eliminar</button>*@
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdSuministro })|
+            </td>
+        </tr>
+    }
+
+</table>
+
+@*Modal ok*@
+<div id="idAlertPositive" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
+                    <h3 class="mb-4">Awesome!</h3>
+                    <p id="BodyPositive"></p>
+                    <div class="mt-6">
+                        <button type="button" onclick="redireccionarIndex()" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Content/JavaS/SuministrosFuntions.js"></script>
