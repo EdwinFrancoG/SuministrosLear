@@ -653,6 +653,8 @@
   <ItemGroup>
     <Compile Include="AppServices\CategoriasAppServices.cs" />
     <Compile Include="AppServices\perfilAppSerices.cs" />
+    <Compile Include="AppServices\ProductOrderAppServices.cs" />
+    <Compile Include="AppServices\salidaAppServices.cs" />
     <Compile Include="AppServices\stockAppServices.cs" />
     <Compile Include="AppServices\suministrosAppSerices.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -661,10 +663,14 @@
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PerfilsController.cs" />
+    <Compile Include="Controllers\ProductOrderController.cs" />
+    <Compile Include="Controllers\SalidasController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\SuministroController.cs" />
     <Compile Include="Domain\categoriasDomain.cs" />
     <Compile Include="Domain\perfilDomain.cs" />
+    <Compile Include="Domain\ProductOrderDomain.cs" />
+    <Compile Include="Domain\salidaDomain.cs" />
     <Compile Include="Domain\stockDomain.cs" />
     <Compile Include="Domain\suministroDomain.cs" />
     <Compile Include="Global.asax.cs">
@@ -725,11 +731,11 @@
     <Content Include="Content\assets\img\gp-icon.png" />
     <Content Include="Content\assets\img\in-icon.png" />
     <Content Include="Content\assets\img\Lear.png" />
+    <Content Include="Content\assets\img\Lear_Corporation_logo.svg.png" />
     <Content Include="Content\assets\img\logo-2x.png" />
     <Content Include="Content\assets\img\logo-inv-1x.png" />
     <Content Include="Content\assets\img\logo-inv-2x.png" />
     <Content Include="Content\assets\img\logo.png" />
-    <Content Include="Content\assets\img\logoLear.png" />
     <Content Include="Content\assets\img\pi-icon.png" />
     <Content Include="Content\assets\img\slack_logo.png" />
     <Content Include="Content\assets\img\tu-icon.png" />
@@ -2280,6 +2286,16 @@
     <Content Include="Views\Stocks\Details.cshtml" />
     <Content Include="Views\Stocks\Edit.cshtml" />
     <Content Include="Views\Stocks\Index.cshtml" />
+    <Content Include="Views\ProductOrder\Create.cshtml" />
+    <Content Include="Views\ProductOrder\Delete.cshtml" />
+    <Content Include="Views\ProductOrder\Details.cshtml" />
+    <Content Include="Views\ProductOrder\Edit.cshtml" />
+    <Content Include="Views\ProductOrder\Index.cshtml" />
+    <Content Include="Views\Salidas\Create.cshtml" />
+    <Content Include="Views\Salidas\Delete.cshtml" />
+    <Content Include="Views\Salidas\Details.cshtml" />
+    <Content Include="Views\Salidas\Edit.cshtml" />
+    <Content Include="Views\Salidas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

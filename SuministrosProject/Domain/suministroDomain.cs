@@ -21,7 +21,7 @@ namespace SuministrosProject.Domain
             bool descripcionIsEmpty = suministro.Descripcion == null;
             if (descripcionIsEmpty)
             {
-                return "Por favor inrese la descripción del suiministro";
+                return "Por favor inGrese la descripción del suministro";
             }
 
             bool modeloIsEmpty = suministro.Modelo == null;
