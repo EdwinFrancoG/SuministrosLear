@@ -119,9 +119,7 @@ namespace SuministrosProject.Models
 
                 entity.ToTable("productOrder");
 
-                entity.Property(e => e.IdProductOrder)
-                    .HasColumnName("idProductOrder")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.IdProductOrder).HasColumnName("idProductOrder");
 
                 entity.Property(e => e.Codigo)
                     .IsRequired()

@@ -6,6 +6,10 @@ function redireccionarStock() {
     window.location.href = '/Stocks/Index'
 }
 
+function redireccionarPO() {
+    window.location.href = '/ProductOrder/Index'
+}
+
 function redireccionarCategorias() {
     window.location.href = '/Categorias/Index'
 }
@@ -16,4 +20,8 @@ function redireccionarPerfil() {
 
 function redireccionarSuministros() {
     window.location.href = '/Suministro/Index'
+}
+
+function redireccionarIndexPO() {
+    window.location.href = '/ProductOrder/Index' 
 }

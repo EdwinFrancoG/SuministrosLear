@@ -25,13 +25,15 @@ function notificacioError(title, text) {
 function guardarStock() {
     var idSuministro = document.getElementById("idSuministro").value;
     var StockInicial = document.getElementById("StockInitial").value;
+    var pendietes = document.getElementById("idpendientes").value;
     $.ajax(
         {
             type: 'POST',
             url: '/Stocks/Create',
             data: {
                 IdSuministro: idSuministro,
-                StockInicial: StockInicial
+                StockInicial: StockInicial,
+                Pendientes: pendietes
             },
             success: function (result) {
                 if (result == 'OK') {

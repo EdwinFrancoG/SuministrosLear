@@ -5,15 +5,21 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+        <br />
+        <h2>Lista de Ordenes de compra</h2>
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<button type="button" onclick="NewPO()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">Nuevo</i></button>
+<br />
+<br />
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IdGafeteNavigation.Nombre)
+            Usuario
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Codigo)
@@ -25,7 +31,7 @@
             @Html.DisplayNameFor(model => model.Descripcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fecha)
+            Fecha y hora
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Estado)
@@ -33,32 +39,71 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdGafeteNavigation.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Codigo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Requisicion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdProductOrder }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdProductOrder }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdProductOrder })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdGafeteNavigation.Nombre)  @Html.DisplayFor(modelItem => item.IdGafeteNavigation.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Requisicion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fecha)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @if (item.Estado == "Nueva")
+                {
+                    @Html.ActionLink("Add ", "Details", new { id = item.IdProductOrder })
+                    @Html.ActionLink(" | Delete", "Delete", new { id = item.IdProductOrder })
+                }
+                @if (item.Estado == "Pendiente")
+                {
+                    @Html.ActionLink("Recive ", "Edit", new { id = item.IdProductOrder })
+                }
+                @if (item.Estado == "Cerrada")
+                {
+                    @Html.ActionLink("See  ", "Details", new { id = item.IdProductOrder })
+                    @Html.ActionLink(" | Delete", "Delete", new { id = item.IdProductOrder })
+                }
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.IdProductOrder }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdProductOrder }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdProductOrder })*@
+            </td>
+        </tr>
+    }
 
 </table>
+
+@*<div id="idAlertPositivePO" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
+                    <h3 class="mb-4">Awesome!</h3>
+                    <p id="BodyPositivePO"></p>
+                    <div class="mt-6">
+                        <button type="button" onclick="redireccionarIndexPO()" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+<script src="~/Content/JavaS/ProductOrderFuntions.js"></script>

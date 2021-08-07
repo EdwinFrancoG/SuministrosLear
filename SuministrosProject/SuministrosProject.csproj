@@ -1891,6 +1891,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\JavaS\categoriaFuntions.js" />
+    <Content Include="Content\JavaS\ProductOrderFuntions.js" />
     <Content Include="Content\JavaS\RedirectionsPages.js" />
     <Content Include="Content\JavaS\StockFuntions.js" />
     <Content Include="Content\JavaS\SuministrosFuntions.js" />
@@ -2288,8 +2289,6 @@
     <Content Include="Views\Stocks\Index.cshtml" />
     <Content Include="Views\ProductOrder\Create.cshtml" />
     <Content Include="Views\ProductOrder\Delete.cshtml" />
-    <Content Include="Views\ProductOrder\Details.cshtml" />
-    <Content Include="Views\ProductOrder\Edit.cshtml" />
     <Content Include="Views\ProductOrder\Index.cshtml" />
     <Content Include="Views\Salidas\Create.cshtml" />
     <Content Include="Views\Salidas\Delete.cshtml" />

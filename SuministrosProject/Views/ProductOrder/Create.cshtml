@@ -2,75 +2,104 @@
 
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
-<h2>Create</h2>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-8">
+        <h3>Nueva Orden de compra</h3>
+    </div>
+</div>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>ProductOrder</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+    @Html.ValidationSummary()
+    @*<hr />
+    <br />
+    <br />*@
+
+    <div class="row">
+        <div class="form-group col-md-6">
             @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @class = "form-control", @id = "idCodigo" } })
                 @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-md-6">
             @Html.LabelFor(model => model.Requisicion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Requisicion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Requisicion, new { htmlAttributes = new { @class = "form-control", @id = "idRequisicion" } })
                 @Html.ValidationMessageFor(model => model.Requisicion, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group col-md-6">
+            <br />
             @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control", @id = "idDescripcion" } })
                 @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @*<div class="form-group col-md-6">
+                <br />
+                @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control", @id = "idFecha" } })
+                    @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdGafete, "IdGafete", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group col-md-6">
+            <br />
+            @Html.LabelFor(model => model.IdGafete, "Gafete", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("IdGafete", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("IdGafete", null, htmlAttributes: new { @class = "form-control", @id = "idGafete" })
                 @Html.ValidationMessageFor(model => model.IdGafete, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @*<div class="form-group col-md-6">
+                @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        <div class="modal-footer">
+            <br />
+            <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" onclick="GuardarPO()" class="btn btn-primary">Guardar</button>
+        </div>
+    </div>
+
+}
+
+<div id="idAlertPositivePO" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
+                    <h3 class="mb-4">Awesome!</h3>
+                    <p id="BodyPositivePO"></p>
+                    <div class="mt-6">
+                        <button type="button" onclick="redireccionarPO()" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
+<script src="~/Content/JavaS/ProductOrderFuntions.js"></script>

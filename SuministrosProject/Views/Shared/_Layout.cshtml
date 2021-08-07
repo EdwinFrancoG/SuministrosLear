@@ -29,6 +29,7 @@
                 <li class="nav-item"><a onclick="redireccionarCategorias()" class="nav-link">Tipo</a></li>
                 <li class="nav-item"><a onclick="redireccionarSuministros()" class="nav-link">Suministros</a></li>
                 <li class="nav-item"><a onclick="redireccionarStock()" class="nav-link">Stock</a></li>
+                <li class="nav-item"><a onclick="redireccionarPO()" class="nav-link">P.O</a></li>
 
                 <li class="nav-item"><a onclick="" class="nav-link">Usuarios</a></li>
                 <li class="nav-item"><a onclick="redireccionarPerfil()" class="nav-link">Perfiles</a></li>
@@ -106,6 +107,8 @@
         </div>
     </div>
 
+
+
     @Scripts.Render("~/bundles/jquery")
     @*@Scripts.Render("~/bundles/bootstrap")*@
     @RenderSection("scripts", required: false)
@@ -132,6 +135,7 @@
     <script src="~/Content/JavaS/categoriaFuntions.js"></script>
     <script src="~/Content/JavaS/SuministrosFuntions.js"></script>
     <script src="~/Content/JavaS/RedirectionsPages.js"></script>
+    <script src="~/Content/JavaS/ProductOrderFuntions.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {

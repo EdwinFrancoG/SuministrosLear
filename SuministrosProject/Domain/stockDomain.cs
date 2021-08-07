@@ -32,7 +32,6 @@ namespace SuministrosProject.Domain
 
             entradas = 0; salidas = 0;
             cantidadActual = (inicioStock + entradas) - salidas;
-            pendientes = 0;
             stock.Total = cantidadActual + pendientes;
 
             stock.Entradas = entradas;
@@ -41,11 +40,6 @@ namespace SuministrosProject.Domain
             stock.CantidadActual = cantidadActual;
             stock.Estado = true;
 
-            //bool fecheInicioIsEmpety = stock.FechaInicio == null;
-            //if (fecheInicioIsEmpety)
-            //{
-            //    return "Ingrese la fecha"; 
-            //}
             return null;
         }
 

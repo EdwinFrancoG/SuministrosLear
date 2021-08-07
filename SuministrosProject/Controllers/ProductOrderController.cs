@@ -4,12 +4,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SuministrosProject.Models;
+using SuministrosProject.AppServices;
 
 namespace SuministrosProject.Controllers
 {
     public class ProductOrderController : Controller
     {
         private SuministrosContext db = new SuministrosContext();
+        public readonly ProductOrderAppServices POAppServices = new ProductOrderAppServices();
 
         // GET: ProductOrder
         public async Task<ActionResult> Index()
@@ -18,77 +20,29 @@ namespace SuministrosProject.Controllers
             return View(await productOrders.ToListAsync());
         }
 
-        // GET: ProductOrder/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ProductOrder productOrder = await db.ProductOrder.FindAsync(id);
-            if (productOrder == null)
-            {
-                return HttpNotFound();
-            }
-            return View(productOrder);
-        }
-
         // GET: ProductOrder/Create
         public ActionResult Create()
         {
-            ViewBag.IdGafete = new SelectList(db.Usuario, "IdGafete", "Nombre");
+            ViewBag.IdGafete = new SelectList(db.Usuario, "IdGafete", "IdGafete");
+
             return View();
         }
 
-        // POST: ProductOrder/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdProductOrder,Codigo,Requisicion,Descripcion,Fecha,IdGafete,Estado")] ProductOrder productOrder)
+        public async Task<string> Create([Bind(Include = "IdProductOrder,Codigo,Requisicion,Descripcion,Fecha,IdGafete,Estado")] ProductOrder productOrder)
         {
-            if (ModelState.IsValid)
-            {
-                db.ProductOrder.Add(productOrder);
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
+            var RespuestaPOAppServices = await POAppServices.InsertarPO(productOrder);
+            bool ingresoIncorrecto = RespuestaPOAppServices != null;
 
-            ViewBag.IdGafete = new SelectList(db.Usuario, "IdGafete", "Nombre", productOrder.IdGafete);
-            return View(productOrder);
-        }
-
-        // GET: ProductOrder/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
+            if (ingresoIncorrecto)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RespuestaPOAppServices.ToString();
             }
-            ProductOrder productOrder = await db.ProductOrder.FindAsync(id);
-            if (productOrder == null)
+            else
             {
-                return HttpNotFound();
+                return "OK";
             }
-            ViewBag.IdGafete = new SelectList(db.Usuario, "IdGafete", "Nombre", productOrder.IdGafete);
-            return View(productOrder);
-        }
-
-        // POST: ProductOrder/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdProductOrder,Codigo,Requisicion,Descripcion,Fecha,IdGafete,Estado")] ProductOrder productOrder)
-        {
-            if (ModelState.IsValid)
-            {
-                //db.Entry(productOrder).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            ViewBag.IdGafete = new SelectList(db.Usuario, "IdGafete", "Nombre", productOrder.IdGafete);
-            return View(productOrder);
         }
 
         // GET: ProductOrder/Delete/5

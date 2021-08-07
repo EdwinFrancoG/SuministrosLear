@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SuministrosProject.Models
 {
-    public partial class ProductOrder
+    public class ProductOrder
     {
         public ProductOrder()
         {

@@ -18,10 +18,17 @@ namespace SuministrosProject.Domain
                 return "Los campos estan vacios";
             }
 
-            bool descripcionIsEmpty = suministro.Descripcion == null;
-            if (descripcionIsEmpty)
+            var buscarSumiistro = db.Suministro.Where(s => s.Serie == suministro.Serie).FirstOrDefault();
+            bool suministroExiste = buscarSumiistro != null;
+            if (suministroExiste)
             {
-                return "Por favor inGrese la descripción del suministro";
+                return "Este suministro ya fue creado interiormente, revise que la serie este correctamente";
+            }
+
+            bool serieIsEmpty = suministro.Serie == null;
+            if (serieIsEmpty)
+            {
+                return "Ingrese la serie del suministro";
             }
 
             bool modeloIsEmpty = suministro.Modelo == null;
@@ -29,18 +36,17 @@ namespace SuministrosProject.Domain
             {
                 return "Por favor ingrese el modelo del suministro";
             }
-
-            bool serieIsEmpty = suministro.Serie == null;
-            if (serieIsEmpty)
-            {
-               return "Ingrese la serie del suministro";
-            }
-
             bool numeroParteIsEmpty = suministro.NumeroParte == null;
             if (numeroParteIsEmpty)
             {
                 return "Ingrese el numero de parte del suministro";
             }
+
+            bool descripcionIsEmpty = suministro.Descripcion == null;
+            if (descripcionIsEmpty)
+            {
+                return "Por favor ingrese la descripción del suministro";
+            }                             
 
             bool state = true;
             suministro.Estado = state;
