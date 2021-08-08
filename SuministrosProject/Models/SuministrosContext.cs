@@ -72,6 +72,8 @@ namespace SuministrosProject.Models
 
                 entity.Property(e => e.CantidadPendiente).HasColumnName("cantidadPendiente");
 
+                entity.Property(e => e.cantidadPedido).HasColumnName("cantidadPedido");
+
                 entity.Property(e => e.CantidadRecibida).HasColumnName("cantidadRecibida");
 
                 entity.Property(e => e.IdProductOrder).HasColumnName("idProductOrder");

@@ -1,0 +1,73 @@
+﻿@model SuministrosProject.Models.DetallePo
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>DetallePo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdProductOrderNavigation.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdProductOrderNavigation.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdSuministroNavigation.Serie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdSuministroNavigation.Serie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantidadRecibida)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadRecibida)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Pendiente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Pendiente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantidadPendiente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantidadPendiente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

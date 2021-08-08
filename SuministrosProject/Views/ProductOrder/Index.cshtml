@@ -16,72 +16,74 @@
 <button type="button" onclick="NewPO()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">Nuevo</i></button>
 <br />
 <br />
-<table class="table">
-    <tr>
-        <th>
-            Usuario
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Codigo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Requisicion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            Fecha y hora
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table id="Tabla-PO" class="table">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdGafeteNavigation.Nombre)  @Html.DisplayFor(modelItem => item.IdGafeteNavigation.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Codigo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Requisicion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @if (item.Estado == "Nueva")
-                {
-                    @Html.ActionLink("Add ", "Details", new { id = item.IdProductOrder })
-                    @Html.ActionLink(" | Delete", "Delete", new { id = item.IdProductOrder })
-                }
-                @if (item.Estado == "Pendiente")
-                {
-                    @Html.ActionLink("Recive ", "Edit", new { id = item.IdProductOrder })
-                }
-                @if (item.Estado == "Cerrada")
-                {
-                    @Html.ActionLink("See  ", "Details", new { id = item.IdProductOrder })
-                    @Html.ActionLink(" | Delete", "Delete", new { id = item.IdProductOrder })
-                }
-                @*@Html.ActionLink("Edit", "Edit", new { id = item.IdProductOrder }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IdProductOrder }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdProductOrder })*@
-            </td>
+            <th class="usuario">
+                Usuario
+            </th>
+            <th class="codigo">
+                Codigo
+            </th>
+            <th class="Req">
+                Requisicion
+            </th>
+            <th class="des">
+                Descripcion
+            </th>
+            <th class="fecha">
+                Fecha y hora
+            </th>
+            <th class="estado">
+                Estado
+            </th>
+            <th></th>
         </tr>
-    }
-
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="usuario">
+                    @Html.DisplayFor(modelItem => item.IdGafeteNavigation.Nombre)  @Html.DisplayFor(modelItem => item.IdGafeteNavigation.Apellido)
+                </td>
+                <td class="codigo">
+                    @Html.DisplayFor(modelItem => item.Codigo)
+                </td>
+                <td class="Req">
+                    @Html.DisplayFor(modelItem => item.Requisicion)
+                </td>
+                <td class="des">
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td class="fecha">
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td class="estado">
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    @if (item.Estado == "Nueva")
+                    {
+                        @Html.ActionLink("Add ", "Details", new { id = item.IdProductOrder })
+                        @Html.ActionLink(" | Delete", "Delete", new { id = item.IdProductOrder })
+                    }
+                    @if (item.Estado == "Pendiente")
+                    {
+                        @Html.ActionLink("Recive ", "Edit", new { id = item.IdProductOrder })
+                    }
+                    @if (item.Estado == "Cerrada")
+                    {
+                        @Html.ActionLink("See  ", "Details", new { id = item.IdProductOrder })
+                        @Html.ActionLink(" | Delete", "Delete", new { id = item.IdProductOrder })
+                    }
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.IdProductOrder }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdProductOrder }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdProductOrder })*@
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
 
 @*<div id="idAlertPositivePO" tabindex="-1" role="dialog" class="modal fade">
@@ -104,6 +106,5 @@
         </div>
     </div>
 </div>*@
-
 
 <script src="~/Content/JavaS/ProductOrderFuntions.js"></script>
