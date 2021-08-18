@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using SuministrosProject.Models;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Linq;
 using SuministrosProject.AppServices;
 
 namespace SuministrosProject.Controllers
@@ -16,7 +17,7 @@ namespace SuministrosProject.Controllers
         // GET: Suministro
         public async Task<ActionResult> Index()
         {
-            var suministroes = db.Suministro.Include(s => s.IdCategoriaNavigation);
+            var suministroes = db.Suministro.Where(s=>s.Estado == true).Include(s => s.IdNumeroParteNavigation);
             return View(await suministroes.ToListAsync());
         }
 
@@ -27,7 +28,7 @@ namespace SuministrosProject.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var suministro = await db.Suministro.Include(c => c.IdCategoriaNavigation).FirstOrDefaultAsync(c=>c.IdSuministro == id);
+            var suministro = await db.Suministro.Include(c => c.IdNumeroParteNavigation).FirstOrDefaultAsync(c=>c.IdSuministro == id);
 
             if (suministro == null)
             {
@@ -39,7 +40,7 @@ namespace SuministrosProject.Controllers
         // GET: Suministro/Create
         public ActionResult Create()
         {
-            ViewBag.IdCategoria = new System.Web.Mvc.SelectList(db.Categoria, "IdCategoria", "CategoriaDescripcion");
+            ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion");
             return View();
         }
 
@@ -47,7 +48,7 @@ namespace SuministrosProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<string> Create([Bind(Include = "IdSuministro,Serie,Modelo,NumeroParte,Descripcion,Observacion,IdCategoria,Estado")] Suministro suministro)
+        public async Task<string> Create([Bind(Include = "IdSuministro,Serie,IdNumeroParte,Estado")] Suministro suministro)
         {
             var respuestaSuministroAppServices = await _suministrosAppSerices.IngresarSuministro(suministro);
             bool ingresoIncorrecto = respuestaSuministroAppServices != null;
@@ -73,7 +74,7 @@ namespace SuministrosProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdCategoria = new System.Web.Mvc.SelectList(db.Categoria, "IdCategoria", "CategoriaDescripcion", suministro.IdCategoria);
+            ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion", suministro.IdNumeroParte);
             return View(suministro);
         }
 
@@ -82,7 +83,7 @@ namespace SuministrosProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdSuministro,Serie,Modelo,NumeroParte,Descripcion,Observacion,IdCategoria,Estado")] Suministro suministro)
+        public async Task<ActionResult> Edit([Bind(Include = "IdSuministro,Serie,IdNumeroParte,Estado")] Suministro suministro)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +91,7 @@ namespace SuministrosProject.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdCategoria = new Microsoft.AspNetCore.Mvc.Rendering.SelectList(db.Categoria, "IdCategoria", "CategoriaDescripcion", suministro.IdCategoria);
+            ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion", suministro.IdNumeroParte);
             return View(suministro);
         }
 

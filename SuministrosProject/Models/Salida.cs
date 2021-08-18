@@ -13,13 +13,9 @@ namespace SuministrosProject.Models
         [Key]
         public int IdSalida { get; set; }
         public int? IdSuministro { get; set; }
-        public int? Cantidad { get; set; }
         public string Equipo { get; set; }
-        public string Observacion { get; set; }
         public DateTime? FechaSalida { get; set; }
-        public string IdGafete { get; set; }
 
-        public virtual Usuario IdGafeteNavigation { get; set; }
         public virtual Suministro IdSuministroNavigation { get; set; }
     }
 }

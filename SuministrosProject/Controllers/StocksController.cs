@@ -18,7 +18,7 @@ namespace SuministrosProject.Controllers
         // GET: Stocks
         public async Task<ActionResult> Index()
         {
-            var stocks = db.Stock.Include(s => s.IdSuministroNavigation);
+            var stocks = db.Stock.Include(s => s.IdNumeroParteNavigation);
             return View(await stocks.ToListAsync());
         }
 
@@ -40,7 +40,7 @@ namespace SuministrosProject.Controllers
         // GET: Stocks/Create
         public ActionResult Create()
         {
-            ViewBag.IdSuministro = new SelectList(db.Suministro, "IdSuministro", "Serie");
+            ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion");
             return View();
         }
 
@@ -48,13 +48,13 @@ namespace SuministrosProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<string> Create([Bind(Include = "IdStock,IdSuministro,StockInicial,FechaInicio,Entradas,Salidas,CantidadActual,Pendientes,Total,Estado")] Stock stock)
+        public async Task<string> Create([Bind(Include = "IdStock,IdNumeroParte,StockInicial,FechaInicio,Entradas,Salidas,CantidadActual,Pendientes,Total,Estado")] Stock stock)
         {
             var respuestaStockServices = await _StockAppServices.IngresarStock(stock);
             bool ingresoIncorrecto = respuestaStockServices != null;
             if (ingresoIncorrecto)
             {
-                ViewBag.IdSuministro = new SelectList(db.Suministro, "IdSuministro", "Serie", stock.IdSuministro);
+                ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion", stock.IdNumeroParte);
                 return respuestaStockServices.ToString();
             }
             else
@@ -75,7 +75,7 @@ namespace SuministrosProject.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.IdSuministro = new SelectList(db.Suministro, "IdSuministro", "Serie", stock.IdSuministro);
+            ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion", stock.IdNumeroParte);
             return View(stock);
         }
 
@@ -84,7 +84,7 @@ namespace SuministrosProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdStock,IdSuministro,StockInicial,FechaInicio,Entradas,Salidas,CantidadActual,Pendientes,Total,Estado")] Stock stock)
+        public async Task<ActionResult> Edit([Bind(Include = "IdStock,IdNumeroParte,StockInicial,FechaInicio,Entradas,Salidas,CantidadActual,Pendientes,Total,Estado")] Stock stock)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace SuministrosProject.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.IdSuministro = new SelectList(db.Suministro, "IdSuministro", "Serie", stock.IdSuministro);
+            ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion", stock.IdNumeroParte);
             return View(stock);
         }
 

@@ -13,14 +13,12 @@ namespace SuministrosProject.Models
         [Key]
         public int IdDetallePo { get; set; }
         public int? IdProductOrder { get; set; }
-        public int? IdSuministro { get; set; }
+        public int? IdNumeroParte { get; set; }
         public int? cantidadPedido { get; set; }
-        public int? CantidadRecibida { get; set; }
-        public bool? Pendiente { get; set; }
         public int? CantidadPendiente { get; set; }
         public string Observacion { get; set; }
 
-        public virtual ProductOrder IdProductOrderNavigation { get; set; }
-        public virtual Suministro IdSuministroNavigation { get; set; }
+        public virtual NumeroParte IdNumeroParteNavigation { get; set; }
+        public virtual ProductOrder IdProductOrderNavigation { get; set; }    
     }
 }

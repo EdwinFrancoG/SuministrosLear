@@ -29,24 +29,7 @@ namespace SuministrosProject.Domain
             if (serieIsEmpty)
             {
                 return "Ingrese la serie del suministro";
-            }
-
-            bool modeloIsEmpty = suministro.Modelo == null;
-            if (modeloIsEmpty)
-            {
-                return "Por favor ingrese el modelo del suministro";
-            }
-            bool numeroParteIsEmpty = suministro.NumeroParte == null;
-            if (numeroParteIsEmpty)
-            {
-                return "Ingrese el numero de parte del suministro";
-            }
-
-            bool descripcionIsEmpty = suministro.Descripcion == null;
-            if (descripcionIsEmpty)
-            {
-                return "Por favor ingrese la descripción del suministro";
-            }                             
+            }                       
 
             bool state = true;
             suministro.Estado = state;
@@ -57,12 +40,12 @@ namespace SuministrosProject.Domain
 
         public string validarEliminacion(int id)
         {
-            var buscarExistencia = db.Stock.Where(s => s.IdSuministro == id).FirstOrDefault();
-            bool existeEnExistencia = buscarExistencia != null;
-            if (existeEnExistencia)
-            {
-                return "No se puede eliminar porque aun hay existencia de este suministro";
-            }
+            //var buscarExistencia = db.Stock.Where(s => s.IdSuministro == id).FirstOrDefault();
+            //bool existeEnExistencia = buscarExistencia != null;
+            //if (existeEnExistencia)
+            //{
+            //    return "No se puede eliminar porque aun hay existencia de este suministro";
+            //}
             return null;
         }
     }

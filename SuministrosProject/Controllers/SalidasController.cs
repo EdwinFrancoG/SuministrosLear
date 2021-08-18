@@ -14,7 +14,7 @@ namespace SuministrosProject.Controllers
         // GET: Salidas
         public async Task<ActionResult> Index()
         {
-            var salidas = db.Salida.Include(s => s.IdGafeteNavigation).Include(s => s.IdSuministroNavigation);
+            var salidas = db.Salida.Include(s => s.IdSuministroNavigation);
             return View(await salidas.ToListAsync());
         }
 
@@ -36,7 +36,6 @@ namespace SuministrosProject.Controllers
         // GET: Salidas/Create
         public ActionResult Create()
         {
-            ViewBag.IdGafete = new SelectList(db.Usuario, "IdGafete", "Nombre");
             ViewBag.IdSuministro = new SelectList(db.Suministro, "IdSuministro", "Serie");
             return View();
         }
@@ -46,7 +45,7 @@ namespace SuministrosProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "IdSalida,IdSuministro,Cantidad,Equipo,Observacion,FechaSalida,IdGafete")] Salida salida)
+        public async Task<ActionResult> Create([Bind(Include = "IdSalida,IdSuministro,Equipo,FechaSalida")] Salida salida)
         {
             if (ModelState.IsValid)
             {
@@ -55,42 +54,6 @@ namespace SuministrosProject.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.IdGafete = new SelectList(db.Usuario, "IdGafete", "Nombre", salida.IdGafete);
-            ViewBag.IdSuministro = new SelectList(db.Suministro, "IdSuministro", "Serie", salida.IdSuministro);
-            return View(salida);
-        }
-
-        // GET: Salidas/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Salida salida = await db.Salida.FindAsync(id);
-            if (salida == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.IdGafete = new SelectList(db.Usuario, "IdGafete", "Nombre", salida.IdGafete);
-            ViewBag.IdSuministro = new SelectList(db.Suministro, "IdSuministro", "Serie", salida.IdSuministro);
-            return View(salida);
-        }
-
-        // POST: Salidas/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdSalida,IdSuministro,Cantidad,Equipo,Observacion,FechaSalida,IdGafete")] Salida salida)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(salida).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            ViewBag.IdGafete = new SelectList(db.Usuario, "IdGafete", "Nombre", salida.IdGafete);
             ViewBag.IdSuministro = new SelectList(db.Suministro, "IdSuministro", "Serie", salida.IdSuministro);
             return View(salida);
         }

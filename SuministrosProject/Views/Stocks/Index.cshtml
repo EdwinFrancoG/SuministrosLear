@@ -13,82 +13,87 @@
     @*<button onclick="NewStock()" class="btn btn-space btn-primary hover"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><div class="icon"><span class="s7-plus"></span></div>  Nuevo</font></font></button>*@
     <button onclick="NewStock()" class="btn btn-rounded btn-space btn-info"><i class="s7-plus"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  Nuevo</font></font></button>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Suministro
-        </th>
-        <th>
-            Stok inicial
-        </th>
-        <th>
-            Fecha
-        </th>
-        <th>
-            Entradas
-        </th>
-        <th>
-            Salidas
-        </th>
-        <th>
-            Cantidad Actual
-        </th>
-        <th>
-            Pendientes
-        </th>
-        <th>
-            Total
-        </th>
-        @*<th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>*@
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        if (item.Estado == true)
+<table id="Tabla-Stock" class="table">
+    <thead>
+        <tr>
+            <th>
+                # Parte
+            </th>
+            <th>
+                Stok inicial
+            </th>
+            <th>
+                Fecha Inicial
+            </th>
+            <th>
+                Entradas
+            </th>
+            <th>
+                Salidas
+            </th>
+            <th>
+                Cantidad Actual
+            </th>
+            <th>
+                Pendientes
+            </th>
+            <th>
+                Total
+            </th>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdSuministroNavigation.Serie)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.StockInicial)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FechaInicio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Entradas)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Salidas)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CantidadActual)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pendientes)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Total)
-                </td>
-                @*<td>
+            if (item.Estado == true)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdNumeroParteNavigation.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StockInicial)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaInicio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Entradas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Salidas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CantidadActual)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pendientes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Total)
+                    </td>
+                    @*<td>
                         @Html.DisplayFor(modelItem => item.Estado)
                     </td>*@
-                <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdStock })|
+                    <td>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IdStock })|
 
-                    @if (item.Pendientes != 0)
-                    {
-                        @Html.ActionLink("Details", "Details", new { id = item.IdStock })
-                    }
+                        @if (item.Pendientes != 0)
+                        {
+                            @Html.ActionLink("Details", "Details", new { id = item.IdStock })
+                        }
 
-                </td>
-            </tr>
+                    </td>
+                </tr>
+            }
         }
-    }
+    </tbody>
+    
 
 </table>
 

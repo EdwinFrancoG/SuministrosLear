@@ -2,8 +2,17 @@
     window.location.href = '/Home/Index'
 }
 
+function redireccionarPage(id) {
+    window.location.href = '/DetallePo/Index/?idProdOrder=' + id
+}
+
+
 function redireccionarStock() {
     window.location.href = '/Stocks/Index'
+}
+
+function Cambiar_estado_a_pendiente(idPO) {
+    window.location.href = '/DetallePo/cambiarEstadoAPendiente/?idPO=' + idPO
 }
 
 function redireccionarPO() {
@@ -13,6 +22,7 @@ function redireccionarPO() {
 function redireccionarCategorias() {
     window.location.href = '/Categorias/Index'
 }
+
 
 function redireccionarPerfil() {
     window.location.href = '/Perfils/Index'

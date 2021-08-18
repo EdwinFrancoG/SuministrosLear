@@ -28,6 +28,8 @@ namespace SuministrosProject.Models
         public virtual DbSet<Stock> Stock { get; set; }
         public virtual DbSet<Suministro> Suministro { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<NumeroParte> NumeroParte { get; set; }
+        public virtual DbSet<Entrada> Entrada { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -53,11 +55,12 @@ namespace SuministrosProject.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Estado).HasColumnName("estado");
-
                 entity.Property(e => e.Observacion)
                     .HasColumnName("observacion")
                     .IsUnicode(false);
+
+                entity.Property(e => e.Estado).HasColumnName("estado");
+                
             });
 
             modelBuilder.Entity<DetallePo>(entity =>
@@ -66,35 +69,29 @@ namespace SuministrosProject.Models
 
                 entity.ToTable("detallePO");
 
-                entity.Property(e => e.IdDetallePo)
-                    .HasColumnName("idDetallePO")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.CantidadPendiente).HasColumnName("cantidadPendiente");
-
-                entity.Property(e => e.cantidadPedido).HasColumnName("cantidadPedido");
-
-                entity.Property(e => e.CantidadRecibida).HasColumnName("cantidadRecibida");
+                entity.Property(e => e.IdDetallePo).HasColumnName("idDetallePO");
 
                 entity.Property(e => e.IdProductOrder).HasColumnName("idProductOrder");
 
-                entity.Property(e => e.IdSuministro).HasColumnName("idSuministro");
+                entity.Property(e => e.IdNumeroParte).HasColumnName("idNumeroParte");
+
+                entity.Property(e => e.cantidadPedido).HasColumnName("cantidadPedido");
+
+                entity.Property(e => e.CantidadPendiente).HasColumnName("cantidadPendiente");              
 
                 entity.Property(e => e.Observacion)
                     .HasColumnName("observacion")
                     .IsUnicode(false);
 
-                entity.Property(e => e.Pendiente).HasColumnName("pendiente");
+                entity.HasOne(d => d.IdNumeroParteNavigation)
+                    .WithMany(p => p.DetallePo)
+                    .HasForeignKey(d => d.IdNumeroParte)
+                    .HasConstraintName("FK_detallePO_numeroParte");
 
                 entity.HasOne(d => d.IdProductOrderNavigation)
                     .WithMany(p => p.DetallePo)
                     .HasForeignKey(d => d.IdProductOrder)
                     .HasConstraintName("FK_detallePO_productOrder");
-
-                entity.HasOne(d => d.IdSuministroNavigation)
-                    .WithMany(p => p.DetallePo)
-                    .HasForeignKey(d => d.IdSuministro)
-                    .HasConstraintName("FK_detallePO_suministro");
             });
 
             modelBuilder.Entity<Perfil>(entity =>
@@ -129,13 +126,13 @@ namespace SuministrosProject.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Descripcion)
-                    .HasColumnName("descripcion")
+                entity.Property(e => e.Requisicion)
+                    .HasColumnName("requisicion")
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Estado)
-                    .HasColumnName("estado")
-                    .HasMaxLength(30)
+                entity.Property(e => e.Descripcion)
+                    .HasColumnName("descripcion")
                     .IsUnicode(false);
 
                 entity.Property(e => e.Fecha)
@@ -147,10 +144,10 @@ namespace SuministrosProject.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Requisicion)
-                    .HasColumnName("requisicion")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.Estado)
+                    .HasColumnName("estado")
+                    .HasMaxLength(30)
+                    .IsUnicode(false);                                     
 
                 entity.HasOne(d => d.IdGafeteNavigation)
                     .WithMany(p => p.ProductOrder)
@@ -169,7 +166,7 @@ namespace SuministrosProject.Models
                     .HasColumnName("idSalida")
                     .ValueGeneratedNever();
 
-                entity.Property(e => e.Cantidad).HasColumnName("cantidad");
+                entity.Property(e => e.IdSuministro).HasColumnName("idSuministro");
 
                 entity.Property(e => e.Equipo)
                     .HasColumnName("equipo")
@@ -179,22 +176,6 @@ namespace SuministrosProject.Models
                 entity.Property(e => e.FechaSalida)
                     .HasColumnName("fechaSalida")
                     .HasColumnType("datetime");
-
-                entity.Property(e => e.IdGafete)
-                    .HasColumnName("idGafete")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.IdSuministro).HasColumnName("idSuministro");
-
-                entity.Property(e => e.Observacion)
-                    .HasColumnName("observacion")
-                    .IsUnicode(false);
-
-                entity.HasOne(d => d.IdGafeteNavigation)
-                    .WithMany(p => p.Salida)
-                    .HasForeignKey(d => d.IdGafete)
-                    .HasConstraintName("FK_salida_usuario");
 
                 entity.HasOne(d => d.IdSuministroNavigation)
                     .WithMany(p => p.Salida)
@@ -210,33 +191,56 @@ namespace SuministrosProject.Models
 
                 entity.Property(e => e.IdStock).HasColumnName("idStock");
 
-                entity.Property(e => e.CantidadActual).HasColumnName("cantidadActual");
+                entity.Property(e => e.IdNumeroParte).HasColumnName("idNumeroParte");
 
-                entity.Property(e => e.Entradas).HasColumnName("entradas");
-
-                entity.Property(e => e.Estado).HasColumnName("estado");
+                entity.Property(e => e.StockInicial).HasColumnName("stockInicial");
 
                 entity.Property(e => e.FechaInicio)
                     .HasColumnName("fechaInicio")
                     .HasColumnType("datetime");
 
-                entity.Property(e => e.IdSuministro).HasColumnName("idSuministro");
-
-                entity.Property(e => e.Pendientes).HasColumnName("pendientes");
+                entity.Property(e => e.Entradas).HasColumnName("entradas");
 
                 entity.Property(e => e.Salidas).HasColumnName("salidas");
 
-                entity.Property(e => e.StockInicial).HasColumnName("stockInicial");
+                entity.Property(e => e.CantidadActual).HasColumnName("cantidadActual");
+
+                entity.Property(e => e.Pendientes).HasColumnName("pendientes");
 
                 entity.Property(e => e.Total).HasColumnName("total");
 
-                entity.HasOne(d => d.IdSuministroNavigation)
+                entity.Property(e => e.Estado).HasColumnName("estado");
+
+                entity.Property(e => e.idLocalizacion).HasColumnName("idLocalizacion");
+
+                entity.HasOne(d => d.IdNumeroParteNavigation)
                     .WithMany(p => p.Stock)
-                    .HasForeignKey(d => d.IdSuministro)
-                    .HasConstraintName("FK_stock_suministro");
+                    .HasForeignKey(d => d.IdNumeroParte)
+                    .HasConstraintName("FK_stock_numeroParte");
+
+                entity.HasOne(d => d.IdLocalizacionNavigation)
+                    .WithMany(p => p.Stock)
+                    .HasForeignKey(d => d.idLocalizacion)
+                    .HasConstraintName("FK_stock_localizaion");
+
             });
 
-            modelBuilder.Entity<Suministro>(entity =>
+            modelBuilder.Entity<Localizacion>(entity =>
+            {
+                entity.HasKey(e => e.idLocalizacion);
+
+                entity.ToTable("localizaion");
+
+                entity.Property(e => e.idLocalizacion).HasColumnName("idLocalizacion");
+                
+                entity.Property(e => e.descripcion)
+                    .IsRequired()
+                    .HasColumnName("descripcion")
+                    .HasMaxLength(100)
+                    .IsUnicode(false);
+            });
+
+                modelBuilder.Entity<Suministro>(entity =>
             {
                 entity.HasKey(e => e.IdSuministro);
 
@@ -244,36 +248,75 @@ namespace SuministrosProject.Models
 
                 entity.Property(e => e.IdSuministro).HasColumnName("idSuministro");
 
-                entity.Property(e => e.Descripcion)
-                    .HasColumnName("descripcion")
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Estado).HasColumnName("estado");
-
-                entity.Property(e => e.Modelo)
-                    .HasColumnName("Modelo")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.NumeroParte)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Observacion)
-                    .HasColumnName("observacion")
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Serie)
                     .IsRequired()
                     .HasColumnName("serie")
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.HasOne(d => d.IdCategoriaNavigation)
+                entity.Property(e => e.IdNumeroParte).HasColumnName("idNumeroParte");
+
+                entity.Property(e => e.Estado).HasColumnName("estado");               
+
+                entity.HasOne(d => d.IdNumeroParteNavigation)
                     .WithMany(p => p.Suministro)
-                    .HasForeignKey(d => d.IdCategoria)
-                    .HasConstraintName("FK_suministro_categoria");
+                    .HasForeignKey(d => d.IdNumeroParte)
+                    .HasConstraintName("FK_suministro_numeroParte");
             });
+
+            modelBuilder.Entity<NumeroParte>(entity=>
+            {
+                entity.HasKey(e => e.IdNumeroParte);
+
+                entity.ToTable("numeroParte");
+
+                entity.Property(e => e.IdNumeroParte).HasColumnName("idNumeroParte");
+
+                entity.Property(e => e.Descripcion).HasColumnName("descripcion");
+
+                entity.Property(e => e.Modelo)
+                    .IsRequired()
+                    .HasColumnName("modelo")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Marca)
+                    .IsRequired()
+                    .HasColumnName("marca")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.IdCategoria).HasColumnName("idCategoria");
+
+                entity.Property(e => e.Observacion).HasColumnName("observacion");
+
+                entity.Property(e => e.Estado).HasColumnName("estado");
+
+                entity.HasOne(d => d.IdCategoriaNavigation)
+                    .WithMany(p => p.NumeroParte)
+                    .HasForeignKey(d => d.IdCategoria)
+                    .HasConstraintName("FK_numeroParte_categoria");
+
+            });
+
+            modelBuilder.Entity<Entrada>(entity => {
+                entity.HasKey(e => e.IdEntrada);
+
+                entity.ToTable("entrada");
+
+                entity.Property(e => e.SerieSuministro)
+                    .HasColumnName("serieSuministro")
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.IdNumeroParte).HasColumnName("idNumeroParte");
+
+                entity.HasOne(d => d.IdNumeroParteNavigation)
+                    .WithMany(p => p.Entrada)
+                    .HasForeignKey(d => d.IdNumeroParte)
+                    .HasConstraintName("FK_entrada_numeroParte");
+            }); 
+
 
             modelBuilder.Entity<Usuario>(entity =>
             {

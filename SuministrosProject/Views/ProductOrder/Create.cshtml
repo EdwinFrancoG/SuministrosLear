@@ -14,70 +14,52 @@
 
 @using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
     @Html.ValidationSummary()
     @*<hr />
     <br />
     <br />*@
 
-    <div class="row">
-        <div class="form-group col-md-6">
-            @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @class = "form-control", @id = "idCodigo" } })
-                @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group col-md-6">
-            @Html.LabelFor(model => model.Requisicion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Requisicion, new { htmlAttributes = new { @class = "form-control", @id = "idRequisicion" } })
-                @Html.ValidationMessageFor(model => model.Requisicion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group col-md-6">
-            <br />
-            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control", @id = "idDescripcion" } })
-                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        @*<div class="form-group col-md-6">
-                <br />
-                @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control", @id = "idFecha" } })
-                    @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-        <div class="form-group col-md-6">
-            <br />
-            @Html.LabelFor(model => model.IdGafete, "Gafete", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("IdGafete", null, htmlAttributes: new { @class = "form-control", @id = "idGafete" })
-                @Html.ValidationMessageFor(model => model.IdGafete, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        @*<div class="form-group col-md-6">
-                @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-                </div>
-            </div>*@
-
-        <div class="modal-footer">
-            <br />
-            <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-            <button type="button" onclick="GuardarPO()" class="btn btn-primary">Guardar</button>
+<div class="row">
+    <div class="form-group col-md-6">
+        @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @class = "form-control", @id = "idCodigo" } })
+            @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group col-md-6">
+        @Html.LabelFor(model => model.Requisicion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Requisicion, new { htmlAttributes = new { @class = "form-control", @id = "idRequisicion" } })
+            @Html.ValidationMessageFor(model => model.Requisicion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <br />
+        @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control", @id = "idDescripcion" } })
+            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group col-md-6">
+        <br />
+        @Html.LabelFor(model => model.IdGafete, "Gafete", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("IdGafete", null, htmlAttributes: new { @class = "form-control", @id = "idGafete" })
+            @Html.ValidationMessageFor(model => model.IdGafete, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <br />
+        <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" onclick="GuardarPO()" class="btn btn-primary">Guardar</button>
+    </div>
+</div>
 
 }
 
@@ -94,7 +76,6 @@
                     <p id="BodyPositivePO"></p>
                     <div class="mt-6">
                         <button type="button" onclick="redireccionarPO()" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
-
                     </div>
                 </div>
             </div>

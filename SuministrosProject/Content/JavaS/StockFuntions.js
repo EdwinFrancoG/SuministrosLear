@@ -23,7 +23,7 @@ function notificacioError(title, text) {
 }
 
 function guardarStock() {
-    var idSuministro = document.getElementById("idSuministro").value;
+    var idNParte = document.getElementById("IdNumeroParte").value;
     var StockInicial = document.getElementById("StockInitial").value;
     var pendietes = document.getElementById("idpendientes").value;
     $.ajax(
@@ -31,7 +31,7 @@ function guardarStock() {
             type: 'POST',
             url: '/Stocks/Create',
             data: {
-                IdSuministro: idSuministro,
+                IdNumeroParte: idNParte,
                 StockInicial: StockInicial,
                 Pendientes: pendietes
             },
@@ -103,3 +103,7 @@ function redireccionarIndex() {
 function redireccionarIndexStock() {
     window.location.href = '/Stocks/Index';
 }
+
+//$(document).ready(function () {
+//    $('#Tabla-Stock').DataTable();
+//});

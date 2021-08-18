@@ -11,62 +11,172 @@
     @Html.ActionLink("Create New", "Create")
     @ViewData["PO"]
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdProductOrderNavigation.Codigo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdSuministroNavigation.Serie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantidadPedido)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CantidadRecibida)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pendiente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CantidadPendiente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Observacion)
-        </th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
+@{
+    var state = @ViewData["estado"];
+    bool stateIsNew = state.ToString() == "Nueva";
+    bool stateIsClose = state.ToString() == "Cerrada";
+    bool statePendiente = state.ToString() == "Pendiente";
+}
+
+
+<table id="idTableD" class="table">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdProductOrderNavigation.Codigo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdSuministroNavigation.Serie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cantidadPedido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CantidadRecibida)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pendiente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CantidadPendiente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Observacion)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IdDetallePo }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IdDetallePo }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdDetallePo })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.IdProductOrderNavigation.Codigo)
+            </th>
+            <th>
+                # Parte
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantidadPedido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadPendiente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Observacion)
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdProductOrderNavigation.Codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdNumeroParteNavigation.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantidadPedido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadPendiente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Observacion)
+                </td>
+                <td>
+                    @{
+                        bool HayPendientes = item.CantidadPendiente != 0;
+                    }
+                    @if (HayPendientes && statePendiente)
+                    {
+                        <button type="button" onclick="GetCreateEntrada(@item.IdNumeroParte, @item.IdProductOrder)">Recibir</button>
+                        <button type="button" onclick="">Enmienda</button>
+                    }
+
+                    @if (stateIsNew)
+                    {
+                        <button onclick="deleteDetallePo(@item.IdDetallePo)" type="button">Eliminar</button>
+                    }
+
+                    @if (!HayPendientes)
+                    {
+                        @Html.Label("Recibido");
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+
 
 </table>
+
+
+@if (stateIsNew)
+{
+    <br />
+    <br />
+    int IdPO = Convert.ToInt32(@ViewBag.idPO);
+    <button type="button" onclick="mostrarDetallePO(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note"> Agg </i></button>
+    <button type="button" onclick="Cambiar_estado_a_pendiente(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4; padding-left:50px;"><i class="s7-check"> Acept</i></button>
+    <br />
+    <br />
+}
+
+
+
+
+@* Modal para el get de una nueva entrada, aqu se mostrara el diseño del formulario *@
+<div class="modal fade" id="CreateEntrada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="max-width: 750px;">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Nuevo ingreso de suministros</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="createBodyEntrada" class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Modal para el get de ingreso de un nuevo detalles *@
+<div class="modal fade" id="NewModalDetPO" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="max-width: 750px;">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel"></h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="NewModalBodyDetPO" class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Para mostrar que la entrada se completo correctamete *@
+<div id="idAlertPositiveEntrada" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
+                    <h3 class="mb-4">Awesome!</h3>
+                    <p id="BodyPositiveEntrada"></p>
+                    <div class="mt-6">
+                            <button type="button" onclick="redireccionarPage(@ViewBag.idPO)" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Para mostrar que el detalle se inserto correctaente *@
+<div id="DeteallePO" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
+                    <h3 class="mb-4">Awesome!</h3>
+                    <p id="BodyDetPO"></p>
+                    <div class="mt-6">
+                        <button type="button" onclick="redireccionarPage(@ViewBag.idPO)" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/JavaS/DetallePOFuntions.js"></script>
+<script src="~/Content/JavaS/EntradaFuctions.js"></script>

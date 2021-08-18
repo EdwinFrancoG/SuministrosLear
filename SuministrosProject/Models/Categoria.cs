@@ -12,7 +12,7 @@ namespace SuministrosProject.Models
     {
         public Categoria()
         {
-            Suministro = new HashSet<Suministro>();
+            NumeroParte = new HashSet<NumeroParte>();
         }
 
         [Key]
@@ -21,6 +21,6 @@ namespace SuministrosProject.Models
         public string Observacion { get; set; }
         public bool? Estado { get; set; }
 
-        public virtual ICollection<Suministro> Suministro { get; set; }
+        public virtual ICollection<NumeroParte> NumeroParte { get; set; }
     }
 }

@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SuministrosProject.Models
 {
-    public class ProductOrder
+    public partial class ProductOrder
     {
         public ProductOrder()
         {
@@ -23,8 +23,11 @@ namespace SuministrosProject.Models
         public DateTime? Fecha { get; set; }
         public string IdGafete { get; set; }
         public string Estado { get; set; }
+       
 
         public virtual Usuario IdGafeteNavigation { get; set; }
         public virtual ICollection<DetallePo> DetallePo { get; set; }
+
+        
     }
 }

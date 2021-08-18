@@ -18,57 +18,44 @@
 <br />
 <br />
 
-<table class="table">
-    <tr>
-        <th>
-            Tipo
-        </th>
-        <th>
-            Serie
-        </th>
-        <th>
-            Modelo
-        </th>
-        <th>
-            #Parte
-        </th>
-        <th>
-            Descripcion
-        </th>
-        @*<th>
-                Observacion
-            </th>*@
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table id="suministroTable" class="table">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.CategoriaDescripcion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Serie)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Modelo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumeroParte)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
-            </td>
-            @*<td>
-                    @Html.DisplayFor(modelItem => item.Observacion)
-                </td>*@
-            <td>
-                <button onclick="EditSuministro(@item.IdSuministro)" class="btn btn-rounded btn-space btn-info"> Editar</button>
-                @*<button class="btn btn-rounded btn-space btn-danger">Eliminar</button>*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdSuministro })|
-            </td>
+            <th>
+                ID
+            </th>
+            <th>
+                Serie
+            </th>
+            <th>
+                #Parte
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdSuministro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Serie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdNumeroParteNavigation.Descripcion)
+                </td>
+                <td>
+                    <button onclick="EditSuministro(@item.IdSuministro)" class="btn btn-rounded btn-space btn-info"> Editar</button>
+                    @*<button class="btn btn-rounded btn-space btn-danger">Eliminar</button>*@
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdSuministro })|
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
 
 </table>
 

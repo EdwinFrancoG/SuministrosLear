@@ -20,12 +20,6 @@ namespace SuministrosProject.AppServices
 
         public async Task<string> IngresarStock(Stock stock)
         {
-            var buscarItem = db.Stock.Where(x => x.IdSuministro == stock.IdSuministro).FirstOrDefault();
-            if (buscarItem != null)
-            {
-                return "El Suministro ya esta en existencia, cree una P.O para aumentar la cantidad de este.";
-            }
-
             var respuestaStockDomain = StockDomain.validarIngresoStock(stock);
             bool ErrorEnDomain = respuestaStockDomain != null;
             if (ErrorEnDomain)

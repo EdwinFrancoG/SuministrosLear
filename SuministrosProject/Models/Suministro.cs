@@ -12,24 +12,16 @@ namespace SuministrosProject.Models
     {
         public Suministro()
         {
-            DetallePo = new HashSet<DetallePo>();
             Salida = new HashSet<Salida>();
-            Stock = new HashSet<Stock>();
         }
 
         [Key]
         public int IdSuministro { get; set; }
         public string Serie { get; set; }
-        public string Modelo { get; set; }
-        public string NumeroParte { get; set; }
-        public string Descripcion { get; set; }
-        public string Observacion { get; set; }
-        public int? IdCategoria { get; set; }
+        public int? IdNumeroParte { get; set; }
         public bool? Estado { get; set; }
 
-        public virtual Categoria IdCategoriaNavigation { get; set; }
-        public virtual ICollection<DetallePo> DetallePo { get; set; }
+        public virtual NumeroParte IdNumeroParteNavigation { get; set; }
         public virtual ICollection<Salida> Salida { get; set; }
-        public virtual ICollection<Stock> Stock { get; set; }
     }
 }

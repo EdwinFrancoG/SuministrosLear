@@ -65,21 +65,21 @@
                 <td>
                     @if (item.Estado == "Nueva")
                     {
-                        @Html.ActionLink("Add ", "Details", new { id = item.IdProductOrder })
+                        @Html.RouteLink("Add", "IndexDetPO", new { idProdOrder = item.IdProductOrder })
                         @Html.ActionLink(" | Delete", "Delete", new { id = item.IdProductOrder })
                     }
                     @if (item.Estado == "Pendiente")
                     {
-                        @Html.ActionLink("Recive ", "Edit", new { id = item.IdProductOrder })
+                        @Html.RouteLink("Recive ", "IndexDetPO", new { idProdOrder = item.IdProductOrder })
                     }
                     @if (item.Estado == "Cerrada")
                     {
-                        @Html.ActionLink("See  ", "Details", new { id = item.IdProductOrder })
+                        @Html.RouteLink("See ", "IndexDetPO", new { idProdOrder = item.IdProductOrder })
                         @Html.ActionLink(" | Delete", "Delete", new { id = item.IdProductOrder })
                     }
                     @*@Html.ActionLink("Edit", "Edit", new { id = item.IdProductOrder }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.IdProductOrder }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdProductOrder })*@
+        @Html.ActionLink("Details", "Details", new { id = item.IdProductOrder }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.IdProductOrder })*@
                 </td>
             </tr>
         }

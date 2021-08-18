@@ -39,22 +39,17 @@ function NewSuministroGet() {
 
 function GuardarSuministro() {
     var SerieSum = document.getElementById("serie").value;
-    var ModeloSum = document.getElementById("modelosum").value;
-    var NumeroParteSum = document.getElementById("numeroParte").value;
-    var descriptionSum = document.getElementById("description").value;
-    var observationSum = document.getElementById("observation").value;
-    var idCategoriaSum = document.getElementById("idCategoria").value;
+    var NumeroParteSum = document.getElementById("IdNumeroParte").value;
+    var estado = true;
+
     $.ajax(
         {
             type: 'POST',
             url: '/Suministro/Create',
             data: {
                 Serie: SerieSum,
-                Modelo: ModeloSum,
-                NumeroParte: NumeroParteSum,
-                Descripcion: descriptionSum,
-                Observacion: observationSum,
-                IdCategoria: idCategoriaSum
+                IdNumeroParte: NumeroParteSum,
+                Estado: estado
             },
             success: function (result) {
                 if (result == 'OK') {

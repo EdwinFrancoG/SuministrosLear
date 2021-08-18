@@ -18,6 +18,17 @@ namespace SuministrosProject
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+               name: "IndexDetPO",
+               url:"DetallePo/Index"
+            );
+
+            routes.MapRoute(
+               name: "RoutePO",
+               url: "ProductOrdeR/Index"
+            );
+            
         }
     }
 }
