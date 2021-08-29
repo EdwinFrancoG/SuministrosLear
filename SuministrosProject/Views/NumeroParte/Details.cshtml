@@ -1,0 +1,67 @@
+﻿@model SuministrosProject.Models.NumeroParte
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NumeroParte</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCategoriaNavigation.CategoriaDescripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCategoriaNavigation.CategoriaDescripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Modelo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Modelo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdNumeroParte }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

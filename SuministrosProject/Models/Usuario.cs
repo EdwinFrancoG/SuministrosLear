@@ -13,7 +13,6 @@ namespace SuministrosProject.Models
         public Usuario()
         {
             ProductOrder = new HashSet<ProductOrder>();
-            Salida = new HashSet<Salida>();
         }
 
         [Key]
@@ -28,6 +27,5 @@ namespace SuministrosProject.Models
 
         public virtual Perfil IdPerfilNavigation { get; set; }
         public virtual ICollection<ProductOrder> ProductOrder { get; set; }
-        public virtual ICollection<Salida> Salida { get; set; }
     }
 }

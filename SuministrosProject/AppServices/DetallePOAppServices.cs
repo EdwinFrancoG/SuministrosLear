@@ -62,5 +62,15 @@ namespace SuministrosProject.AppServices
 
             return null;
         }
+
+        public string estadoCerrada(int idProductOrder)
+        {
+            var PO = db.ProductOrder.Where(p => p.IdProductOrder == idProductOrder).FirstOrDefault();
+            PO.Estado = "Cerrada";
+
+            db.SaveChanges();
+
+            return null;
+        }
     }
 }

@@ -30,6 +30,7 @@
             <th>
                 #Parte
             </th>
+            <th>Ubicacion</th>
             <th></th>
         </tr>
     </thead>
@@ -45,6 +46,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.IdNumeroParteNavigation.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdLocalizacionNavigation.descripcion)
                 </td>
                 <td>
                     <button onclick="EditSuministro(@item.IdSuministro)" class="btn btn-rounded btn-space btn-info"> Editar</button>

@@ -30,6 +30,8 @@ namespace SuministrosProject.Models
         public virtual DbSet<Usuario> Usuario { get; set; }
         public virtual DbSet<NumeroParte> NumeroParte { get; set; }
         public virtual DbSet<Entrada> Entrada { get; set; }
+        public virtual DbSet<Localizacion> Localizacion { get; set; }
+        public virtual DbSet<Equipo> Equipo { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -40,9 +42,24 @@ namespace SuministrosProject.Models
             }
         }
 
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Categoria>(entity =>
+            modelBuilder.Entity<Equipo>(entity =>{
+               
+                entity.HasKey(e => e.idEquipo);
+                
+                entity.ToTable("equipo");
+                
+                entity.Property(e => e.idEquipo).HasColumnName("idEquipo");
+                
+                entity.Property(e => e.equipo)
+                   .HasColumnName("equipo")
+                   .HasMaxLength(100)
+                   .IsUnicode(false);
+            });
+            
+                modelBuilder.Entity<Categoria>(entity =>
             {
                 entity.HasKey(e => e.IdCategoria);
 
@@ -163,24 +180,25 @@ namespace SuministrosProject.Models
                 entity.ToTable("salida");
 
                 entity.Property(e => e.IdSalida)
-                    .HasColumnName("idSalida")
-                    .ValueGeneratedNever();
+                    .HasColumnName("idSalida");
 
                 entity.Property(e => e.IdSuministro).HasColumnName("idSuministro");
-
-                entity.Property(e => e.Equipo)
-                    .HasColumnName("equipo")
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
 
                 entity.Property(e => e.FechaSalida)
                     .HasColumnName("fechaSalida")
                     .HasColumnType("datetime");
 
+                entity.Property(e => e.idEquipo).HasColumnName("idEquipo");
+
                 entity.HasOne(d => d.IdSuministroNavigation)
                     .WithMany(p => p.Salida)
                     .HasForeignKey(d => d.IdSuministro)
                     .HasConstraintName("FK_salida_suministro");
+
+                entity.HasOne(d => d.IdEquipoNaviation)
+                    .WithMany(p => p.Salida)
+                    .HasForeignKey(d => d.idEquipo)
+                    .HasConstraintName("FK_salida_equipo");
             });
 
             modelBuilder.Entity<Stock>(entity =>
@@ -211,17 +229,10 @@ namespace SuministrosProject.Models
 
                 entity.Property(e => e.Estado).HasColumnName("estado");
 
-                entity.Property(e => e.idLocalizacion).HasColumnName("idLocalizacion");
-
                 entity.HasOne(d => d.IdNumeroParteNavigation)
                     .WithMany(p => p.Stock)
                     .HasForeignKey(d => d.IdNumeroParte)
                     .HasConstraintName("FK_stock_numeroParte");
-
-                entity.HasOne(d => d.IdLocalizacionNavigation)
-                    .WithMany(p => p.Stock)
-                    .HasForeignKey(d => d.idLocalizacion)
-                    .HasConstraintName("FK_stock_localizaion");
 
             });
 
@@ -229,7 +240,7 @@ namespace SuministrosProject.Models
             {
                 entity.HasKey(e => e.idLocalizacion);
 
-                entity.ToTable("localizaion");
+                entity.ToTable("localizacion");
 
                 entity.Property(e => e.idLocalizacion).HasColumnName("idLocalizacion");
                 
@@ -256,12 +267,19 @@ namespace SuministrosProject.Models
 
                 entity.Property(e => e.IdNumeroParte).HasColumnName("idNumeroParte");
 
-                entity.Property(e => e.Estado).HasColumnName("estado");               
+                entity.Property(e => e.Estado).HasColumnName("estado");
+
+                entity.Property(e => e.IdLocalizacion).HasColumnName("idLocalizacion");
 
                 entity.HasOne(d => d.IdNumeroParteNavigation)
                     .WithMany(p => p.Suministro)
                     .HasForeignKey(d => d.IdNumeroParte)
                     .HasConstraintName("FK_suministro_numeroParte");
+
+                entity.HasOne(d => d.IdLocalizacionNavigation)
+                   .WithMany(p => p.Suministro)
+                   .HasForeignKey(d => d.IdLocalizacion)
+                   .HasConstraintName("FK_suministro_localizacion");
             });
 
             modelBuilder.Entity<NumeroParte>(entity=>
@@ -311,10 +329,17 @@ namespace SuministrosProject.Models
 
                 entity.Property(e => e.IdNumeroParte).HasColumnName("idNumeroParte");
 
+                entity.Property(e => e.IdLocalizacion).HasColumnName("idLocalizacion");
+
                 entity.HasOne(d => d.IdNumeroParteNavigation)
                     .WithMany(p => p.Entrada)
                     .HasForeignKey(d => d.IdNumeroParte)
                     .HasConstraintName("FK_entrada_numeroParte");
+
+                entity.HasOne(d => d.IdLocalizacionNavigation)
+                    .WithMany(p => p.Entrada)
+                    .HasForeignKey(d => d.IdLocalizacion)
+                    .HasConstraintName("FK_entrada_localizacion");
             }); 
 
 

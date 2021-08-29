@@ -40,6 +40,7 @@ function NewSuministroGet() {
 function GuardarSuministro() {
     var SerieSum = document.getElementById("serie").value;
     var NumeroParteSum = document.getElementById("IdNumeroParte").value;
+    var localizacion = document.getElementById("idLocalizacionSum").value;  
     var estado = true;
 
     $.ajax(
@@ -49,6 +50,7 @@ function GuardarSuministro() {
             data: {
                 Serie: SerieSum,
                 IdNumeroParte: NumeroParteSum,
+                IdLocalizacion: localizacion,
                 Estado: estado
             },
             success: function (result) {

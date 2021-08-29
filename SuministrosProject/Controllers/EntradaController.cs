@@ -16,7 +16,7 @@ namespace SuministrosProject.Controllers
         // GET: Entrada
         public async Task<ActionResult> Index()
         {
-            var entradas = db.Entrada.Include(e => e.IdNumeroParteNavigation);
+            var entradas = db.Entrada.Include(e => e.IdNumeroParteNavigation).Include(l=>l.IdLocalizacionNavigation);
             return View(await entradas.ToListAsync());
         }
 
@@ -40,7 +40,7 @@ namespace SuministrosProject.Controllers
         {
             ViewBag.IdNumeroParte = numeroDeParte;
             ViewBag.IdPO = idPO;
-            //ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion");
+            ViewBag.idLocalizacion = new SelectList(db.Localizacion, "idLocalizacion", "descripcion");
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace SuministrosProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         
         [HttpPost]
-        public async Task<string> Create([Bind(Include = "IdEntrada,SerieSuministro,IdNumeroParte")] Entrada entrada, int numeroParte, int idPO)
+        public async Task<string> Create([Bind(Include = "IdEntrada,SerieSuministro,IdNumeroParte,IdLocalizacion")] Entrada entrada, int numeroParte, int idPO)
         {
             var respuestaEntradaServices = await _entradaAppServices.insertarEntrada(entrada, numeroParte, idPO);
             bool ingresoIncorrecto = respuestaEntradaServices != null;
@@ -76,6 +76,7 @@ namespace SuministrosProject.Controllers
                 return HttpNotFound();
             }
             ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion", entrada.IdNumeroParte);
+            ViewBag.IdLocalizacion = new SelectList(db.Localizacion, "IdLocalizacion", "descripcion", entrada.IdLocalizacion);
             return View(entrada);
         }
 
@@ -84,7 +85,7 @@ namespace SuministrosProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdEntrada,SerieSuministro,IdNumeroParte")] Entrada entrada)
+        public async Task<ActionResult> Edit([Bind(Include = "IdEntrada,SerieSuministro,IdNumeroParte,IdLocalizacion")] Entrada entrada)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +94,7 @@ namespace SuministrosProject.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion", entrada.IdNumeroParte);
+            ViewBag.IdLocalizacion = new SelectList(db.Localizacion, "IdLocalizacion", "descripcion", entrada.IdLocalizacion);
             return View(entrada);
         }
 

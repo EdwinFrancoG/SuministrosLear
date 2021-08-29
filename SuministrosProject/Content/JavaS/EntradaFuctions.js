@@ -32,6 +32,7 @@ function PostCrearEntrada() {
     var serie = document.getElementById("serieSum").value;
     var idNumeroParte = document.getElementById("IdnumeroParte").value;
     var IdProductO = document.getElementById("IdProductO").value;
+    var localizacion = document.getElementById("idLocalizacion").value;
     
     $.ajax(
         {
@@ -40,7 +41,8 @@ function PostCrearEntrada() {
             data: {
                 SerieSuministro: serie,
                 numeroParte: idNumeroParte,
-                idPO: IdProductO
+                idPO: IdProductO,
+                IdLocalizacion: localizacion
             },
             success: function (result) {
                 if (result == 'OK') {

@@ -21,9 +21,7 @@ namespace SuministrosProject.Models
         public int? Pendientes { get; set; }
         public int? Total { get; set; }
         public bool? Estado { get; set; }
-        public int idLocalizacion { get; set; }
 
         public virtual NumeroParte IdNumeroParteNavigation { get; set; }
-        public virtual Localizacion IdLocalizacionNavigation { get; set; }
     }
 }

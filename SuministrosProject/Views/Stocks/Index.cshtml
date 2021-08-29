@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-    <br />
+<br />
 <h2>Stock de suministros</h2>
 <br />
 <p>
@@ -40,19 +40,16 @@
             <th>
                 Total
             </th>
-            @*<th>
-            @Html.DisplayNameFor(model => model.Estado)
-        </th>*@
             <th></th>
         </tr>
     </thead>
-    
+
     <tbody>
         @foreach (var item in Model)
         {
             if (item.Estado == true)
             {
-                <tr>
+                <tr style="text-align:center;">
                     <td>
                         @Html.DisplayFor(modelItem => item.IdNumeroParteNavigation.Descripcion)
                     </td>
@@ -78,22 +75,26 @@
                         @Html.DisplayFor(modelItem => item.Total)
                     </td>
                     @*<td>
-                        @Html.DisplayFor(modelItem => item.Estado)
-                    </td>*@
+                            @Html.DisplayFor(modelItem => item.Estado)
+                        </td>*@
                     <td>
-                        @Html.ActionLink("Delete", "Delete", new { id = item.IdStock })|
+                        @Html.ActionLink("Delete", "Delete", new { id = item.IdStock })
 
-                        @if (item.Pendientes != 0)
+                        @*@if (item.Pendientes != 0)
+                            {
+                                @Html.ActionLink("Details", "Details", new { id = item.IdStock })
+                            }*@
+
+                        @if (item.CantidadActual != 0)
                         {
-                            @Html.ActionLink("Details", "Details", new { id = item.IdStock })
+                            @*<button onclick="GetCreateSalida()" type="button">Salida</button>*@
                         }
-
                     </td>
                 </tr>
             }
         }
     </tbody>
-    
+
 
 </table>
 
@@ -115,7 +116,7 @@
 </div>
 
 @*Modal ok*@
-<div id="idAlertPositive" tabindex="-1" role="dialog" class="modal fade">
+<div id="idAlertPositiveS" tabindex="-1" role="dialog" class="modal fade">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -128,7 +129,7 @@
                     <p id="StockBodyPositive"></p>
                     <div class="mt-6">
                         <button type="button" onclick="redireccionarIndex()" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
-                        <button type="button" onclick="redireccionarIndex()" data-dismiss="modal" class="btn btn-sm btn-space btn-primary">Stock</button>
+                        <button type="button" onclick="redireccionarStock()" data-dismiss="modal" class="btn btn-sm btn-space btn-primary">Stock</button>
                     </div>
                 </div>
             </div>
@@ -147,7 +148,7 @@
                 <div class="text-center">
                     <div class="text-danger"><span class="modal-main-icon s7-close-circle"></span></div>
                     <h3 class="mb-4">Danger!</h3>
-                    <p id="StockBodyNegative"></p>
+                    <p id="BodyNegative"></p>
                     <div class="mt-6">
                         <button type="button" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
                     </div>
@@ -157,4 +158,19 @@
     </div>
 </div>
 
+<div class="modal fade" id="NewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="max-width: 750px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="NewModalBody" class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="~/Content/JavaS/StockFuntions.js"></script>
+<script src="~/Content/JavaS/salidasFucntion.js"></script>

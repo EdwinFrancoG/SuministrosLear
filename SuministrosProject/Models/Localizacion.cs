@@ -10,13 +10,15 @@ namespace SuministrosProject.Models
     {
         public Localizacion()
         {
-            Stock = new HashSet<Stock>();
+            Entrada = new HashSet<Entrada>();
+            Suministro = new HashSet<Suministro>();
         }
 
         [Key]
         public int idLocalizacion { get; set; }
         public string descripcion { get; set; }
 
-        public virtual ICollection<Stock> Stock { get; set; }
+        public virtual ICollection<Entrada> Entrada { get; set; }
+        public virtual ICollection<Suministro> Suministro { get; set; }
     }
 }

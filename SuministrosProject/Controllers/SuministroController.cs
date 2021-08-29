@@ -17,7 +17,7 @@ namespace SuministrosProject.Controllers
         // GET: Suministro
         public async Task<ActionResult> Index()
         {
-            var suministroes = db.Suministro.Where(s=>s.Estado == true).Include(s => s.IdNumeroParteNavigation);
+            var suministroes = db.Suministro.Where(s=>s.Estado == true).Include(s => s.IdNumeroParteNavigation).Include(l => l.IdLocalizacionNavigation);
             return View(await suministroes.ToListAsync());
         }
 
@@ -41,6 +41,7 @@ namespace SuministrosProject.Controllers
         public ActionResult Create()
         {
             ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion");
+            ViewBag.idLocalizacion = new SelectList(db.Localizacion, "idLocalizacion", "descripcion");
             return View();
         }
 
@@ -48,7 +49,7 @@ namespace SuministrosProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        public async Task<string> Create([Bind(Include = "IdSuministro,Serie,IdNumeroParte,Estado")] Suministro suministro)
+        public async Task<string> Create([Bind(Include = "IdSuministro,Serie,IdNumeroParte,Estado,IdLocalizacion")] Suministro suministro)
         {
             var respuestaSuministroAppServices = await _suministrosAppSerices.IngresarSuministro(suministro);
             bool ingresoIncorrecto = respuestaSuministroAppServices != null;
@@ -75,6 +76,7 @@ namespace SuministrosProject.Controllers
                 return HttpNotFound();
             }
             ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion", suministro.IdNumeroParte);
+            ViewBag.IdLocalizacion = new SelectList(db.Localizacion, "IdLocalizacion", "descripcion", suministro.IdLocalizacion);
             return View(suministro);
         }
 
@@ -83,7 +85,7 @@ namespace SuministrosProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdSuministro,Serie,IdNumeroParte,Estado")] Suministro suministro)
+        public async Task<ActionResult> Edit([Bind(Include = "IdSuministro,Serie,IdNumeroParte,Estado,IdLocalizacion")] Suministro suministro)
         {
             if (ModelState.IsValid)
             {
@@ -92,6 +94,7 @@ namespace SuministrosProject.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion", suministro.IdNumeroParte);
+            ViewBag.IdLocalizacion = new SelectList(db.Localizacion, "IdLocalizacion", "descripcion", suministro.IdLocalizacion);
             return View(suministro);
         }
 

@@ -425,6 +425,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Data.OracleClient" />
     <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
@@ -666,9 +667,11 @@
     <Compile Include="Controllers\DetallePoController.cs" />
     <Compile Include="Controllers\EntradaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocalizacionsController.cs" />
+    <Compile Include="Controllers\NumeroParteController.cs" />
     <Compile Include="Controllers\PerfilsController.cs" />
     <Compile Include="Controllers\ProductOrderController.cs" />
-    <Compile Include="Controllers\SalidasController.cs" />
+    <Compile Include="Controllers\SalidaController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Controllers\SuministroController.cs" />
     <Compile Include="Domain\categoriasDomain.cs" />
@@ -685,6 +688,7 @@
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\DetallePo.cs" />
     <Compile Include="Models\Entrada.cs" />
+    <Compile Include="Models\Equipo.cs" />
     <Compile Include="Models\Localizacion.cs" />
     <Compile Include="Models\NumeroParte.cs" />
     <Compile Include="Models\Perfil.cs" />
@@ -1907,8 +1911,10 @@
     <Content Include="Content\JavaS\OrdenarTabla.js" />
     <Content Include="Content\JavaS\ProductOrderFuntions.js" />
     <Content Include="Content\JavaS\RedirectionsPages.js" />
+    <Content Include="Content\JavaS\salidasFucntion.js" />
     <Content Include="Content\JavaS\StockFuntions.js" />
     <Content Include="Content\JavaS\SuministrosFuntions.js" />
+    <Content Include="Content\styles\suministros.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\assets\css\app.css.map" />
@@ -2304,10 +2310,6 @@
     <Content Include="Views\ProductOrder\Create.cshtml" />
     <Content Include="Views\ProductOrder\Delete.cshtml" />
     <Content Include="Views\ProductOrder\Index.cshtml" />
-    <Content Include="Views\Salidas\Create.cshtml" />
-    <Content Include="Views\Salidas\Delete.cshtml" />
-    <Content Include="Views\Salidas\Details.cshtml" />
-    <Content Include="Views\Salidas\Index.cshtml" />
     <Content Include="Views\DetallePo\Create.cshtml" />
     <Content Include="Views\DetallePo\Delete.cshtml" />
     <Content Include="Views\DetallePo\Edit.cshtml" />
@@ -2315,6 +2317,21 @@
     <Content Include="Views\Entrada\CreateEntrada.cshtml" />
     <Content Include="Views\Entrada\Delete.cshtml" />
     <Content Include="Views\Entrada\Index.cshtml" />
+    <Content Include="Views\Localizacions\Create.cshtml" />
+    <Content Include="Views\Localizacions\Delete.cshtml" />
+    <Content Include="Views\Localizacions\Details.cshtml" />
+    <Content Include="Views\Localizacions\Edit.cshtml" />
+    <Content Include="Views\Localizacions\Index.cshtml" />
+    <Content Include="Views\NumeroParte\Create.cshtml" />
+    <Content Include="Views\NumeroParte\Delete.cshtml" />
+    <Content Include="Views\NumeroParte\Details.cshtml" />
+    <Content Include="Views\NumeroParte\Edit.cshtml" />
+    <Content Include="Views\NumeroParte\Index.cshtml" />
+    <Content Include="Views\Salida\Create.cshtml" />
+    <Content Include="Views\Salida\Delete.cshtml" />
+    <Content Include="Views\Salida\Details.cshtml" />
+    <Content Include="Views\Salida\Edit.cshtml" />
+    <Content Include="Views\Salida\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2327,6 +2344,7 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.1.0\analyzers\dotnet\cs\Microsoft.CodeAnalysis.Analyzers.dll" />

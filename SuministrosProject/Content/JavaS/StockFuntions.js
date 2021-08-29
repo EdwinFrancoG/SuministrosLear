@@ -38,10 +38,10 @@ function guardarStock() {
             success: function (result) {
                 if (result == 'OK') {
                     $('#StockBodyPositive').html("Datos guardados con exito");
-                    $('#idAlertPositive').modal('show');
+                    $('#idAlertPositiveS').modal('show');
                 }
                 else {
-                    $('#StockBodyNegative').html(result);
+                    $('#BodyNegative').html(result);
                     $('#idAlertNegative').modal('show');
                 }
             },

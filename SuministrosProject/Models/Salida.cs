@@ -12,10 +12,13 @@ namespace SuministrosProject.Models
     {
         [Key]
         public int IdSalida { get; set; }
-        public int? IdSuministro { get; set; }
-        public string Equipo { get; set; }
+        public int? IdSuministro { get; set; }      
         public DateTime? FechaSalida { get; set; }
+        public int idEquipo { get; set; }
 
         public virtual Suministro IdSuministroNavigation { get; set; }
+        public virtual Equipo IdEquipoNaviation { get; set; }
+
+        //modificar controlador y la clase de contexto
     }
 }

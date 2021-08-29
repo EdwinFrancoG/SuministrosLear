@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SuministrosProject.Models.Localizacion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Lugar
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idLocalizacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.idLocalizacion }) |
+                @Html.ActionLink("Details", "Details", new { id = item.idLocalizacion }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.idLocalizacion })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -12,6 +12,7 @@ namespace SuministrosProject.Domain
         public SuministrosContext db = new SuministrosContext();
         public async Task<string> validarEntrada(Entrada entrada, int numeroParte, int idPO)
         {
+            int idLocation = Convert.ToInt32(entrada.IdLocalizacion);
             bool serieIsEmpty = entrada.SerieSuministro == null;
             if (serieIsEmpty)
             {
@@ -22,7 +23,7 @@ namespace SuministrosProject.Domain
 
             //Respuesta al ingreso de suministros a la tabla suministros
             string serie = entrada.SerieSuministro;
-            var respuestaAggSuministro = await aggSuministro(numeroParte, serie);
+            var respuestaAggSuministro = await aggSuministro(numeroParte, serie, idLocation);
             bool errorAlAggSuministro = respuestaAggSuministro != null;
             if (errorAlAggSuministro)
             {
@@ -37,8 +38,8 @@ namespace SuministrosProject.Domain
                 return RespuestaRestarEnDetallePO;
             }
 
-            //Respuesta al sumar en el stock de suministros 
-            var respuestaSumarStock = await sumarStock(numeroParte);
+            //Respuesta al sumar en el stock de suministros          
+            var respuestaSumarStock = await sumarStock(numeroParte, idLocation);
             bool errorEnRespuestaStock = respuestaSumarStock != null;
             if (errorEnRespuestaStock)
             {
@@ -82,13 +83,14 @@ namespace SuministrosProject.Domain
             return null;
         }
 
-        public async Task<string> aggSuministro(int numeroParte, string serie)
+        public async Task<string> aggSuministro(int numeroParte, string serie, int location)
         {
             try
             {
                 Suministro suministro = new Suministro();
                 suministro.Serie = serie;
                 suministro.IdNumeroParte = Convert.ToInt32(numeroParte);
+                suministro.IdLocalizacion = location;
                 suministro.Estado = true;
 
                 db.Suministro.Add(suministro);
@@ -102,7 +104,7 @@ namespace SuministrosProject.Domain
             return null;
         }
 
-        public async Task<string> sumarStock(int numeroParte)
+        public async Task<string> sumarStock(int numeroParte, int idLocation)
         {
             var NumeroParteEnStock = db.Stock.Where(s => s.IdNumeroParte == numeroParte).FirstOrDefault();
             int entradas = Convert.ToInt32(NumeroParteEnStock.Entradas);

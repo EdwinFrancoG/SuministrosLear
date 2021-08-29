@@ -6,6 +6,9 @@ function redireccionarPage(id) {
     window.location.href = '/DetallePo/Index/?idProdOrder=' + id
 }
 
+function redireccionarLocalizacion() {
+    window.location.href = '/Localizacions/Index'
+}
 
 function redireccionarStock() {
     window.location.href = '/Stocks/Index'
@@ -14,6 +17,11 @@ function redireccionarStock() {
 function Cambiar_estado_a_pendiente(idPO) {
     window.location.href = '/DetallePo/cambiarEstadoAPendiente/?idPO=' + idPO
 }
+
+function Cambiar_estado_a_cerrada(idPO) {
+    window.location.href = '/DetallePo/cambiarEstadoACerrada/?idPO=' + idPO
+}
+
 
 function redireccionarPO() {
     window.location.href = '/ProductOrder/Index'
@@ -35,3 +43,8 @@ function redireccionarSuministros() {
 function redireccionarIndexPO() {
     window.location.href = '/ProductOrder/Index' 
 }
+
+function IndexSalida() {
+    window.location.href = '/Salida/Index'
+}
+

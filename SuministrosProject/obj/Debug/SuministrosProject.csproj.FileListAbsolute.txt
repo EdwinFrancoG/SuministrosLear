@@ -821,7 +821,6 @@ E:\suministros avanc\SuministrosLear\SuministrosProject\bin\System.Web.WebPages.
 E:\suministros avanc\SuministrosLear\SuministrosProject\bin\System.Web.WebPages.dll
 E:\suministros avanc\SuministrosLear\SuministrosProject\bin\System.Web.WebPages.Razor.dll
 E:\suministros avanc\SuministrosLear\SuministrosProject\bin\WebGrease.dll
-E:\suministros avanc\SuministrosLear\SuministrosProject\bin\Antlr3.Runtime.dll
 E:\suministros avanc\SuministrosLear\SuministrosProject\bin\EntityFramework.xml
 E:\suministros avanc\SuministrosLear\SuministrosProject\bin\EntityFramework.SqlServer.xml
 E:\suministros avanc\SuministrosLear\SuministrosProject\bin\Microsoft.AspNetCore.xml
@@ -953,7 +952,6 @@ E:\suministros avanc\SuministrosLear\SuministrosProject\bin\System.Web.Razor.xml
 E:\suministros avanc\SuministrosLear\SuministrosProject\bin\System.Web.WebPages.xml
 E:\suministros avanc\SuministrosLear\SuministrosProject\bin\System.Web.WebPages.Deployment.xml
 E:\suministros avanc\SuministrosLear\SuministrosProject\bin\System.Web.WebPages.Razor.xml
-E:\suministros avanc\SuministrosLear\SuministrosProject\bin\Antlr3.Runtime.pdb
 E:\suministros avanc\SuministrosLear\SuministrosProject\bin\de\Microsoft.Data.SqlClient.resources.dll
 E:\suministros avanc\SuministrosLear\SuministrosProject\bin\es\Microsoft.Data.SqlClient.resources.dll
 E:\suministros avanc\SuministrosLear\SuministrosProject\bin\fr\Microsoft.Data.SqlClient.resources.dll

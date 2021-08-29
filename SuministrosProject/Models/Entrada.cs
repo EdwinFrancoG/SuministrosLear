@@ -12,7 +12,9 @@ namespace SuministrosProject.Models
         public int IdEntrada { get; set; }
         public string SerieSuministro { get; set; }
         public int IdNumeroParte { get; set; }
+        public int IdLocalizacion { get; set; }
 
         public virtual NumeroParte IdNumeroParteNavigation { get; set; }
+        public virtual Localizacion IdLocalizacionNavigation { get; set; }
     }
 }

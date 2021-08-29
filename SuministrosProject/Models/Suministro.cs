@@ -20,8 +20,10 @@ namespace SuministrosProject.Models
         public string Serie { get; set; }
         public int? IdNumeroParte { get; set; }
         public bool? Estado { get; set; }
+        public int IdLocalizacion { get; set; }
 
         public virtual NumeroParte IdNumeroParteNavigation { get; set; }
+        public virtual Localizacion IdLocalizacionNavigation { get; set; }
         public virtual ICollection<Salida> Salida { get; set; }
     }
 }

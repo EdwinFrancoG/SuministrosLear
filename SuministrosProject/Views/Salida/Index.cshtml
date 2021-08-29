@@ -1,0 +1,58 @@
+﻿@model IEnumerable<SuministrosProject.Models.Salida>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <br />
+        <h2>Registro de salida de suministros</h2>
+    </div>
+</div>
+<br />
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Equipo
+        </th>
+        <th>
+            Serie de suministro
+        </th>
+        <th>
+            Fecha de salida
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdEquipoNaviation.equipo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdSuministroNavigation.Serie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaSalida)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.IdSalida }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.IdSalida }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdSalida })
+                </td>*@
+        </tr>
+    }
+</table>
+
+@*<button onclick="GetCreateSalida()" class="btn btn-rounded btn-space btn-info"><i class="s7-plus"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Salida</font></font></button>*@
+
+
+
+<script src="~/Content/JavaS/salidasFucntion.js"></script>

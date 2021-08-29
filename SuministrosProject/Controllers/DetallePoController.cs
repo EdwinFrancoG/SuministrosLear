@@ -37,6 +37,16 @@ namespace SuministrosProject.Controllers
             return null;
         }
 
+        public ActionResult cambiarEstadoACerrada(int idPO)
+        {
+            var RespuestaAppSerices = _detallePOAppServices.estadoCerrada(idPO);
+            if (RespuestaAppSerices == null)
+            {
+                return RedirectToRoute("RoutePO");
+            }
+            return null;
+        }
+
         // GET: DetallePo/Details/5
         public async Task<ActionResult> Details(int? id)
         {

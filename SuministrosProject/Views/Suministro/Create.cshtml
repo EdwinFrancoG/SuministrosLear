@@ -4,6 +4,7 @@
     ViewBag.Title = "Create";
     Layout = null;
 }
+<link href="~/Content/styles/suministros.css" rel="stylesheet" />
 
 <div class="row">
     <div class="col-md-3"></div>
@@ -31,11 +32,23 @@
     </div>
 
     <div class="form-group col-md-6">
-        <br />    
+        <br />
         <div class="col-md-10">
             @Html.Label("# Parte")
             @Html.DropDownList("IdNumeroParte", null, htmlAttributes: new { @class = "form-control", @id = "IdNumeroParte" })
             @Html.ValidationMessageFor(model => model.IdNumeroParte, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    
+
+    <div class="form-group">
+        <div class="col-md-10">
+            <br />
+            <br />
+            @Html.Label("Ubicacion")
+            @Html.DropDownList("idLocalizacion", null, htmlAttributes: new { @class = "form-control", @id = "idLocalizacionSum" })
+            @Html.ValidationMessageFor(model => model.IdLocalizacion, "", new { @class = "text-danger" })
         </div>
     </div>
 

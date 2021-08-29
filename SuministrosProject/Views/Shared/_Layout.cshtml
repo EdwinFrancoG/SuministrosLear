@@ -24,28 +24,138 @@
     <nav class="navbar navbar-expand navbar-dark mai-top-header">
         <div class="container">
             <a href="#" class="navbar-brand"></a>
-            <!--Left Menu-->
-            <ul class="nav navbar-nav mai-top-nav">
-                <li class="nav-item"><a onclick="redireccionarHome()" class="nav-link">Home</a></li>
-                <li class="nav-item"><a onclick="redireccionarCategorias()" class="nav-link">Tipo</a></li>
-                <li class="nav-item"><a onclick="redireccionarSuministros()" class="nav-link">Suministros</a></li>
-                <li class="nav-item"><a onclick="redireccionarStock()" class="nav-link">Stock</a></li>
-                <li class="nav-item"><a onclick="redireccionarPO()" class="nav-link">P.O</a></li>
 
-                <li class="nav-item"><a onclick="" class="nav-link">Usuarios</a></li>
-                <li class="nav-item"><a onclick="redireccionarPerfil()" class="nav-link">Perfiles</a></li>
+            <ul class="nav navbar-nav float-lg-right mai-top-nav">
+                <!--HOME-->
+                <li class="dropdown nav-item" style="margin-right:5px;">
+                    <a href="#" onclick="redireccionarHome()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-home"></span>           Home</span></a>
+                </li>
+
+                <li class="dropdown nav-item" style="margin-right:5px;">
+                    <a href="#" onclick="redireccionarPO()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-arc"></span>              PO</span></a>
+                </li>
+
+                <li class="dropdown nav-item" style="margin-right:5px;">
+                    <a href="#" onclick="redireccionarStock()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-ticket"></span>     Stock</span></a>
+                </li>
+
+                <li class="dropdown nav-item" style="margin-right:5px;">
+                    <a href="#" onclick="GetCreateSalida()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-back-2"></span>     Salida</span></a>
+                </li>
+
+                @* Reportes del sistema *@
+                <li class="dropdown nav-item" style="margin-right:5px;">
+                    <a href="#" onclick="" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-notebook"></span>     Reportes<span class="angle-down s7-angle-down"></span></span></a>
+                    <div role="menu" class="dropdown-menu">
+                        <a href="#" onclick="" class="dropdown-item"><span class="icon s7-ticket"></span>  Reporte 1</a>
+                        <a href="#" onclick="" class="dropdown-item"><span class="icon s7-notebook"> </span>  Reporte 2</a>
+                        <a href="#" class="dropdown-item"> <span class="icon s7-news-paper"> </span>Reporte 3</a>
+                    </div>
+                </li>
+
+
+                <!--Suministro-->
+                <li class="dropdown nav-item" style="margin-right:5px;">
+                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name">Suministros</span><span class="angle-down s7-angle-down"></span></a>
+                    <div role="menu" class="dropdown-menu">
+                        <a href="#" onclick="redireccionarCategorias()" class="dropdown-item"><span class="icon s7-ticket"></span>   Tipo suministro</a>
+                        <a href="#" onclick="redireccionarSuministros()" class="dropdown-item"><span class="icon s7-notebook"> </span>Registro Suministros</a>
+                        <a href="#" class="dropdown-item"> <span class="icon s7-news-paper"> </span>Numeros de Partes</a>
+                        <a href="#" onclick="redireccionarLocalizacion()" class="dropdown-item"> <span class="icon s7-map"> </span>Localizacion</a>
+                        <a href="#" class="dropdown-item"> <span class="icon s7-edit"> </span>Registro Entradas</a>
+                        <a href="#" onclick="IndexSalida()" class="dropdown-item"> <span class="icon s7-back"> </span>Registro Salidas</a>
+                    </div>
+                </li>
+
+                <!--Users-->
+                <li class="dropdown nav-item">
+                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name">Usuarios</span><span class="angle-down s7-angle-down"></span></a>
+                    <div role="menu" class="dropdown-menu">
+                        <a href="#" onclick="" class="dropdown-item"><span class="icon s7-ticket"></span>  Usuarios</a>
+                        <a href="#" onclick="redireccionarPerfil()" class="dropdown-item"><span class="icon s7-notebook"> </span>Perfil</a>
+                    </div>
+                </li>
             </ul>
 
             <!--User Menu-->
             <ul class="nav navbar-nav float-lg-right mai-user-nav">
                 <li class="dropdown nav-item">
-                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"> <img src="~/Content/assets/img/avatar.jpg"><span class="user-name">Violeta Parra</span><span class="angle-down s7-angle-down"></span></a>
-                    <div role="menu" class="dropdown-menu"><a href="#" class="dropdown-item"><span class="icon s7-home"></span>My Account</a><a href="" class="dropdown-item"><span class="icon s7-user"> </span>Profile</a><a href="#" class="dropdown-item"> <span class="icon s7-cash"> </span>Billing</a><a href="#" class="dropdown-item"> <span class="icon s7-tools"> </span>Settings</a><a href="pages-login.html" class="dropdown-item"><span class="icon s7-power"> </span>Log Out</a></div>
+                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name">Edwin Franco</span><span class="angle-down s7-angle-down"></span></a>
+                    <div role="menu" class="dropdown-menu">
+                        <a href="#" class="dropdown-item"><span class="icon s7-home"></span>My Account</a>
+                        <a href="" class="dropdown-item"><span class="icon s7-user"> </span>Profile</a>
+                        <a href="#" class="dropdown-item"> <span class="icon s7-cash"> </span>Billing</a>
+                        <a href="#" class="dropdown-item"> <span class="icon s7-tools"> </span>Settings</a>
+                        <a href="pages-login.html" class="dropdown-item"><span class="icon s7-power"> </span>Log Out</a>
+                    </div>
                 </li>
             </ul>
         </div>
     </nav>
 
+
+
+
+
+
+
+    @* Para mostrar data del get de create *@
+    <div class="modal fade" id="NewModalS" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content" style="max-width: 750px;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="NewModalBodyS" class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @* Modal para una salida correcta *@
+    <div id="idAlertPositiveSalida" tabindex="-1" role="dialog" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
+                        <h3 class="mb-4">Awesome!</h3>
+                        <p id="BodyPositiveSalida"></p>
+                        <div class="mt-6">
+                            <button type="button" onclick="redireccionarStock()" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Stock</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @*Modal error*@
+    <div id="idAlertNegativeS" tabindex="-1" role="dialog" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-danger"><span class="modal-main-icon s7-close-circle"></span></div>
+                        <h3 class="mb-4">Danger!</h3>
+                        <p id="BodyNegativeS"></p>
+                        <div class="mt-6">
+                            <button type="button" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container body-content">
         @RenderBody()
@@ -87,6 +197,28 @@
         </div>
     </div>
 
+    @*Modal ok*@
+    <div id="idAlertPositiveS" tabindex="-1" role="dialog" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
+                        <h3 class="mb-4">Awesome!</h3>
+                        <p id="StockBodyPositive"></p>
+                        <div class="mt-6">
+                            <button type="button" onclick="redireccionarIndex()" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                            <button type="button" onclick="redireccionarStock()" data-dismiss="modal" class="btn btn-sm btn-space btn-primary">Stock</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @*Modal error*@
     <div id="idAlertNegative" tabindex="-1" role="dialog" class="modal fade">
         <div class="modal-dialog">
@@ -108,7 +240,26 @@
         </div>
     </div>
 
-
+    @*Modal error*@
+    <div id="idAlertNegative" tabindex="-1" role="dialog" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <div class="text-danger"><span class="modal-main-icon s7-close-circle"></span></div>
+                        <h3 class="mb-4">Danger!</h3>
+                        <p id="BodyNegative"></p>
+                        <div class="mt-6">
+                            <button type="button" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     @Scripts.Render("~/bundles/jquery")
     @*@Scripts.Render("~/bundles/bootstrap")*@
@@ -139,6 +290,7 @@
     <script src="~/Content/JavaS/ProductOrderFuntions.js"></script>
     <script src="~/Content/JavaS/EntradaFuctions.js"></script>
     <script src="~/Content/JavaS/DetallePOFuntions.js"></script>
+    <script src="~/Content/JavaS/salidasFucntion.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -149,4 +301,4 @@
         });
     </script>
 </body>
-</html >
+</html>
