@@ -104,3 +104,8 @@ function redireccionarIndexStock() {
     window.location.href = '/Stocks/Index';
 }
 
+$(function () {
+    $('#CreateStock').on('shown.bs.modal', function (e) {
+        $('.focus').focus();
+    })
+});
