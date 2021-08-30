@@ -1543,7 +1543,7 @@ pre {
   background-color: whitesmoke; }
 
 .table-hover tbody tr:hover {
-  background-color: rgba(0, 0, 0, 0.075); }
+  background-color: #CEE3F6; }
 
 .table-primary,
 .table-primary > th,
