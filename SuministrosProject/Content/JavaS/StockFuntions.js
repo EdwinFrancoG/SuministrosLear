@@ -104,6 +104,3 @@ function redireccionarIndexStock() {
     window.location.href = '/Stocks/Index';
 }
 
-//$(document).ready(function () {
-//    $('#Tabla-Stock').DataTable();
-//});
