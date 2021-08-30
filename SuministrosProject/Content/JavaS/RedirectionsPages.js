@@ -48,3 +48,6 @@ function IndexSalida() {
     window.location.href = '/Salida/Index'
 }
 
+function redireccionarLocation() {
+    window.location.href = '/Localizacions/Index'
+}
