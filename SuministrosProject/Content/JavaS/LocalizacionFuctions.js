@@ -26,7 +26,7 @@ function SaveLocation() {
     $.ajax(
         {
             type: 'POST',
-            url: '/Localizacions/create',
+            url: '/Localizacions/Create',
             data: {
                 descripcion: Description
             },
