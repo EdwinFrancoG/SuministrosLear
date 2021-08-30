@@ -27,7 +27,7 @@
             <br />
             <p class="col-md-4">Stock Inicial</p>
             <div class="col-sm-8">
-                @Html.EditorFor(model => model.StockInicial, new { htmlAttributes = new { @class = "form-control", @id = "StockInitial" } })
+                @Html.EditorFor(model => model.StockInicial, new { htmlAttributes = new { @class = "form-control focus", @id = "StockInitial" } })
                 @Html.ValidationMessageFor(model => model.StockInicial, "", new { @class = "text-danger" })
             </div>
         </div>
