@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -18,14 +18,15 @@
     <link href="~/Content/assets/css/jquery.dataTables.min.css" rel="stylesheet" />
 
 
+
     <link rel="stylesheet" href="~/Content/assets/css/app.css" type="text/css" />
 </head>
 <body>
-    <nav class="navbar navbar-expand navbar-dark mai-top-header">
+    <nav id="" class="navbar navbar-expand navbar-dark mai-top-header">
         <div class="container">
             <a href="#" class="navbar-brand"></a>
-
-            <ul class="nav navbar-nav float-lg-right mai-top-nav">
+                       @*nav navbar-nav float-lg-right mai-user-nav*@
+            <ul class="nav navbar-nav float-lg-right mai-user-nav">
                 <!--HOME-->
                 <li class="dropdown nav-item" style="margin-right:5px;">
                     <a href="#" onclick="redireccionarHome()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-home"></span>           Home</span></a>
@@ -60,7 +61,7 @@
                     <div role="menu" class="dropdown-menu">
                         <a href="#" onclick="redireccionarCategorias()" class="dropdown-item"><span class="icon s7-ticket"></span>   Tipo suministro</a>
                         <a href="#" onclick="redireccionarSuministros()" class="dropdown-item"><span class="icon s7-notebook"> </span>Registro Suministros</a>
-                        <a href="#" class="dropdown-item"> <span class="icon s7-news-paper"> </span>Numeros de Partes</a>
+                        <a href="#" onclick="redireccionarNumeroParte()" class="dropdown-item"> <span class="icon s7-news-paper"> </span>Numeros de Partes</a>
                         <a href="#" onclick="redireccionarLocalizacion()" class="dropdown-item"> <span class="icon s7-map"> </span>Localizacion</a>
                         <a href="#" class="dropdown-item"> <span class="icon s7-edit"> </span>Registro Entradas</a>
                         <a href="#" onclick="IndexSalida()" class="dropdown-item"> <span class="icon s7-back"> </span>Registro Salidas</a>
@@ -92,10 +93,6 @@
             </ul>
         </div>
     </nav>
-
-
-
-
 
 
 
@@ -299,6 +296,7 @@
             App.dataTables();
             App.dashboard();
         });
+
     </script>
 </body>
 </html>
