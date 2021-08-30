@@ -46,3 +46,8 @@ function GuardarPO() {
         });
 }
 
+$(function () {
+    $('#NewModal').on('shown.bs.modal', function (e) {
+        $('.focus').focus();
+    })
+});
