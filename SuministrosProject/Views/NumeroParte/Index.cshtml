@@ -1,64 +1,65 @@
-﻿@model IEnumerable<SuministrosProject.Models.NumeroParte>
+@model IEnumerable<SuministrosProject.Models.NumeroParte>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<br />
+<br />
+<div class="" style="text-align:center;">
+    <h2>Números de parte de suministros</h2>
+</div>
+<br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<button type="button" onclick="NUmberPart()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">New</i></button>
+<br />
+<br />
+
+<table class="table table-hover table-filter-title table-striped">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IdCategoriaNavigation.CategoriaDescripcion)
+            Tipo de Suministro
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            # Parte
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Modelo)
+            Modelo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Marca)
+            Marca
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Observacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Estado)
+            Observacion
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.CategoriaDescripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Modelo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Marca)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Observacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdNumeroParte }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdNumeroParte }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdNumeroParte })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCategoriaNavigation.CategoriaDescripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Modelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Marca)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Observacion)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdNumeroParte }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdNumeroParte })
+            </td>
+        </tr>
+    }
 
 </table>
+
