@@ -51,3 +51,7 @@ function IndexSalida() {
 function redireccionarLocation() {
     window.location.href = '/Localizacions/Index'
 }
+
+function redireccionarNumeroParte() {
+    window.location.href = '/NumeroParte/Index'
+}
