@@ -1,4 +1,4 @@
-﻿function GetCreateSalida() {
+function GetCreateSalida() {
     $.ajax(
         {
             type: 'GET',
@@ -16,10 +16,24 @@
         });
 }
 
+$(function () {
+    $('#NewModalS').on('shown.bs.modal', function (e) {
+        $('.focus').focus();
+    })
+});
+
+var elem = document.getElementById("SerialNumber");
+elem.onkeyup = function (e) {
+    if (e.keyCode == 13) {
+        PostCrearSalida();
+    }
+}
+
+
 
 function PostCrearSalida() {
     var EquipoID = document.getElementById("EquipoID").value;
-    var serieID = document.getElementById("SerieID").value;
+    var serieID = document.getElementById("SerialNumber").value;
     $.ajax(
         {
             type: 'POST',
@@ -43,4 +57,12 @@ function PostCrearSalida() {
                 notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
             }
         });
+}
+
+$("#BotonLimpiar").on("click", function () {
+    $('#SerialNumber').val('');
+});
+
+function reporteSalidaGet() {
+    window.location.href = '/Salida/ReportSalidas'
 }
