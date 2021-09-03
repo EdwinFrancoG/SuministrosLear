@@ -1,4 +1,4 @@
-﻿using SuministrosProject.Domain;
+using SuministrosProject.Domain;
 using SuministrosProject.Models;
 using System;
 using System.Collections.Generic;
@@ -21,6 +21,14 @@ namespace SuministrosProject.AppServices
             if (errorEnDomain)
             {
                 return respuestaDomainLocation;
+            }
+
+            var busacarLocalizacion = db.Localizacion.Where(l => l.descripcion == localizacion.descripcion).FirstOrDefault();
+            bool localizacionExiste = busacarLocalizacion != null;
+
+            if (localizacionExiste)
+            {
+                return "Esta descripcion de localizacion ya existe";
             }
 
             try
