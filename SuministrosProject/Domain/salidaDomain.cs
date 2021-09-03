@@ -1,4 +1,4 @@
-﻿using SuministrosProject.Models;
+using SuministrosProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ namespace SuministrosProject.Domain
                 return "Ingrese la serie del suministro";
             }
 
-            salida.FechaSalida = DateTime.Now;
+            salida.FechaSalida = DateTime.Now; /*Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));*/
 
             var registroSuministro = db.Suministro.Where(s => s.Serie == serie).FirstOrDefault();
             if (registroSuministro == null)
@@ -82,26 +82,27 @@ namespace SuministrosProject.Domain
                 {
                     return "No hay suministros en stock de este numero de parte";
                 }
+                else
+                {
+                    int salidasUpdate; int cantidadActualUpdate; int totalUpdate;
 
-                int salidasUpdate; int cantidadActualUpdate; int totalUpdate;
+                    salidasUpdate = salidas + 1;
+                    cantidadActualUpdate = (stockIniscial + entradas) - salidasUpdate;
+                    totalUpdate = cantidadActualUpdate + pendientes;
 
-                salidasUpdate = salidas + 1;
-                cantidadActualUpdate = (stockIniscial + entradas) - salidasUpdate;
-                totalUpdate = cantidadActualUpdate + pendientes;
+                    numeroParteEnStock.Salidas = salidasUpdate;
+                    numeroParteEnStock.CantidadActual = cantidadActualUpdate;
+                    numeroParteEnStock.Total = totalUpdate;
 
-                numeroParteEnStock.Salidas = salidasUpdate;
-                numeroParteEnStock.CantidadActual = cantidadActualUpdate;
-                numeroParteEnStock.Total = totalUpdate;
+                    await db.SaveChangesAsync();
 
-                await db.SaveChangesAsync();
-
-                return null;
+                    return null;
+                }          
             }
             catch (Exception e)
             {
                 return e.InnerException.Message;
             }
-
         }
     }
 }
