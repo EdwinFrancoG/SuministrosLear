@@ -1,0 +1,47 @@
+﻿@model IEnumerable<SuministrosProject.Models.ReporteSalidaModel>
+
+@{
+    ViewBag.Title = "ReportSalidas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ReportSalidas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.serieSuministro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numeroParte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaSalida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.equipo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.serieSuministro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numeroParte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaSalida)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.equipo)
+        </td>
+    </tr>
+}
+
+</table>
