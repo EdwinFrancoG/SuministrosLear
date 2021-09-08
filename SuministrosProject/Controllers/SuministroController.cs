@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
@@ -106,7 +106,7 @@ namespace SuministrosProject.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Suministro suministro = await db.Suministro.FindAsync(id);
+            Suministro suministro = await db.Suministro.Include(n=>n.IdNumeroParteNavigation).Include(l=>l.IdLocalizacionNavigation).FirstOrDefaultAsync(s => s.IdSuministro == id);
             if (suministro == null)
             {
                 return HttpNotFound();
