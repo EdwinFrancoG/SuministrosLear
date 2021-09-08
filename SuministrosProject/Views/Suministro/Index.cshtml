@@ -1,24 +1,21 @@
-﻿@model IEnumerable<SuministrosProject.Models.Suministro>
+@model IEnumerable<SuministrosProject.Models.Suministro>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-8">
-        <br />
-        <h2>Lista de Suministros</h2>
-    </div>
+<br />
+<div class="" style="text-align:center;">
+    <h2>SUPPLY  LIST</h2>
 </div>
 
 
-<button type="button" onclick="NewSuministroGet()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">Nuevo</i></button>
+<button type="button" onclick="NewSuministroGet()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">NEW</i></button>
 <br />
 <br />
 
-<table id="suministroTable" class="table">
+<table id="suministroTable" class="table table-filter-title table-hover table-striped">
     <thead>
         <tr>
             <th>
@@ -28,9 +25,9 @@
                 Serie
             </th>
             <th>
-                #Parte
+                # Part
             </th>
-            <th>Ubicacion</th>
+            <th>Location</th>
             <th></th>
         </tr>
     </thead>
@@ -51,9 +48,8 @@
                     @Html.DisplayFor(modelItem => item.IdLocalizacionNavigation.descripcion)
                 </td>
                 <td>
-                    <button onclick="EditSuministro(@item.IdSuministro)" class="btn btn-rounded btn-space btn-info"> Editar</button>
-                    @*<button class="btn btn-rounded btn-space btn-danger">Eliminar</button>*@
-                    @Html.ActionLink("Delete", "Delete", new { id = item.IdSuministro })|
+                    <a href="#" onclick="EditSuministro(@item.IdSuministro)"> Edit</a>  |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.IdSuministro })
                 </td>
             </tr>
         }
@@ -83,7 +79,5 @@
         </div>
     </div>
 </div>
-
-
 
 <script src="~/Content/JavaS/SuministrosFuntions.js"></script>
