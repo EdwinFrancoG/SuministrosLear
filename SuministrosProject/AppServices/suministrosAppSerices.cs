@@ -1,4 +1,4 @@
-﻿using SuministrosProject.Domain;
+using SuministrosProject.Domain;
 using SuministrosProject.Models;
 using System;
 using System.Collections.Generic;
@@ -15,7 +15,7 @@ namespace SuministrosProject.AppServices
 
         public async Task<string> IngresarSuministro(Suministro suministro)
         {
-            var respuestaSunministroDomain = _suministroDomain.validarSuministro(suministro);
+            var respuestaSunministroDomain = await _suministroDomain.validarSuministro(suministro);
             bool ErrorEnDomain = respuestaSunministroDomain != null;
             if (ErrorEnDomain)
             {
@@ -38,7 +38,7 @@ namespace SuministrosProject.AppServices
 
         public async Task<string> eliminarSuministro(int id)
         {
-            var respuestaSuministroDomain = _suministroDomain.validarEliminacion(id);
+            var respuestaSuministroDomain = await _suministroDomain.validarEliminacion(id);
             bool errorRespuestaDomain = respuestaSuministroDomain != null;
 
             if (errorRespuestaDomain)
@@ -55,7 +55,7 @@ namespace SuministrosProject.AppServices
             }
             catch (Exception e)
             {
-                return e.Message;
+                return e.InnerException.Message;
             }
         }
     }
