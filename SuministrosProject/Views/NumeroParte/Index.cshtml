@@ -8,7 +8,7 @@
 <br />
 <br />
 <div class="" style="text-align:center;">
-    <h2>Números de parte de suministros</h2>
+    <h2>Part Number List</h2>
 </div>
 <br />
 
@@ -19,19 +19,19 @@
 <table class="table table-hover table-filter-title table-striped">
     <tr>
         <th>
-            Tipo de Suministro
+            SUPPLY TYPE
         </th>
         <th>
-            # Parte
+            # Part
         </th>
         <th>
-            Modelo
+            MODEL
         </th>
         <th>
-            Marca
+            BRAND
         </th>
         <th>
-            Observacion
+            OBSERVATION
         </th>
         <th></th>
     </tr>
@@ -63,4 +63,26 @@
 
 </table>
 
+@*Modal ok*@
+<div id="idAlertPositiveNP" tabindex="-1" role="dialog" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center">
+                    <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
+                    <h3 class="mb-4">Awesome!</h3>
+                    <p id="StockBodyPositiveNP"></p>
+                    <div class="mt-6">
+                        <button type="button" onclick="redireccionarNumeroParte()" data-dismiss="modal" class="btn btn-sm btn-space btn-primary">Part Number List</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Content/JavaS/RedirectionsPages.js"></script>
 <script src="~/Content/JavaS/NumeroParteFuntions.js"></script>
