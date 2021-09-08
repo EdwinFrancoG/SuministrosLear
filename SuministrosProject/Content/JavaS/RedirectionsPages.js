@@ -1,4 +1,4 @@
-﻿function redireccionarHome() {
+function redireccionarHome() {
     window.location.href = '/Home/Index'
 }
 
