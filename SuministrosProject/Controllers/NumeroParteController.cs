@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
@@ -45,7 +45,6 @@ namespace SuministrosProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Create([Bind(Include = "IdNumeroParte,Descripcion,Modelo,Marca,IdCategoria,Observacion,Estado")] NumeroParte numeroParte)
         {
             if (ModelState.IsValid)
