@@ -89,6 +89,7 @@ namespace SuministrosProject.Controllers
         {
             if (ModelState.IsValid)
             {
+                suministro.Estado = true;
                 db.Update(suministro);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
