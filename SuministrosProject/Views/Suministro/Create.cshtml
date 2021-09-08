@@ -1,4 +1,4 @@
-﻿@model SuministrosProject.Models.Suministro
+@model SuministrosProject.Models.Suministro
 
 @{
     ViewBag.Title = "Create";
@@ -6,56 +6,54 @@
 }
 <link href="~/Content/styles/suministros.css" rel="stylesheet" />
 
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-8">
-        <h3>Agregar Nuevo Suministro</h3>
-    </div>
+
+<div class="" style="text-align:center;">
+    <h3>New Supply</h3>
 </div>
 
 <br />
 <br />
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="row">
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group col-md-6">
-        <br />
-        @Html.LabelFor(model => model.Serie, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Serie, new { htmlAttributes = new { @class = "form-control", @id = "serie" } })
-            @Html.ValidationMessageFor(model => model.Serie, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
-    <div class="form-group col-md-6">
-        <br />
-        <div class="col-md-10">
-            @Html.Label("# Parte")
-            @Html.DropDownList("IdNumeroParte", null, htmlAttributes: new { @class = "form-control", @id = "IdNumeroParte" })
-            @Html.ValidationMessageFor(model => model.IdNumeroParte, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    
-
-    <div class="form-group">
-        <div class="col-md-10">
+    <div class="row">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group col-md-6">
             <br />
+            @Html.LabelFor(model => model.Serie, htmlAttributes: new { @class = "control-label col-md-2", @id = "labelSerie" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Serie, new { htmlAttributes = new { @class = "form-control", @id = "serie" } })
+                @Html.ValidationMessageFor(model => model.Serie, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
             <br />
-            @Html.Label("Ubicacion")
-            @Html.DropDownList("idLocalizacion", null, htmlAttributes: new { @class = "form-control", @id = "idLocalizacionSum" })
-            @Html.ValidationMessageFor(model => model.IdLocalizacion, "", new { @class = "text-danger" })
+            <div class="col-md-10">
+                @Html.Label("# PART", new { @id = "LabelNumberPart" })
+                @Html.DropDownList("IdNumeroParte", null, htmlAttributes: new { @class = "form-control", @id = "IdNumeroParte" })
+                @Html.ValidationMessageFor(model => model.IdNumeroParte, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <br />
+                <br />
+                @Html.Label("LOCATION", new { @id = "LabelLocation" })
+                @Html.DropDownList("idLocalizacion", null, htmlAttributes: new { @class = "form-control", @id = "idLocalizacionSum" })
+                @Html.ValidationMessageFor(model => model.IdLocalizacion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <button type="button" onclick="GuardarSuministro()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
         </div>
     </div>
-
-    <div class="modal-footer">
-        <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-        <button type="button" onclick="GuardarSuministro()" class="btn btn-primary" data-dismiss="modal">Guardar</button>
-    </div>
-</div>
 }
-    <script src="~/Content/JavaS/SuministrosFuntions.js"></script>
+<script src="~/Content/JavaS/SuministrosFuntions.js"></script>
