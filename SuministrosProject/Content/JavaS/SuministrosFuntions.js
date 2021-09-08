@@ -1,4 +1,4 @@
-﻿function redireccionarEdithSuministro(id) {
+function redireccionarEdithSuministro(id) {
     window.location.href = '/Suministro/Edit/' + id;
 }
 
@@ -70,7 +70,28 @@ function GuardarSuministro() {
         });
 }
 
-function DeleteSuministro(_id) {
+//get de eliminar
+function GetDeleteSuministro(idsum) {
+    $.ajax(
+        {
+            type: 'GET',
+            url: '/Suministro/Delete',
+            data: {
+                id: idsum
+            },
+            success: function (result) {
+                $('#DeleteModalBody').html(result);
+                $('#DeleteModal').modal('show');
+            },
+            error: function (error) {
+                // si hay un error lanzara el mensaje de error
+                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+            }
+        });
+
+}
+
+function postDeleteSuministro(_id) {
     $.ajax(
         {
             type: 'POST',
