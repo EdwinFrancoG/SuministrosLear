@@ -16,6 +16,7 @@
 <br />
 <br />
 
+
 <table class="table table-hover table-striped table-filter-title">
     <tr>
         <th>
@@ -37,8 +38,8 @@
                 @Html.DisplayFor(modelItem => item.descripcion)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.idLocalizacion }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.idLocalizacion })
+                <a href="#" onclick="EditLocation(@item.idLocalizacion)"> Edit</a>  |
+                <a href="#" onclick="DeleteLocation(@item.idLocalizacion)"> Delete</a>
             </td>
         </tr>
     }
