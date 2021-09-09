@@ -80,20 +80,6 @@
     </div>
 </div>
 
-@* Para mostrar datos de suministros a eliminar *@
-<div class="modal fade" id="DeleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content" style="max-width: 750px;">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div id="DeleteModalBody" class="modal-body">
-            </div>
-        </div>
-    </div>
-</div>
 
 @*Modal delete positive*@
 <div id="idAlertPositiveSuministroDelete" tabindex="-1" role="dialog" class="modal fade">
@@ -104,33 +90,12 @@
             </div>
             <div class="modal-body">
                 <div class="text-center">
-                    <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
+                    <div class="text-primary"><span class="modal-main-icon s7-close-circle"></span></div>
                     <h3 class="mb-4"> Deleted!</h3>
                     <p id="SuministroDeleteBodyPositive"></p>
                     <div class="mt-6">
                         <button type="button" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
                         <button type="button" onclick="redireccionarIndex()" data-dismiss="modal" class="btn btn-sm btn-space btn-primary">Supply List</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-@*Modal error Delete suministro*@
-<div id="idAlertNegativeSuministroDelete" tabindex="-1" role="dialog" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
-            </div>
-            <div class="modal-body">
-                <div class="text-center">
-                    <div class="text-danger"><span class="modal-main-icon s7-close-circle"></span></div>
-                    <h3 class="mb-4">Danger!</h3>
-                    <p id="SuministroDeleteBodyNegative"></p>
-                    <div class="mt-6">
-                        <button type="button" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
                     </div>
                 </div>
             </div>
