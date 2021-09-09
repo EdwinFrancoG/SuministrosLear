@@ -39,10 +39,42 @@ function SaveLocation() {
                     $('#BodyNegativeLocation').html(result);
                     $('#idAlertNegativeLocation').modal('show');
                 }
+            }
+        });
+}
+
+function EditLocation(_id) {
+    $.ajax(
+        {
+            type: 'GET',
+            url: '/Localizacions/Edit',
+            data: { id: _id },
+            success: function (result) {
+                $('#NewModalBody').html(result);
+                $('#NewModal').modal('show');
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
                 notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+            }
+        });
+
+}
+
+function DeleteLocation(_id) {
+    $.ajax(
+        {
+            type: 'GET',
+            url: '/Localizacions/Delete',
+            data: { id: _id },
+            success: function (result) {
+                $('#NewModalBody').html(result);
+                $('#NewModal').modal('show');
+            },
+
+            error: function (error) {
+                // si hay un error lanzara el mensaje de error
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
