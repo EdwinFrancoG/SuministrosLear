@@ -54,16 +54,8 @@ namespace SuministrosProject.Domain
 
 
         public async Task<string> sumarStock(int numeroParte)
-        {
-            //creacion de variables para hacer los calculos
-            var NumeroParteEnStock = db.Stock.Where(s => s.IdNumeroParte == numeroParte).FirstOrDefault();
-            int entradas = Convert.ToInt32(NumeroParteEnStock.Entradas);
-            int pendientes = Convert.ToInt32(NumeroParteEnStock.Pendientes);
-            int cantidadActual = Convert.ToInt32(NumeroParteEnStock.CantidadActual);
-            int stockInicio = Convert.ToInt32(NumeroParteEnStock.StockInicial);
-            int stockSalidas = Convert.ToInt32(NumeroParteEnStock.Salidas);
-            int newEntradas;
-            int cantidadActualUpdate;
+        {            
+            var NumeroParteEnStock = db.Stock.Where(s => s.IdNumeroParte == numeroParte).FirstOrDefault();     
 
             //verificamos que el numero de parte exista en el stock de no ser asi se crea nuevo.
             bool numeroDeParteNoExisteEnStock = NumeroParteEnStock == null;
@@ -78,7 +70,7 @@ namespace SuministrosProject.Domain
                     newStock.Entradas = 1;
                     newStock.Salidas = 0;
                     newStock.CantidadActual = 1;
-                    newStock.Pendientes = 1;
+                    newStock.Pendientes = 0;
                     newStock.Total = 1;
                     newStock.Estado = true;
 
@@ -98,6 +90,16 @@ namespace SuministrosProject.Domain
             {
                 try
                 {
+                    //creacion de variables para hacer los calculos
+                    int entradas = Convert.ToInt32(NumeroParteEnStock.Entradas);
+                    int pendientes = Convert.ToInt32(NumeroParteEnStock.Pendientes);
+                    int cantidadActual = Convert.ToInt32(NumeroParteEnStock.CantidadActual);
+                    int stockInicio = Convert.ToInt32(NumeroParteEnStock.StockInicial);
+                    int stockSalidas = Convert.ToInt32(NumeroParteEnStock.Salidas);
+                    int newEntradas;
+                    int cantidadActualUpdate;
+
+
                     //calculos para hacer la entrada del sunibistro al stick
                     newEntradas = entradas + 1;
                     cantidadActualUpdate = (stockInicio + newEntradas) - stockSalidas;
