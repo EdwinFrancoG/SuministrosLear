@@ -15,56 +15,51 @@
 {
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <hr />
-    <br />
-    <br />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.Label("DESCRIPTION")
+    <div class="row">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-md-6">
+            <br />
+            @Html.Label("DESCRIPTION", new { htmlAttributes = new { @class = "form-control", @id = "DescriptionLabel" } })
             @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control focus", @id = "idDescriptionNP" } })
             @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
         </div>
-    </div>
-    
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.Label("MODEL")
+
+        <div class="form-group col-md-6">
+            <br />
+            @Html.Label("MODEL", new { htmlAttributes = new { @id = "ModelLabel" } })
             @Html.EditorFor(model => model.Modelo, new { htmlAttributes = new { @class = "form-control", @id = "ModelNP" } })
             @Html.ValidationMessageFor(model => model.Modelo, "", new { @class = "text-danger" })
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.Label("BRAND")
+        <div class="form-group col-md-6">
+            <br />
+            @Html.Label("BRAND", new { htmlAttributes = new { @id = "BrandLabel" } })
             @Html.EditorFor(model => model.Marca, new { htmlAttributes = new { @class = "form-control", @id = "BrandNP" } })
             @Html.ValidationMessageFor(model => model.Marca, "", new { @class = "text-danger" })
+            <br />
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.Label("SUPLY TYPE")
+        <div class="form-group col-md-6">
+            <br />
+            @Html.Label("SUPLY TYPE", new { htmlAttributes = new { @id = "TypeLabel" } })
             @Html.DropDownList("IdCategoria", null, htmlAttributes: new { @class = "form-control", @id = "TypeNP" })
             @Html.ValidationMessageFor(model => model.IdCategoria, "", new { @class = "text-danger" })
         </div>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-10">
-            @Html.Label("OBSERTVATION")
+        <div class="form-group col-md-6">
+            @Html.Label("OBSERTVATION", new { htmlAttributes = new { @id = "ObservationLabel" } })
             @Html.EditorFor(model => model.Observacion, new { htmlAttributes = new { @class = "form-control", @id = "ObservationNP" } })
             @Html.ValidationMessageFor(model => model.Observacion, "", new { @class = "text-danger" })
         </div>
-    </div>
 
-    <div class="modal-footer">
-        <br />
-        <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" onclick="SaveNumberPart()" data-dismiss="modal" class="btn btn-primary">Save</button>
-    </div>
+        <div class="modal-footer">
+            <br />
+            <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" onclick="SaveNumberPart()" data-dismiss="modal" class="btn btn-primary">Save</button>
+        </div>
 
-</div>
+    </div>
 }
+
+<script src="~/Content/JavaS/NumeroParteFuntions.js"></script>
