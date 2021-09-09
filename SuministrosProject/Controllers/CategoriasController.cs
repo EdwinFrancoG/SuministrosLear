@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
@@ -84,7 +84,7 @@ namespace SuministrosProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(categoria).State = 0;
+                db.Entry(categoria).State = EntityState.Modified;
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
