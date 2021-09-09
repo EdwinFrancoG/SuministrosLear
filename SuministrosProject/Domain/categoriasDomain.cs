@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -32,6 +32,7 @@ namespace SuministrosProject.Domain
             {
                 return "Ingrese una observacion";
             }
+            categoria.Estado = true;
             return null;
         }
     }
