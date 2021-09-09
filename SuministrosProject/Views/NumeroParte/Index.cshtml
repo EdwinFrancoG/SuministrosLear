@@ -8,11 +8,11 @@
 <br />
 <br />
 <div class="" style="text-align:center;">
-    <h2>Part Number List</h2>
+    <h2>PART NUMBER LIST</h2>
 </div>
 <br />
 
-<button type="button" onclick="NewNumberPart()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">New</i></button>
+<button type="button" onclick="NewNumberPart()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">NEW</i></button>
 <br />
 <br />
 
@@ -22,7 +22,7 @@
             SUPPLY TYPE
         </th>
         <th>
-            # Part
+            # PART
         </th>
         <th>
             MODEL
@@ -55,12 +55,11 @@
                 @Html.DisplayFor(modelItem => item.Observacion)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IdNumeroParte }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdNumeroParte })
+                <a href="#" onclick="EditNumeroParte(@item.IdNumeroParte)"> Edit</a>  |
+                <a href="#" onclick="GetDeleteNumeroParte(@item.IdNumeroParte)"> Delete</a>
             </td>
         </tr>
     }
-
 </table>
 
 @*Modal ok*@
@@ -74,7 +73,7 @@
                 <div class="text-center">
                     <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
                     <h3 class="mb-4">Awesome!</h3>
-                    <p id="StockBodyPositiveNP"></p>
+                    <p id="BodyPositiveNP"></p>
                     <div class="mt-6">
                         <button type="button" onclick="redireccionarNumeroParte()" data-dismiss="modal" class="btn btn-sm btn-space btn-primary">Part Number List</button>
                     </div>
