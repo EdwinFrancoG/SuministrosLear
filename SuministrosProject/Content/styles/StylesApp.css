@@ -1,3 +1,8 @@
-﻿#idDescriptionNP, #ModelNP, #BrandNP, #TypeNP, #ObservationNP {
+#idDescriptionNP, #ModelNP, #BrandNP, #TypeNP, #ObservationNP {
     text-transform: uppercase;
 }
+
+#DescriptionLabel, #ModelLabel, #BrandLabel, #TypeLabel, #ObservationLabel {
+    font-weight:bold;
+}
+
