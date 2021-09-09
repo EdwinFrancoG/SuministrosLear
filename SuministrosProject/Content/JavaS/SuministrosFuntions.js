@@ -9,13 +9,13 @@ function EditSuministro(_id) {
             url: '/Suministro/Edit',
             data: { id: _id },
             success: function (result) {
-                $('#editSuministroBody').html(result);
-                $('#EditSuministro').modal('show');
+                $('#NewModalBody').html(result);
+                $('#NewModal').modal('show');
             },
 
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
@@ -31,7 +31,7 @@ function NewSuministroGet() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 
@@ -55,7 +55,7 @@ function GuardarSuministro() {
             },
             success: function (result) {
                 if (result == 'OK') {
-                    $('#BodyPositive').html("Datos guardados con exito");
+                    $('#BodyPositive').html("Data saved successfully");
                     $('#idAlertPositive').modal('show');
                 }
                 else {
@@ -65,7 +65,7 @@ function GuardarSuministro() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
@@ -80,12 +80,12 @@ function GetDeleteSuministro(idsum) {
                 id: idsum
             },
             success: function (result) {
-                $('#DeleteModalBody').html(result);
-                $('#DeleteModal').modal('show');
+                $('#NewModalBody').html(result);
+                $('#NewModal').modal('show');
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 
@@ -99,18 +99,18 @@ function postDeleteSuministro(_id) {
             data: { id: _id },
             success: function (result) {
                 if (result == 'OK') {
-                    $('#SuministroDeleteBodyPositive').html("Registro Eliminado");
+                    $('#SuministroDeleteBodyPositive').html("Record Deleted");
                     $('#idAlertPositiveSuministroDelete').modal('show');
                 }
                 else {
-                    $('#SuministroDeleteBodyNegative').html(result);
-                    $('#idAlertNegativeSuministroDelete').modal('show');
+                    $('#BodyNegative').html(result);
+                    $('#idAlertNegative').modal('show');
                 }
             },
 
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
