@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -45,6 +45,8 @@ namespace SuministrosProject.Domain
             {
                 return respuestaSumarStock;
             }
+
+            entrada.fechaEntrada = DateTime.Now;
 
             return null;
         }
