@@ -1,40 +1,50 @@
-﻿@model IEnumerable<SuministrosProject.Models.Entrada>
+@model IEnumerable<SuministrosProject.Models.Entrada>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<br />
+<div class="" style="text-align:center;">
+    <h2>SUPPLY ENTRY RECORD</h2>
+    <br />
+    <br />
+</div>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdNumeroParteNavigation.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SerieSuministro)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IdNumeroParteNavigation.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SerieSuministro)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdEntrada }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdEntrada }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdEntrada })
-        </td>
-    </tr>
-}
-
+<table style="" id="TableEntrada" class="table table-filter-title table-striped table-hover">
+    <thead>
+        <tr>
+            <th>PRODUCT ORDER</th>
+            <th>
+                PART NUMBER
+            </th>
+            <th>
+                SUPPLY SERIES
+            </th>
+            <th>LOCATION</th>
+            <th>ENTRY DATE</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdProductOrderNavigation.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNumeroParteNavigation.Descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerieSuministro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdLocalizacionNavigation.descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaEntrada)
+            </td>
+        </tr>
+        }
+    </tbody>
 </table>
