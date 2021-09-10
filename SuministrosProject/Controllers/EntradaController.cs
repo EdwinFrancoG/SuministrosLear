@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
@@ -16,7 +16,7 @@ namespace SuministrosProject.Controllers
         // GET: Entrada
         public async Task<ActionResult> Index()
         {
-            var entradas = db.Entrada.Include(e => e.IdNumeroParteNavigation).Include(l=>l.IdLocalizacionNavigation);
+            var entradas = db.Entrada.Include(e => e.IdNumeroParteNavigation).Include(l=>l.IdLocalizacionNavigation).Include(p=>p.IdProductOrderNavigation);
             return View(await entradas.ToListAsync());
         }
 
@@ -49,7 +49,7 @@ namespace SuministrosProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         
         [HttpPost]
-        public async Task<string> Create([Bind(Include = "IdEntrada,SerieSuministro,IdNumeroParte,IdLocalizacion")] Entrada entrada, int numeroParte, int idPO)
+        public async Task<string> Create([Bind(Include = "IdEntrada,SerieSuministro,IdNumeroParte,IdLocalizacion,fechaEntrada,IdPO")] Entrada entrada, int numeroParte, int idPO)
         {
             var respuestaEntradaServices = await _entradaAppServices.insertarEntrada(entrada, numeroParte, idPO);
             bool ingresoIncorrecto = respuestaEntradaServices != null;
@@ -85,7 +85,7 @@ namespace SuministrosProject.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdEntrada,SerieSuministro,IdNumeroParte,IdLocalizacion")] Entrada entrada)
+        public async Task<ActionResult> Edit([Bind(Include = "IdEntrada,SerieSuministro,IdNumeroParte,IdLocalizacion,fechaEntrada,IdPO")] Entrada entrada)
         {
             if (ModelState.IsValid)
             {
