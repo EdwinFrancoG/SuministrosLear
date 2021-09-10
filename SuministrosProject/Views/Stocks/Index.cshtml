@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SuministrosProject.Models.Stock>
+@model IEnumerable<SuministrosProject.Models.Stock>
 
 @{
     ViewBag.Title = "Index";
@@ -6,40 +6,40 @@
 }
 
 <br />
-<br />
-<div class="" style="text-align:center;">
-        <h2>Inventario de suministros</h2>
+<div style="text-align:center;">
+    <h2>SUPPLIES IN STOCK</h2>
 </div>
 <br />
 
+
 <p>
-    @*@Html.ActionLink("Create New", "Create")*@
-    @*<button onclick="NewStock()" class="btn btn-space btn-primary hover"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><div class="icon"><span class="s7-plus"></span></div>  Nuevo</font></font></button>*@
-    <button onclick="NewStock()" class="btn btn-rounded btn-space btn-info"><i class="s7-plus"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  Nuevo</font></font></button>
+    @*<button onclick="NewStock()" class="btn btn-rounded btn-space btn-info"><i class="s7-plus"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  Nuevo</font></font></button>*@
+    <button type="button" onclick="NewStock()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">New</i></button>
 </p>
-<table id="Tabla-Stock" class="table">
+
+<table id="Tabla-Stock" class="table table-hover table-filter-title table-striped">
     <thead>
         <tr>
             <th>
-                # Parte
+                # Part
             </th>
             <th>
-                Stok inicial
+                Initial stock
             </th>
             <th>
-                Fecha Inicial
+                Initial date
             </th>
             <th>
-                Entradas
+                inputs
             </th>
             <th>
-                Salidas
+                outputs
             </th>
             <th>
-                Cantidad Actual
+                current amount
             </th>
             <th>
-                Pendientes
+                Pending
             </th>
             <th>
                 Total
@@ -101,23 +101,6 @@
 
 
 </table>
-
-
-<div class="modal fade" id="CreateStock" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content" style="max-width: 750px;">
-            <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Ingreso de Stock de Suministros</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div id="createStockBody" class="modal-body">
-
-            </div>
-        </div>
-    </div>
-</div>
 
 @*Modal ok*@
 <div id="idAlertPositiveS" tabindex="-1" role="dialog" class="modal fade">
