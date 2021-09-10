@@ -1,4 +1,4 @@
-﻿function notificacionPrimary(title, text) {
+function notificacionPrimary(title, text) {
     $.gritter.add({
         title: title,
         text: text,
@@ -59,8 +59,8 @@ function NewStock() {
             type: 'GET',
             url: '/Stocks/Create',
             success: function (result) {
-                $('#createStockBody').html(result);
-                $('#CreateStock').modal('show');
+                $('#NewModalBody').html(result);
+                $('#NewModal').modal('show');
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
