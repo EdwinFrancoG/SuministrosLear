@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -38,7 +38,7 @@ namespace SuministrosProject.Models
             if (!optionsBuilder.IsConfigured)
             {
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-KFVMJ2G;Database=Suministros;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("Server=HNSBHON-SQL02;Database=Suministros;User ID=sa;Password=Hon12azx;");
             }
         }
 
@@ -331,15 +331,27 @@ namespace SuministrosProject.Models
 
                 entity.Property(e => e.IdLocalizacion).HasColumnName("idLocalizacion");
 
+                entity.Property(e => e.fechaEntrada)
+                    .HasColumnName("fechaEntrada")
+                    .HasColumnType("datetime");
+
+                entity.Property(e => e.IdPO).HasColumnName("idProductOrder");
+
                 entity.HasOne(d => d.IdNumeroParteNavigation)
                     .WithMany(p => p.Entrada)
                     .HasForeignKey(d => d.IdNumeroParte)
                     .HasConstraintName("FK_entrada_numeroParte");
 
+                entity.HasOne(d => d.IdProductOrderNavigation)
+                    .WithMany(p => p.Entrada)
+                    .HasForeignKey(d => d.IdPO)
+                    .HasConstraintName("FK_entrada_productOrder");
+
                 entity.HasOne(d => d.IdLocalizacionNavigation)
                     .WithMany(p => p.Entrada)
                     .HasForeignKey(d => d.IdLocalizacion)
                     .HasConstraintName("FK_entrada_localizacion");
+
             }); 
 
 
