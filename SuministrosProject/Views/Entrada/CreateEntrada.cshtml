@@ -1,4 +1,4 @@
-﻿@model SuministrosProject.Models.Entrada
+@model SuministrosProject.Models.Entrada
 
 @{
     ViewBag.Title = "Create";
@@ -23,7 +23,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 @Html.Label("Serie de Suministro")
-                @Html.EditorFor(model => model.SerieSuministro, new { htmlAttributes = new { @class = "form-control", @id = "serieSum" } })
+                @Html.EditorFor(model => model.SerieSuministro, new { htmlAttributes = new { @class = "form-control focus", @id = "serieSum" } })
                 @Html.ValidationMessageFor(model => model.SerieSuministro, "", new { @class = "text-danger" })
             </div>
         </div>
