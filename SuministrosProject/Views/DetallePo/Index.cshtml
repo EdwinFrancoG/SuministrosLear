@@ -1,20 +1,16 @@
-﻿@model IEnumerable<SuministrosProject.Models.DetallePo>
+@model IEnumerable<SuministrosProject.Models.DetallePo>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-<div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-8">
-        <h2>Detalle de Orden de Compra</h2>
-    </div>
+<br />
+<br />
+<div style="text-align:center;">
+    <h2>NEW PRODUCT DETAILS </h2>
+    <br />
 </div>
-
-<br />
-<br />
 
 <div class="row">
     <div class="col-sm-3" style="font-weight:bold;">Orden de Compra: <p>@ViewData["PO"]</p> </div>
@@ -22,7 +18,9 @@
     <div class="col-sm-3" style="font-weight:bold;">Estado PO: <p>@ViewData["estado"]</p>  </div>
     <div class="col-sm-3" style="font-weight:bold;"># De Requisicion: <p>@ViewData["req"]</p></div>
 </div>
+
 <br />
+<hr />
 <br />
 
 @{
@@ -170,8 +168,8 @@
                     <h3 class="mb-4">Awesome!</h3>
                     <p id="BodyPositiveEntrada"></p>
                     <div class="mt-6">
-                        <button type="button" onclick="redireccionarPage(@ViewBag.idPO)" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
-
+                        <button type="button" onclick="redireccionarPage(@ViewBag.idPO)" data-dismiss="modal" class="btn btn-primary">ACEPT</button>
+                        <button type="button" id="newEntry" data-dismiss="modal" class="btn btn-secondary">NEW ENTRY</button>
                     </div>
                 </div>
             </div>
