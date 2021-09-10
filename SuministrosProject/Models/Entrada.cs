@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -13,8 +13,11 @@ namespace SuministrosProject.Models
         public string SerieSuministro { get; set; }
         public int IdNumeroParte { get; set; }
         public int IdLocalizacion { get; set; }
+        public DateTime fechaEntrada { get; set; }
+        public int IdPO { get; set; }
 
         public virtual NumeroParte IdNumeroParteNavigation { get; set; }
         public virtual Localizacion IdLocalizacionNavigation { get; set; }
+        public virtual ProductOrder IdProductOrderNavigation { get; set; }
     }
 }
