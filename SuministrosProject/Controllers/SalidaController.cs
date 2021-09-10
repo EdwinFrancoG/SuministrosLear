@@ -38,6 +38,7 @@ namespace SuministrosProject.Controllers
             return View(salida);
         }
 
+
         // GET: Salida/Create
         public ActionResult Create()
         {
