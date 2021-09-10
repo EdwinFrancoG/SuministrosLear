@@ -1,41 +1,37 @@
-﻿@model IEnumerable<SuministrosProject.Models.ProductOrder>
+@model IEnumerable<SuministrosProject.Models.ProductOrder>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-8">
-        <br />
-        <h2>Lista de Ordenes de compra</h2>
-    </div>
+<br />
+<div style="text-align:center;">
+    <h2>PRODUCT ORDER LIST</h2>
 </div>
 
-<button type="button" onclick="NewPO()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">Nuevo</i></button>
+<button type="button" onclick="NewPO()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">NEW</i></button>
 <br />
 <br />
-<table id="Tabla-PO" class="table">
+<table id="Tabla-PO" class="table table-hover table-striped table-filter-title">
     <thead>
         <tr>
             <th class="usuario">
-                Usuario
+                USER
             </th>
             <th class="codigo">
-                Codigo
+                CODE
             </th>
             <th class="Req">
-                Requisicion
+                REQUISITION
             </th>
             <th class="des">
-                Descripcion
+                DesCRIPTION
             </th>
             <th class="fecha">
-                Fecha y hora
+                DATE
             </th>
             <th class="estado">
-                Estado
+                STATE
             </th>
             <th></th>
         </tr>
@@ -77,34 +73,10 @@
                         @Html.RouteLink("See ", "IndexDetPO", new { idProdOrder = item.IdProductOrder })
                         @Html.ActionLink(" | Delete", "Delete", new { id = item.IdProductOrder })
                     }
-                    @*@Html.ActionLink("Edit", "Edit", new { id = item.IdProductOrder }) |
-        @Html.ActionLink("Details", "Details", new { id = item.IdProductOrder }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.IdProductOrder })*@
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
-@*<div id="idAlertPositivePO" tabindex="-1" role="dialog" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
-            </div>
-            <div class="modal-body">
-                <div class="text-center">
-                    <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
-                    <h3 class="mb-4">Awesome!</h3>
-                    <p id="BodyPositivePO"></p>
-                    <div class="mt-6">
-                        <button type="button" onclick="redireccionarIndexPO()" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>*@
 
 <script src="~/Content/JavaS/ProductOrderFuntions.js"></script>
