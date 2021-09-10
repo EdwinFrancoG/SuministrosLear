@@ -1,4 +1,4 @@
-﻿function GetCreateEntrada(IdNumeroParte, idPO) {
+function GetCreateEntrada(IdNumeroParte, idPO) {
     var numeroParte = IdNumeroParte;
     var productOrder = idPO;
     $.ajax(
@@ -27,6 +27,7 @@ elem.onkeyup = function (e) {
         PostCrearEntrada();
     }
 }
+
 
 function PostCrearEntrada() {
     var serie = document.getElementById("serieSum").value;
