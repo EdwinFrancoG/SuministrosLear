@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -13,6 +13,7 @@ namespace SuministrosProject.Models
         public ProductOrder()
         {
             DetallePo = new HashSet<DetallePo>();
+            Entrada = new HashSet<Entrada>();
         }
 
         [Key]
@@ -27,7 +28,8 @@ namespace SuministrosProject.Models
 
         public virtual Usuario IdGafeteNavigation { get; set; }
         public virtual ICollection<DetallePo> DetallePo { get; set; }
+        public virtual ICollection<Entrada> Entrada { get; set; }
 
-        
+
     }
 }
