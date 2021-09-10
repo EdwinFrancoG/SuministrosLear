@@ -4,4 +4,5 @@ $(document).ready(function () {
     $('#suministroTable').DataTable();
     $('#idTableD').DataTable();
     $('#TableEntrada').DataTable();
+    $('#idTablaSalida').DataTable();
 });
