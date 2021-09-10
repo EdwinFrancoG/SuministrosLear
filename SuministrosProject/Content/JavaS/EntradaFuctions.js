@@ -29,6 +29,17 @@ elem.onkeyup = function (e) {
 }
 
 
+$(function () {
+    $('#CreateEntrada').on('shown.bs.modal', function (e) {
+        $('.focus').focus();
+    })
+});
+
+$('#newEntry').on("click", function () {
+    $('#serieSum').val('');
+});
+
+
 function PostCrearEntrada() {
     var serie = document.getElementById("serieSum").value;
     var idNumeroParte = document.getElementById("IdnumeroParte").value;
