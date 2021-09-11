@@ -1,4 +1,4 @@
-@model SuministrosProject.Models.ProductOrder
+@model SuministrosProject.Models.DetallePo
 
 @{
     ViewBag.Title = "Create";
@@ -6,69 +6,43 @@
 }
 
 <div style="text-align:center;">
-    <h2>NEW PRODUCT ORDER </h2>
+    <h2>NEW PRODUCT ORDER DETAIL </h2>
     <hr />
     <br />
 </div>
 
 @using (Html.BeginForm())
 {
-    @Html.ValidationSummary()
+    <div class="row">
+        <div class="form-group col-md-6">
+            @Html.Label("PART NUMBER")
+            @Html.DropDownList("IdNumeroParte", null, htmlAttributes: new { @class = "form-control", @id = "idNumberPart" })
+            @Html.ValidationMessageFor(model => model.IdNumeroParte, "", new { @class = "text-danger" })
+        </div>
 
-<div class="row">
-    <div class="form-group col-md-6">
-        @Html.Label("CODE")
-            @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @class = "form-control focus", @id = "idCodigo" } })
-            @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
-    </div>
+        <div class="form-group col-md-6">
+            @Html.Label("SUPPLY ORDER QUANTITY")
+            @Html.EditorFor(model => model.cantidadPedido, new { htmlAttributes = new { @class = "form-control", @id = "idCantidadPedido" } })
+            @Html.ValidationMessageFor(model => model.cantidadPedido, "", new { @class = "text-danger" })
+        </div>
 
-    <div class="form-group col-md-6">
-        @Html.Label("REQUISITION")
-            @Html.EditorFor(model => model.Requisicion, new { htmlAttributes = new { @class = "form-control", @id = "idRequisicion" } })
-            @Html.ValidationMessageFor(model => model.Requisicion, "", new { @class = "text-danger" })
-    </div>
+        <div class="form-group col-md-6">
+            <br />
+            @Html.Label("OBSERVATION NOTE")
+            @Html.EditorFor(model => model.Observacion, new { htmlAttributes = new { @class = "form-control", @id = "idObservacionDPO" } })
+            @Html.ValidationMessageFor(model => model.Observacion, "", new { @class = "text-danger" })
+        </div>
 
-    <div class="form-group col-md-6">
-        <br />
-        @Html.Label("DESCRIPTION")
-            @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control", @id = "idDescripcion" } })
-            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-    </div>
 
-    <div class="form-group col-md-6">
-        <br />
-        @Html.Label("USER ID")
-            @Html.DropDownList("IdGafete", null, htmlAttributes: new { @class = "form-control", @id = "idGafete" })
-            @Html.ValidationMessageFor(model => model.IdGafete, "", new { @class = "text-danger" })
-    </div>
+        <input style="display:none;" id="IdproductOrderDet" value="@ViewBag.IdProductOrder" placeholder="Numero de parte" class="form-control">
 
-    <div class="modal-footer">
-        <br />
-        <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-        <button type="button" onclick="GuardarPO()" class="btn btn-primary">SAVE</button>
-    </div>
-</div>
-
-}
-
-<div id="idAlertPositivePO" tabindex="-1" role="dialog" class="modal fade">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" data-dismiss="modal" aria-hidden="true" class="close"><span class="s7-close"></span></button>
-            </div>
-            <div class="modal-body">
-                <div class="text-center">
-                    <div class="text-primary"><span class="modal-main-icon s7-check"></span></div>
-                    <h3 class="mb-4">Awesome!</h3>
-                    <p id="BodyPositivePO"></p>
-                    <div class="mt-6">
-                        <button type="button" onclick="redireccionarPO()" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
-                    </div>
-                </div>
+        <div class="form-group">
+            <br />
+            <div class="col-md-offset-2 col-md-10">
+                <button type="button" onclick="GuardarDetallePO()" class="btn btn-primary">Agregar</button>
+                <button type="button" class="btn btn-rounded btn-space btn-secondary" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cerrar</font></font></button>
             </div>
         </div>
     </div>
-</div>
-
-<script src="~/Content/JavaS/ProductOrderFuntions.js"></script>
+}
+<script src="~/Content/JavaS/DetallePOFuntions.js"></script>
