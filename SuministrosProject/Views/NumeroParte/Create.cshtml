@@ -20,7 +20,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="col-md-6">
             <br />
-            @Html.Label("DESCRIPTION", new { htmlAttributes = new { @class = "form-control", @id = "DescriptionLabel" } })
+            @Html.Label("PART NUMBER", new { htmlAttributes = new { @class = "form-control", @id = "DescriptionLabel" } })
             @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control focus", @id = "idDescriptionNP" } })
             @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
         </div>

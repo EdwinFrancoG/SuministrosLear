@@ -1,0 +1,49 @@
+﻿
+@{
+    ViewBag.Title = "ReportByNumberPart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<br />
+<div class="" style="text-align:center;">
+    <h2>SUPPLY OUTPUT REPORT BY NUMBER PART</h2>
+</div>
+<br />
+<br />
+
+<form id="ReportOutputByNP">
+    <div class="row">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="idStarDate" />
+        <div class="form-group col-sm-3">
+            <label asp-for="dateStart" class="control-label">START DATE</label>
+            <input type="date" id="IdStartDate" asp-for="START-DATE" class="form-control" />
+            <span asp-validation-for="StartDate" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="dateEnd" class="control-label">END DATE</label>
+            <input type="date" id="IdEndDate" asp-for="END-DATE" class="form-control" />
+            <span asp-validation-for="EndDate" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            <label asp-for="npart" class="control-label">NUMBER PART</label>
+            <input id="IdNumberPart" asp-for="END-DATE" class="form-control" />
+            <span asp-validation-for="Nnpart" class="text-danger"></span>
+        </div>
+        <div class="form-group col-sm-3">
+            @*<button type="button" id="clearDate" class="btn btn-secondary" data-dismiss="modal">CLEAR</button>*@
+            <button style="margin-top:33px;" type="button" onclick="GenerarReporteConsumoPorNumeroParte()" class="btn btn-primary" data-dismiss="modal">SEARCH</button>
+        </div>
+    </div>
+    <br />
+    <br />
+</form>
+
+
+<div id="idReportSalida">
+
+</div>
+
+<script src="~/Content/JavaS/salidasFucntion.js"></script>
+

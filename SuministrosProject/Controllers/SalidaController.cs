@@ -47,46 +47,108 @@ namespace SuministrosProject.Controllers
             return View();
         }
 
-        public ActionResult reporteSalidas()
-        {
-            var salidasReport = db.Salida.FromSqlRaw("Select idEquipo, COUNT(idEquipo) AS CantidadSuministros FROM salida GROUP BY(idEquipo)").ToListAsync();
-            return View(salidasReport);
-        }
+        //public ActionResult reporteSalidas()
+        //{
+        //    var salidasReport = db.Salida.FromSqlRaw("Select idEquipo, COUNT(idEquipo) AS CantidadSuministros FROM salida GROUP BY(idEquipo)").ToListAsync();
+        //    return View(salidasReport);
+        //}
 
         //public Microsoft.AspNetCore.Mvc.ActionResult<List<ReporteSalidaModel>> ReportSalidas(string startDate, string endDate, string numeroParte)
-        public ActionResult ReportSalidas()
+
+        public ActionResult viewReportSalida()
         {
-            var d1 = "2021-08-27";
-            DateTime startDate = DateTime.Parse(d1);
-            DateTime endDate = DateTime.Now;
+            return View();
+        }
+
+        public ActionResult ReportByNumberPart()
+        {
+            return View(); 
+        }
+
+        public ActionResult ReportByEquipment()
+        {
+            return View();
+        }
+
+
+        public ActionResult ReportSalidas(string startDate, string endDate, string numberPart, string equipment)
+        {
+            DateTime StartDate = DateTime.Parse(startDate);
+            DateTime EndDate = DateTime.Parse(endDate);
+            bool numberPartIsEmpty = numberPart == null;
+            bool equipmeyIsEmpty = equipment == null;
+            List<ReporteSalidaModel> ReporteSalidaSuministros = new List<ReporteSalidaModel>();
 
             try
             {
-                List<ReporteSalidaModel> ReporteSalidaSuministros = new List<ReporteSalidaModel>();
-                ReporteSalidaSuministros = (from s in db.Salida
-                                            join sum in db.Suministro on s.IdSuministro equals sum.IdSuministro
-                                            join np in db.NumeroParte on sum.IdNumeroParte equals np.IdNumeroParte
-                                            join e in db.Equipo on s.idEquipo equals e.idEquipo
 
-                                            where s.FechaSalida >= startDate && s.FechaSalida <= endDate
-                                            orderby s.FechaSalida
+                if (numberPartIsEmpty && equipmeyIsEmpty)
+                {
 
-                                            select new ReporteSalidaModel
-                                            {
-                                                serieSuministro = sum.Serie,
-                                                numeroParte = np.Descripcion,
-                                                fechaSalida = Convert.ToString(s.FechaSalida),
-                                                equipo = e.equipo
-                                            }).ToList();
+                    ReporteSalidaSuministros = (from s in db.Salida
+                                                join sum in db.Suministro on s.IdSuministro equals sum.IdSuministro
+                                                join np in db.NumeroParte on sum.IdNumeroParte equals np.IdNumeroParte
+                                                join e in db.Equipo on s.idEquipo equals e.idEquipo
 
-                return View(ReporteSalidaSuministros);
+                                                where s.FechaSalida >= StartDate && s.FechaSalida <= EndDate.AddDays(1)
+                                                orderby s.FechaSalida
 
+                                                select new ReporteSalidaModel
+                                                {
+                                                    serieSuministro = sum.Serie,
+                                                    numeroParte = np.Descripcion,
+                                                    fechaSalida = Convert.ToString(s.FechaSalida),
+                                                    equipo = e.equipo
+                                                }).ToList();
+                }
+
+                if (!numberPartIsEmpty)
+                {
+                    ReporteSalidaSuministros = (from s in db.Salida
+                                                join sum in db.Suministro on s.IdSuministro equals sum.IdSuministro
+                                                join np in db.NumeroParte on sum.IdNumeroParte equals np.IdNumeroParte
+                                                join e in db.Equipo on s.idEquipo equals e.idEquipo
+
+                                                where np.Descripcion == numberPart &&
+                                                s.FechaSalida >= StartDate && s.FechaSalida <= EndDate.AddDays(1)
+                                                orderby s.FechaSalida
+
+                                                select new ReporteSalidaModel
+                                                {
+                                                    serieSuministro = sum.Serie,
+                                                    numeroParte = np.Descripcion,
+                                                    fechaSalida = Convert.ToString(s.FechaSalida),
+                                                    equipo = e.equipo
+                                                }).ToList();
+                }
+
+                if (!equipmeyIsEmpty)
+                {
+                    ReporteSalidaSuministros = (from s in db.Salida
+                                                join sum in db.Suministro on s.IdSuministro equals sum.IdSuministro
+                                                join np in db.NumeroParte on sum.IdNumeroParte equals np.IdNumeroParte
+                                                join e in db.Equipo on s.idEquipo equals e.idEquipo
+
+                                                where e.equipo == equipment &&
+                                                s.FechaSalida >= StartDate && s.FechaSalida <= EndDate.AddDays(1)
+                                                orderby s.FechaSalida
+
+                                                select new ReporteSalidaModel
+                                                {
+                                                    serieSuministro = sum.Serie,
+                                                    numeroParte = np.Descripcion,
+                                                    fechaSalida = Convert.ToString(s.FechaSalida),
+                                                    equipo = e.equipo
+                                                }).ToList();
+                }
             }
             catch (System.Exception)
             {
 
                 throw;
             }
+
+            return View(ReporteSalidaSuministros);
         }
 
         // POST: Salida/Create

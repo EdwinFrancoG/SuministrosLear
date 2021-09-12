@@ -63,6 +63,79 @@ $("#BotonLimpiar").on("click", function () {
     $('#SerialNumber').val('');
 });
 
+$("#clearDate").on("click", function () {
+    $('#IdStartDate').val('');
+    $('#IdEndDate').val('');
+});
+
 function reporteSalidaGet() {
     window.location.href = '/Salida/ReportSalidas'
+}
+
+
+function GenerarReporteConsumo() {
+    var _startDate = document.getElementById("IdStartDate").value;
+    var _endDate = document.getElementById("IdEndDate").value;
+    $.ajax(
+        {
+            type: 'GET',
+            dataType: 'html', //el tipo de dato que nos regresara el servidor en este caso regresa html
+            url: '/Salida/ReportSalidas',
+            data: {
+                startDate: _startDate, //variables que recibe el metodo del controlador
+                endDate: _endDate
+            },
+            success: function (result) {
+                $("#idReportSalida").html(result);
+            },
+            error: function (error) {
+                $("#idReportSalida").html(error);
+            }
+        });
+}
+
+function GenerarReporteConsumoPorNumeroParte() {
+    var _startDate = document.getElementById("IdStartDate").value;
+    var _endDate = document.getElementById("IdEndDate").value;
+    var NPart = document.getElementById("IdNumberPart").value;
+    $.ajax(
+        {
+            type: 'GET',
+            dataType: 'html', //el tipo de dato que nos regresara el servidor en este caso regresa html
+            url: '/Salida/ReportSalidas',
+            data: {
+                startDate: _startDate, //variables que recibe el metodo del controlador
+                endDate: _endDate,
+                numberPart: NPart
+            },
+            success: function (result) {
+                $("#idReportSalida").html(result);
+            },
+            error: function (error) {
+                $("#idReportSalida").html(error);
+            }
+        });
+}
+
+function GenerarReporteConsumoPorEquipo() {
+    var _startDate = document.getElementById("IdStartDate").value;
+    var _endDate = document.getElementById("IdEndDate").value;
+    var _equipment = document.getElementById("IdEquipment").value;
+    $.ajax(
+        {
+            type: 'GET',
+            dataType: 'html', //el tipo de dato que nos regresara el servidor en este caso regresa html
+            url: '/Salida/ReportSalidas',
+            data: {
+                startDate: _startDate, //variables que recibe el metodo del controlador
+                endDate: _endDate,
+                equipment: _equipment
+            },
+            success: function (result) {
+                $("#idReportSalida").html(result);
+            },
+            error: function (error) {
+                $("#idReportSalida").html(error);
+            }
+        });
 }

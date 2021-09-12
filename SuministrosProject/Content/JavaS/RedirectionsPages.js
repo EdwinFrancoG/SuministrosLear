@@ -59,3 +59,15 @@ function redireccionarLocation() {
 function redireccionarNumeroParte() {
     window.location.href = '/NumeroParte/Index'
 }
+
+function viewReportSalida() {
+    window.location.href = '/Salida/viewReportSalida'
+}
+
+function ReportByNumberPart() {
+    window.location.href = '/Salida/ReportByNumberPart'
+}
+
+function ReportByEquipment() {
+    window.location.href = '/Salida/ReportByEquipment'
+}

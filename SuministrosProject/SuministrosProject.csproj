@@ -2338,6 +2338,11 @@
     <Content Include="Views\Salida\Edit.cshtml" />
     <Content Include="Views\Salida\Index.cshtml" />
     <Content Include="Views\Salida\ReportSalidas.cshtml" />
+    <Content Include="Views\Salida\viewReportSalida.cshtml" />
+    <Content Include="Views\Salida\ReportByNumberPart.cshtml" />
+    <Content Include="Views\Salida\ReportByEquipment.cshtml" />
+    <Content Include="Views\Shared\Login.cshtml" />
+    <Content Include="Views\Shared\Loginn.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

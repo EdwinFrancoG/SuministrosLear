@@ -2,29 +2,24 @@
 
 @{
     ViewBag.Title = "ReportSalidas";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
-<h2>ReportSalidas</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table table-hover table-striped table-filter-title">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.serieSuministro)
+            SUPPLY SERIES
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.numeroParte)
+            PART NUMBER
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fechaSalida)
+            OUTPUT DATE
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.equipo)
+            EQUIPMENT
         </th>
-        <th></th>
     </tr>
 
 @foreach (var item in Model) {
