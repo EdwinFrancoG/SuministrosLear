@@ -1,13 +1,15 @@
 ﻿@model IEnumerable<SuministrosProject.Models.ReporteSalidaModel>
 
-@{
-    ViewBag.Title = "ReportSalidas";
-    Layout = null;
-}
+@{ ViewBag.Title = "ReportSalidas";
+    Layout = null; }
+
 
 
 <table class="table table-hover table-striped table-filter-title">
     <tr>
+        <th>
+            #
+        </th>
         <th>
             SUPPLY SERIES
         </th>
@@ -21,22 +23,27 @@
             EQUIPMENT
         </th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.serieSuministro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.numeroParte)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaSalida)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.equipo)
-        </td>
-    </tr>
-}
+    @{ int i = 0;}
+    @foreach (var item in Model)
+    {
+        i = i + 1;
+        <tr>
+            <td>
+                @i
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.serieSuministro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numeroParte)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaSalida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.equipo)
+            </td>
+        </tr>
+    }
 
 </table>
