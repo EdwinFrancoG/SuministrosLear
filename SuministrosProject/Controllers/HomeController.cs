@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -17,6 +17,11 @@ namespace SuministrosProject.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
+            return View();
+        }
+
+        public ActionResult login()
+        {
             return View();
         }
 
