@@ -1,4 +1,4 @@
-﻿
+
 function validateLogin() {
     var user = document.getElementById("idUser").value;
     var pass = document.getElementById("pass").value;
