@@ -1,73 +1,87 @@
-﻿@model SuministrosProject.Models.ProductOrder
+@model SuministrosProject.Models.ProductOrder
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
 }
 
-<h2>Delete</h2>
+<div class="" style="text-align:center;">
+    <h2>DELETE PRODUCT ORDER</h2>
+    <h3>Are you sure you want to delete this?</h3>
+    <br />
+</div>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>ProductOrder</h4>
+<div class="row">
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="col-md-6">
         <dt>
-            @Html.DisplayNameFor(model => model.IdGafeteNavigation.Nombre)
+            <br />
+            USER REQUEST
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.IdGafeteNavigation.Nombre)
         </dd>
+    </dl>
 
+    <dl class="col-md-6">
         <dt>
-            @Html.DisplayNameFor(model => model.Codigo)
+            <br />S
+            CODE
         </dt>
-
+        SS
         <dd>
             @Html.DisplayFor(model => model.Codigo)
         </dd>
+    </dl>
 
+    <dl class="col-md-6">
         <dt>
-            @Html.DisplayNameFor(model => model.Requisicion)
+            REQUISITION
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Requisicion)
         </dd>
+    </dl>
 
+    <dl class="col-md-6">
         <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            DESCRIPTION
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Descripcion)
         </dd>
+    </dl>
 
+    <dl class="col-md-6">
         <dt>
-            @Html.DisplayNameFor(model => model.Fecha)
+            PO CREATION DATE
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Fecha)
         </dd>
-
+    </dl>
+    
+    <dl class="col-md-6">
         <dt>
-            @Html.DisplayNameFor(model => model.Estado)
+            STATE
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Estado)
         </dd>
-
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-actions no-color modal-footer">
+            <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+            <button type="submit" value="delete" class="btn btn-danger">DELETE</button>
         </div>
     }
 </div>
