@@ -28,7 +28,7 @@ namespace SuministrosProject.AppServices
 
             if (localizacionExiste)
             {
-                return "Esta descripcion de localizacion ya existe";
+                return "This location description alredy exist";
             }
 
             try
