@@ -22,21 +22,6 @@ namespace SuministrosProject.Controllers
             return View(await stocks.ToListAsync());
         }
 
-        // GET: Stocks/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Stock stock = await db.Stock.FindAsync(id);
-            if (stock == null)
-            {
-                return HttpNotFound();
-            }
-            return View(stock);
-        }
-
         // GET: Stocks/Create
         public ActionResult Create()
         {
