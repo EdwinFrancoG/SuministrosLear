@@ -11,7 +11,7 @@ function GetCreateSalida() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
@@ -44,7 +44,7 @@ function PostCrearSalida() {
             },
             success: function (result) {
                 if (result == 'OK') {
-                    $('#BodyPositiveSalida').html("Datos guardados con exito");
+                    $('#BodyPositiveSalida').html("Data saved successfully");
                     $('#idAlertPositiveSalida').modal('show');
                 }
                 else {
@@ -54,7 +54,7 @@ function PostCrearSalida() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
