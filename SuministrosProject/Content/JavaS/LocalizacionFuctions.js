@@ -9,7 +9,7 @@ function NewLocation() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 
@@ -32,7 +32,7 @@ function SaveLocation() {
             },
             success: function (result) {
                 if (result == 'OK') {
-                    $('#BodyPositiveLocation').html("Datos guardados con exito");
+                    $('#BodyPositiveLocation').html("Data saved successfully");
                     $('#idAlertPositiveLocation').modal('show');
                 }
                 else {
@@ -55,7 +55,7 @@ function EditLocation(_id) {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 
@@ -74,7 +74,7 @@ function DeleteLocation(_id) {
 
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'An unknown error occurred, communicating with the server');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server);
             }
         });
 }
