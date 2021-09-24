@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Net;
@@ -29,9 +29,6 @@ namespace SuministrosProject.Controllers
             return View();
         }
 
-        // POST: Stocks/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         public async Task<string> Create([Bind(Include = "IdStock,IdNumeroParte,StockInicial,FechaInicio,Entradas,Salidas,CantidadActual,Pendientes,Total,Estado")] Stock stock)
         {
@@ -64,9 +61,6 @@ namespace SuministrosProject.Controllers
             return View(stock);
         }
 
-        // POST: Stocks/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "IdStock,IdNumeroParte,StockInicial,FechaInicio,Entradas,Salidas,CantidadActual,Pendientes,Total,Estado")] Stock stock)
