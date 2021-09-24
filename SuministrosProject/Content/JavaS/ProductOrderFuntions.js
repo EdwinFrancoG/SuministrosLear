@@ -9,7 +9,7 @@ function NewPO() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
@@ -31,7 +31,7 @@ function GuardarPO() {
             },
             success: function (result) {
                 if (result == 'OK') {
-                    $('#BodyPositivePO').html("Datos guardados con exito");
+                    $('#BodyPositivePO').html("Data saved successfully");
                     $('#idAlertPositivePO').modal('show');
                 }
                 else {
@@ -41,7 +41,7 @@ function GuardarPO() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
