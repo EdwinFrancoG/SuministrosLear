@@ -23,21 +23,6 @@ namespace SuministrosProject.Controllers
             return View(await salidas.ToListAsync());
         }
 
-        // GET: Salida/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Salida salida = await db.Salida.FindAsync(id);
-            if (salida == null)
-            {
-                return HttpNotFound();
-            }
-            return View(salida);
-        }
-
 
         // GET: Salida/Create
         public ActionResult Create()
@@ -47,14 +32,6 @@ namespace SuministrosProject.Controllers
             return View();
         }
 
-        //public ActionResult reporteSalidas()
-        //{
-        //    var salidasReport = db.Salida.FromSqlRaw("Select idEquipo, COUNT(idEquipo) AS CantidadSuministros FROM salida GROUP BY(idEquipo)").ToListAsync();
-        //    return View(salidasReport);
-        //}
-
-        //public Microsoft.AspNetCore.Mvc.ActionResult<List<ReporteSalidaModel>> ReportSalidas(string startDate, string endDate, string numeroParte)
-
         public ActionResult viewReportSalida()
         {
             return View();
@@ -62,7 +39,7 @@ namespace SuministrosProject.Controllers
 
         public ActionResult ReportByNumberPart()
         {
-            return View(); 
+            return View();
         }
 
         public ActionResult ReportByEquipment()
@@ -167,41 +144,6 @@ namespace SuministrosProject.Controllers
             {
                 return "OK";
             }
-        }
-
-        // GET: Salida/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Salida salida = await db.Salida.FindAsync(id);
-            if (salida == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.idEquipo = new SelectList(db.Equipo, "idEquipo", "equipo", salida.idEquipo);
-            ViewBag.IdSuministro = new SelectList(db.Suministro, "IdSuministro", "Serie", salida.IdSuministro);
-            return View(salida);
-        }
-
-        // POST: Salida/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdSalida,IdSuministro,FechaSalida,idEquipo")] Salida salida)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(salida).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            ViewBag.idEquipo = new SelectList(db.Equipo, "idEquipo", "equipo", salida.idEquipo);
-            ViewBag.IdSuministro = new SelectList(db.Suministro, "IdSuministro", "Serie", salida.IdSuministro);
-            return View(salida);
         }
 
         // GET: Salida/Delete/5
