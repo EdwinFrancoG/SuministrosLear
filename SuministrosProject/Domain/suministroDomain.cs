@@ -16,7 +16,7 @@ namespace SuministrosProject.Domain
             bool suministroIsEmpty = suministro == null;
             if (suministroIsEmpty)
             {
-                return "Los campos estan vacios";
+                return "The fields is empty, please insert data";
             }
 
             //busca la serie del suministro en la tabla suministros para validar si existe
@@ -24,7 +24,7 @@ namespace SuministrosProject.Domain
             bool suministroExiste = buscarSumiistro != null;
             if (suministroExiste)
             {
-                return "Este suministro ya fue creado interiormente, revise que la serie este correctamente";
+                return "This supply was create previously, check than serie is written correctly.";
             }
 
 
@@ -32,7 +32,7 @@ namespace SuministrosProject.Domain
             bool serieIsEmpty = suministro.Serie == null;
             if (serieIsEmpty)
             {
-                return "Ingrese la serie del suministro";
+                return "Insert supply serie";
             }
 
             bool state = true;
@@ -137,7 +137,7 @@ namespace SuministrosProject.Domain
                 //Si no hay suministros en fisico o mejor dicho no hay cantidad actual, que retorne el siguiente texto
                 if (cantidadActual <= 0)
                 {
-                    return "No hay suministros en stock de este numero de parte";
+                    return "There are not supplies of this part number in stock.";
                 }
                 else
                 {
