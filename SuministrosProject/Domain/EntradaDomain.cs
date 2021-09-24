@@ -16,7 +16,7 @@ namespace SuministrosProject.Domain
             bool serieIsEmpty = entrada.SerieSuministro == null;
             if (serieIsEmpty)
             {
-                return "Favor ingresar la serie del suministro";
+                return "Please insert the supply serie";
             }
 
             entrada.IdNumeroParte = numeroParte;
@@ -80,7 +80,7 @@ namespace SuministrosProject.Domain
             }
             else
             {
-                return "No se encontro este Numero de Parte en la PO";
+                return "This Part Number was not found in the PO";
             }
             return null;
         }
@@ -140,8 +140,7 @@ namespace SuministrosProject.Domain
                 catch (Exception e)
                 {
                     return e.Message;
-                }
-                
+                }             
             }
             else
             {
