@@ -19,30 +19,12 @@ namespace SuministrosProject.Controllers
             return View(await db.Localizacion.ToListAsync());
         }
 
-        // GET: Localizacions/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Localizacion localizacion = await db.Localizacion.FindAsync(id);
-            if (localizacion == null)
-            {
-                return HttpNotFound();
-            }
-            return View(localizacion);
-        }
-
         // GET: Localizacions/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Localizacions/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         public async Task<string> Create([Bind(Include = "idLocalizacion,descripcion")] Localizacion localizacion)
         {
@@ -74,9 +56,6 @@ namespace SuministrosProject.Controllers
             return View(localizacion);
         }
 
-        // POST: Localizacions/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         public async Task<ActionResult> Edit([Bind(Include = "idLocalizacion,descripcion")] Localizacion localizacion)
         {
