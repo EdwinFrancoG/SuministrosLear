@@ -1,4 +1,4 @@
-﻿function NewPO() {
+function NewPO() {
     $.ajax(
         {
             type: 'GET',
@@ -9,7 +9,7 @@
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
@@ -31,7 +31,7 @@ function GuardarPO() {
             },
             success: function (result) {
                 if (result == 'OK') {
-                    $('#BodyPositivePO').html("Datos guardados con exito");
+                    $('#BodyPositivePO').html("Data saved successfully");
                     $('#idAlertPositivePO').modal('show');
                 }
                 else {
@@ -41,7 +41,7 @@ function GuardarPO() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
@@ -51,3 +51,21 @@ $(function () {
         $('.focus').focus();
     })
 });
+
+function DeletePO(_id) {
+    $.ajax(
+        {
+            type: 'GET',
+            url: '/ProductOrder/Delete',
+            data: { id: _id },
+            success: function (result) {
+                $('#NewModalBody').html(result);
+                $('#NewModal').modal('show');
+            },
+
+            error: function (error) {
+                // si hay un error lanzara el mensaje de error
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
+            }
+        });
+}

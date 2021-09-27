@@ -1,4 +1,4 @@
-﻿/*!
+/*!
  * maisonnette-admin v0.0.1 (https://foxythemes.net)
  * Copyright 2018 Foxy Themes all rights reserved 
  */
@@ -1543,7 +1543,8 @@ pre {
   background-color: whitesmoke; }
 
 .table-hover tbody tr:hover {
-  background-color: #CEE3F6; }
+    background-color: #CEE3F6;
+}
 
 .table-primary,
 .table-primary > th,
@@ -1686,7 +1687,7 @@ pre {
   .table-dark.table-bordered {
     border: 0; }
   .table-dark.table-striped tbody tr:nth-of-type(odd) {
-    background-color: rgba(255, 255, 255, 0.05); }
+    background-color: #f4f4f4; }
   .table-dark.table-hover tbody tr:hover {
     background-color: rgba(255, 255, 255, 0.075); }
 
@@ -3488,7 +3489,19 @@ tbody.collapse.show {
   .navbar-expand-sm > .container,
   .navbar-expand-sm > .container-fluid {
     padding-right: 0;
-    padding-left: 0; } }
+    padding-left: 0; }
+    .navbar-expand-sm {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -webkit-flex-flow: row nowrap;
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+  }
 
 @media (min-width: 576px) {
   .navbar-expand-sm {
@@ -8878,7 +8891,7 @@ p {
     line-height: 62px;
     height: 62px;
     width: 133px;
-    background-image: url('../img/Lear.png');
+    background-image: url('../img/Lear2.png');
     background-repeat: no-repeat;
     background-position: 0 center;
     margin-right: 45px;

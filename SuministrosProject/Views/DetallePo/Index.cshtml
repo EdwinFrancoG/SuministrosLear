@@ -8,9 +8,8 @@
 <br />
 <br />
 <div style="text-align:center;">
-    <h2>PRODUCT ORDER DETAILS </h2>
+    <h2>NEW PRODUCT ORDER DETAILS </h2>
     <br />
-    @*<br />*@
 </div>
 
 <div class="row" style="border:double; background-color:white">
@@ -19,8 +18,8 @@
     <div class="col-sm-3"><p style="font-weight:bold;">PO STATE: </p><p>@ViewData["estado"]</p>  </div>
     <div class="col-sm-3"> <p style="font-weight:bold;"># REQUISITION:  </p><p>@ViewData["req"]</p></div>
 </div>
-
-@*<br />*@
+<br />
+<hr />
 <br />
 
 @{
@@ -30,8 +29,7 @@
     bool statePendiente = state.ToString() == "Pendiente";
 }
 
-
-<table id="idTableD" class="table">
+<table id="idTableD" class="table table-hover table-filter-title table-striped">
     <thead>
         <tr>
             <th>
@@ -84,12 +82,8 @@
 
                     @if (stateIsNew)
                     {
-                        <button onclick="deleteDetallePo(@item.IdDetallePo)" type="button">Delete</button>
                     }
-
-                    @if (!HayPendientes)
-                    {
-                        @Html.Label("Recibido");
+                        @Html.Label("RECIVED");
                     }
                 </td>
             </tr>
@@ -105,8 +99,8 @@
     <br />
     <br />
     int IdPO = Convert.ToInt32(@ViewBag.idPO);
-    <button type="button" onclick="mostrarDetallePO(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note"> Add </i></button>
-    <button type="button" onclick="Cambiar_estado_a_pendiente(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4; padding-left:50px;"><i class="s7-check"> Acept</i></button>
+    <button type="button" onclick="mostrarDetallePO(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note"> ADD </i></button>
+    <button type="button" onclick="Cambiar_estado_a_pendiente(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4; padding-left:50px;"><i class="s7-check"> ACEPT</i></button>
     <br />
     <br />
 }
@@ -128,7 +122,7 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" style="max-width: 750px;">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">Nuevo ingreso de suministros</h4>
+                <h4 class="modal-title" id="exampleModalLabel">NEW SUPPLY ENTRY</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -190,7 +184,7 @@
                     <h3 class="mb-4">Awesome!</h3>
                     <p id="BodyDetPO"></p>
                     <div class="mt-6">
-                        <button type="button" onclick="redireccionarPage(@ViewBag.idPO)" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">Acept</button>
+                        <button type="button" onclick="redireccionarPage(@ViewBag.idPO)" data-dismiss="modal" class="btn btn-sm btn-space btn-secondary">ACEPT</button>
                     </div>
                 </div>
             </div>

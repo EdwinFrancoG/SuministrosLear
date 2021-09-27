@@ -1,4 +1,4 @@
-﻿using SuministrosProject.Models;
+using SuministrosProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,13 +19,13 @@ namespace SuministrosProject.Domain
             bool isModelEmpty = stock == null;
             if (isModelEmpty)
             {
-                return "Los campos estan vacios porfavor ingrese datos correctamente";
+                return "The fields is empty, please insert data correctly";
             }
 
             bool stockInicialIsEmpety = stock.StockInicial == null;
             if (stockInicialIsEmpety)
             {
-                return "Por Favor ingrese un inicio de stock";
+                return "Please insert inicial stock";
             }
 
             stock.FechaInicio = DateTime.Now;
@@ -49,7 +49,7 @@ namespace SuministrosProject.Domain
             bool isModelEmpty = stock == null;
             if (isModelEmpty)
             {
-                return "Elemento no encontrado";
+                return "Element does not found";
             }
             return null;
         }

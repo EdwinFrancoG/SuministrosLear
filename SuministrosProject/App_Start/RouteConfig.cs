@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,6 +16,12 @@ namespace SuministrosProject
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Login", action = "loginGet", id = UrlParameter.Optional }
+            );
+            
+            routes.MapRoute(
+                name: "Default2",
+                url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
@@ -28,7 +34,12 @@ namespace SuministrosProject
                name: "RoutePO",
                url: "ProductOrdeR/Index"
             );
-            
+
+            routes.MapRoute(
+               name: "HomePrincipal",
+               url: "Home/Index"
+            );
+
         }
     }
 }

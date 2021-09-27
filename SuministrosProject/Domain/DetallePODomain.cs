@@ -1,4 +1,4 @@
-﻿using SuministrosProject.Models;
+using SuministrosProject.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,14 +16,14 @@ namespace SuministrosProject.Domain
             var numeroDeparteExistenteEnPO = BuscarNumeroParteEnDetallePO != null;
             if (numeroDeparteExistenteEnPO)
             {
-                return "Este numero de parte ya existe en esta orden de producto";
+                return "This part number is already in this product order";
             }
 
             var cantidadPedido = detallePo.cantidadPedido;
             bool cantidadPedidoEstaVacio = cantidadPedido == null;
             if (cantidadPedidoEstaVacio)
             {
-                return "Ingrese la cantidad de suministros pedidos";
+                return "Enter the quantity of supplies ordered";
             }
 
             int cantidadPendiente = Convert.ToInt32(detallePo.cantidadPedido);

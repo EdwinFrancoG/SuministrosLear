@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,10 +10,10 @@ namespace SuministrosProject.Domain
     {
         public string validarLocation(Localizacion localizacion)
         {
-            var DescriptionIsNull = localizacion.descripcion == null;
-            if (DescriptionIsNull)
+            var DescripcionIsNull = localizacion.descripcion == null;
+            if (DescripcionIsNull)
             {
-                return "Por favor ingrese una descripción";
+                return "Please insert data in the filed of location";
             }
             return null;
         }

@@ -15,7 +15,7 @@ function GetCreateEntrada(IdNumeroParte, idPO) {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
@@ -58,7 +58,7 @@ function PostCrearEntrada() {
             },
             success: function (result) {
                 if (result == 'OK') {
-                    $('#BodyPositiveEntrada').html("Datos guardados con exito");
+                    $('#BodyPositiveEntrada').html("Data saved successfully");
                     $('#idAlertPositiveEntrada').modal('show');
                 }
                 else {
@@ -68,7 +68,7 @@ function PostCrearEntrada() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }

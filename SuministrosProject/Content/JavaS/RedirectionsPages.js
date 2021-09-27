@@ -45,7 +45,7 @@ function redireccionarSuministros() {
 }
 
 function redireccionarIndexPO() {
-    window.location.href = '/ProductOrder/Index' 
+    window.location.href = '/ProductOrder/Index'
 }
 
 function IndexSalida() {

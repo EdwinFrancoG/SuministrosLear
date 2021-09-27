@@ -1,4 +1,4 @@
-﻿
+
 function mostrarDetallePO(idPO) {
     var IDProdOrder = idPO;
 
@@ -36,7 +36,7 @@ function GuardarDetallePO() {
             },
             success: function (result) {
                 if (result == 'OK') {
-                    $('#BodyDetPO').html("Datos guardados con exito");
+                    $('#BodyDetPO').html("Data saved successfully");
                     $('#DeteallePO').modal('show');
                 }
                 else {
@@ -46,7 +46,7 @@ function GuardarDetallePO() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }

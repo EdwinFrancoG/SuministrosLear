@@ -6,31 +6,36 @@
 }
 
 <div style="text-align:center;">
-    <h2>NEW PRODUCT ORDER DETAIL </h2>
-    <hr />
+    <h2>ADD PRODUCT ORDER DETAILS </h2>
     <br />
 </div>
 
 @using (Html.BeginForm())
 {
-    <div class="row">
-        <div class="form-group col-md-6">
-            @Html.Label("PART NUMBER")
-            @Html.DropDownList("IdNumeroParte", null, htmlAttributes: new { @class = "form-control", @id = "idNumberPart" })
-            @Html.ValidationMessageFor(model => model.IdNumeroParte, "", new { @class = "text-danger" })
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">    
+            <div class="col-md-10">
+                @Html.Label("NUMBER PART")
+                @Html.DropDownList("IdNumeroParte", null, htmlAttributes: new { @class = "form-control", @id = "idNumberPart" })
+                @Html.ValidationMessageFor(model => model.IdNumeroParte, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <div class="form-group col-md-6">
-            @Html.Label("SUPPLY ORDER QUANTITY")
-            @Html.EditorFor(model => model.cantidadPedido, new { htmlAttributes = new { @class = "form-control", @id = "idCantidadPedido" } })
-            @Html.ValidationMessageFor(model => model.cantidadPedido, "", new { @class = "text-danger" })
+        <div class="form-group">           
+            <div class="col-md-10">
+                @Html.Label("ORDER QUANTITY")
+                @Html.EditorFor(model => model.cantidadPedido, new { htmlAttributes = new { @class = "form-control", @id = "idCantidadPedido" } })
+                @Html.ValidationMessageFor(model => model.cantidadPedido, "", new { @class = "text-danger" })
+            </div>
         </div>
 
-        <div class="form-group col-md-6">
-            <br />
-            @Html.Label("OBSERVATION NOTE")
-            @Html.EditorFor(model => model.Observacion, new { htmlAttributes = new { @class = "form-control", @id = "idObservacionDPO" } })
-            @Html.ValidationMessageFor(model => model.Observacion, "", new { @class = "text-danger" })
+        <div class="form-group">       
+            <div class="col-md-10">
+                @Html.Label("OBSERVATION")
+                @Html.EditorFor(model => model.Observacion, new { htmlAttributes = new { @class = "form-control", @id = "idObservacionDPO" } })
+                @Html.ValidationMessageFor(model => model.Observacion, "", new { @class = "text-danger" })
+            </div>
         </div>
 
 
@@ -38,9 +43,9 @@
 
         <div class="form-group">
             <br />
-            <div class="col-md-offset-2 col-md-10">
-                <button type="button" onclick="GuardarDetallePO()" class="btn btn-primary">ACEPT</button>
-                <button type="button" class="btn btn-rounded btn-space btn-secondary" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CANCEL</font></font></button>
+            <div class="modal-footer">
+                <button type="button" onclick="GuardarDetallePO()" class="btn btn-primary">ADD</button>
+                <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">CLOSE</button>
             </div>
         </div>
     </div>

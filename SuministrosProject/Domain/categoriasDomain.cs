@@ -18,19 +18,19 @@ namespace SuministrosProject.Domain
             bool isModelEmpty = categoria == null;
             if (isModelEmpty)
             {
-                return "Los campos estan vacios porfavor ingrese datos correctamente";
+                return "The fields are empty, please enter data correctly";
             }
 
             bool descripcionIsEmpty = categoria.CategoriaDescripcion == null;
             if (descripcionIsEmpty)
             {
-                return "Ingrese una descripcion";
+                return "Insert a type description";
             }
 
             bool observacionIsEmpty = categoria.Observacion == null;
             if (observacionIsEmpty)
             {
-                return "Ingrese una observacion";
+                return "Insert a observation of the type";
             }
             categoria.Estado = true;
             return null;

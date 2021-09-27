@@ -37,7 +37,7 @@ function guardarStock() {
             },
             success: function (result) {
                 if (result == 'OK') {
-                    $('#StockBodyPositive').html("Datos guardados con exito");
+                    $('#StockBodyPositive').html("Data saved successfully");
                     $('#idAlertPositiveS').modal('show');
                 }
                 else {
@@ -64,7 +64,7 @@ function NewStock() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 
@@ -79,7 +79,7 @@ function DeleteStock(_id) {
             data: { id: _id },
             success: function (result) {
                 if (result == 'OK') {
-                    $('#StockDeleteBodyPositive').html("Registro Eliminado");
+                    $('#StockDeleteBodyPositive').html("Record Deleted");
                     $('#idAlertPositiveStockDelete').modal('show');
                 }
                 else {
@@ -90,7 +90,7 @@ function DeleteStock(_id) {
 
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }

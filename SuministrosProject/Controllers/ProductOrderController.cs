@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
@@ -65,7 +65,7 @@ namespace SuministrosProject.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            ProductOrder productOrder = await db.ProductOrder.FindAsync(id);
+            ProductOrder productOrder = await db.ProductOrder.Include(u=>u.IdGafeteNavigation).FirstOrDefaultAsync(p=>p.IdProductOrder == id);
             db.ProductOrder.Remove(productOrder);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");

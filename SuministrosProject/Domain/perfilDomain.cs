@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,19 +13,19 @@ namespace SuministrosProject.Domain
             bool perfilIsEmpty = perfil == null;
             if (perfilIsEmpty)
             {
-                return "Por favor ingrese informacion en los campos";
+                return "Please, insert information in the fields";
             }
 
             bool profileName = perfil.PerfilName == null;
             if (profileName)
             {
-                return "Ingrese el nombre del perfil";
+                return "Insert the perfil";
             }
 
             bool profileDescription = perfil.Descripcion == null;
             if (profileName)
             {
-                return "Por favor ingrese la descripcion del perfil a crear";
+                return "Insert a description for the perfil";
             }
             
             return null;

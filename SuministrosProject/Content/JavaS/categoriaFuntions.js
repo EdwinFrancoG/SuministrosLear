@@ -11,7 +11,7 @@ function GuardarCategoria() {
             },
             success: function (result) {
                 if (result == 'OK') {
-                    $('#BodyPositive').html("Datos guardados con exito");
+                    $('#BodyPositive').html("Data saved successfully");
                     $('#idAlertPositive').modal('show');              
                 }
                 else {
@@ -21,7 +21,7 @@ function GuardarCategoria() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
@@ -44,7 +44,7 @@ function NewCategoria() {
             },
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'Ocurrio un error desconocido, al comunicarse con el servidor');
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 

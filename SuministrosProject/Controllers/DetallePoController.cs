@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web;
@@ -47,21 +47,6 @@ namespace SuministrosProject.Controllers
             return null;
         }
 
-        // GET: DetallePo/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DetallePo detallePo = await db.DetallePo.FindAsync(id);
-            if (detallePo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(detallePo);
-        }
-
         // GET: DetallePo/Create
         public ActionResult Create(int idProdOrder)
         {
@@ -74,7 +59,6 @@ namespace SuministrosProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        
         public async Task<string> Create([Bind(Include = "IdDetallePo,IdProductOrder,IdNumeroParte,cantidadPedido,CantidadPendiente,Observacion")] DetallePo detallePo)
         {
             var respuestaAppServices = await _detallePOAppServices.ingresarDetallePO(detallePo);
@@ -87,42 +71,6 @@ namespace SuministrosProject.Controllers
             {
                 return "OK";
             }
-
-        }
-
-        // GET: DetallePo/Edit/5
-        public async Task<ActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DetallePo detallePo = await db.DetallePo.FindAsync(id);
-            if (detallePo == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.IdProductOrder = new SelectList(db.ProductOrder, "IdProductOrder", "Codigo", detallePo.IdProductOrder);
-            ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion", detallePo.IdNumeroParte);
-            return View(detallePo);
-        }
-
-        // POST: DetallePo/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "IdDetallePo,IdProductOrder,IdNumeroParte,cantidadPedido,CantidadPendiente,Observacion")] DetallePo detallePo)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(detallePo).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
-            }
-            ViewBag.IdProductOrder = new SelectList(db.ProductOrder, "IdProductOrder", "Codigo", detallePo.IdProductOrder);
-            ViewBag.IdNumeroParte = new SelectList(db.NumeroParte, "IdNumeroParte", "Descripcion", detallePo.IdNumeroParte);
-            return View(detallePo);
         }
 
         // GET: DetallePo/Delete/5

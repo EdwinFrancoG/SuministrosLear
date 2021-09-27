@@ -1,11 +1,11 @@
-﻿@model SuministrosProject.Models.DetallePo
+@model SuministrosProject.Models.DetallePo
 
 @{
     ViewBag.Title = "Delete";
     Layout = null;
 }
 
-    <h3 style="text-align:center;">Esta seguro que desea eliminar el numero de parte   " @Html.DisplayFor(model => model.IdNumeroParteNavigation.Descripcion) "   de la PO  " @Html.DisplayFor(model => model.IdProductOrderNavigation.Codigo) "</h3>
+    <h3 style="text-align:center;"> DO YOU WANT TO DELETE THE NUMBER PART  " @Html.DisplayFor(model => model.IdNumeroParteNavigation.Descripcion) "   OF THE PO  " @Html.DisplayFor(model => model.IdProductOrderNavigation.Codigo) "</h3>
 <div class="form-horizontal">
     <div class="form-group">
         <br />
@@ -13,7 +13,7 @@
         <br />
         <dl class="dl-horizontal">
             <dt class="col-md-6">
-                Numero de parte
+                PART NUMBER
             </dt>
 
             <dd class="col-md-6">
@@ -23,7 +23,7 @@
             </dd>
 
             <dt class="col-md-6">
-                @Html.DisplayNameFor(model => model.CantidadPendiente)
+                ORDER QUANTITY
             </dt>
 
             <dd class="col-md-6">
@@ -33,7 +33,7 @@
             </dd>
 
             <dt class="col-md-6">
-                @Html.DisplayNameFor(model => model.Observacion)
+                OBSERVATION
             </dt>
 
             <dd class="col-md-12">
@@ -46,13 +46,8 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-
-            @*<div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "Index")
-            </div>*@
-            <button type="submit" onclick="" class="btn btn-rounded btn-danger">Eliminar</button>
-            <button type="button" class="btn btn-rounded btn-secondary" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cancelar</font></font></button>
+            <button type="submit" onclick="" class="btn btn-rounded btn-danger">DELETE</button>
+            <button type="button" class="btn btn-rounded btn-secondary" data-dismiss="modal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CANCEL</font></font></button>
         }
 
 

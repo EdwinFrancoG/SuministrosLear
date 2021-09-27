@@ -15,15 +15,15 @@ namespace SuministrosProject.Domain
             bool serieEstaVacio = serie == null;
             if (serieEstaVacio)
             {
-                return "Ingrese la serie del suministro";
+                return "Insert supply serie";
             }
 
-            salida.FechaSalida = DateTime.Now; /*Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));*/
+            salida.FechaSalida = DateTime.Now; 
 
             var registroSuministro = db.Suministro.Where(s => s.Serie == serie).FirstOrDefault();
             if (registroSuministro == null)
             {
-                return "Esta serie de suministro no esta en existencia";
+                return "This supply was not found in stock";
             }
             int numeroParte = Convert.ToInt32(registroSuministro.IdNumeroParte);
 
@@ -46,9 +46,6 @@ namespace SuministrosProject.Domain
             return null;
         }
 
-
-
-
         public async Task<string> DarDeBajaEnSuministro(string serie)
         {
             var Suministro = db.Suministro.Where(s => s.Serie == serie).FirstOrDefault();
@@ -62,9 +59,6 @@ namespace SuministrosProject.Domain
 
             return null;
         }
-
-
-
 
         public async Task<string> RebajarEnStock(int numeroParte)
         {
@@ -80,7 +74,7 @@ namespace SuministrosProject.Domain
 
                 if (cantidadActual <= 0)
                 {
-                    return "No hay suministros en stock de este numero de parte";
+                    return "There are not supplies of this number part in stock";
                 }
                 else
                 {

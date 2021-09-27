@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Net;
 using System.Web.Mvc;
-//using Microsoft.AspNetCore.Mvc;
 using SuministrosProject.Models;
 using SuministrosProject.AppServices;
 using System.Web.Mvc.Html;
@@ -21,21 +20,6 @@ namespace SuministrosProject.Controllers
         public async Task<ActionResult> Index()
         {
             return View(await db.Categoria.ToListAsync());
-        }
-
-        // GET: Categorias/Details/5
-        public async Task<ActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Categoria categoria = await db.Categoria.FindAsync(id);
-            if (categoria == null)
-            {
-                return HttpNotFound();
-            }
-            return View(categoria);
         }
 
         // GET: Categorias/Create
@@ -75,9 +59,7 @@ namespace SuministrosProject.Controllers
             return View(categoria);
         }
 
-        // POST: Categorias/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit([Bind(Include = "IdCategoria,CategoriaDescripcion,Observacion,Estado")] Categoria categoria)

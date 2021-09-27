@@ -1,0 +1,72 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Login - Lear Corporation</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <title>Suministros Lear</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/assets/lib/stroke-7/style.css" />
+    <link href="~/Content/assets/lib/stroke-7/style.css" rel="stylesheet" />
+    <link href="~/Content/assets/lib/perfect-scrollbar/css/perfect-scrollbar.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/lib/datatables/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet" />
+    @*<link rel="stylesheet" type="text/css" href="~/Content/lib/perfect-scrollbar/css/perfect-scrollbar.min.css" />*@
+    <link href="~/Content/assets/lib/datatables/datatables.net-buttons-bs4/css/buttons.bootstrap4.css" rel="stylesheet" />
+    <link href="~/Content/assets/lib/datatables/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/jquery.dataTables.min.css" rel="stylesheet" />
+
+
+
+    <link rel="stylesheet" href="~/Content/assets/css/app.css" type="text/css" />
+</head>
+<body>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @RenderSection("scripts", required: false)
+
+
+
+    <script src="~/Content/assets/lib/jquery/jquery.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/lib/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/lib/bootstrap/dist/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/lib/jquery-flot/jquery.flot.js" type="text/javascript"></script>
+    <script src="~/Content/assets/lib/jquery-flot/jquery.flot.pie.js" type="text/javascript"></script>
+    <script src="~/Content/assets/lib/jquery-flot/jquery.flot.time.js" type="text/javascript"></script>
+    <script src="~/Content/assets/lib/jquery-flot/jquery.flot.resize.js" type="text/javascript"></script>
+    <script src="~/Content/assets/lib/jquery-flot/plugins/jquery.flot.orderBars.js" type="text/javascript"></script>
+    <script src="~/Content/assets/lib/jquery-flot/plugins/curvedLines.js" type="text/javascript"></script>
+    <script src="~/Content/assets/lib/jquery-flot/plugins/jquery.flot.tooltip.js" type="text/javascript"></script>
+    <script src="~/Content/assets/lib/countup/countUp.min.js" type="text/javascript"></script>
+    <script src="~/Content/assets/js/app-dashboard.js" type="text/javascript"></script>
+    <script src="~/Content/assets/js/app.js" type="text/javascript"></script>
+    <script src="~/Content/assets/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/jquery.dataTables.min.js"></script>
+
+    <script src="~/Content/JavaS/salidasFucntion.js"></script>
+    <script src="~/Content/JavaS/OrdenarTabla.js"></script>
+    <script src="~/Content/JavaS/categoriaFuntions.js"></script>
+    <script src="~/Content/JavaS/SuministrosFuntions.js"></script>
+    <script src="~/Content/JavaS/RedirectionsPages.js"></script>
+    <script src="~/Content/JavaS/ProductOrderFuntions.js"></script>
+    <script src="~/Content/JavaS/EntradaFuctions.js"></script>
+    <script src="~/Content/JavaS/DetallePOFuntions.js"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //initialize the javascript
+            App.init();
+            App.dataTables();
+            App.dashboard();
+        });
+
+    </script>
+</body>
+</html>

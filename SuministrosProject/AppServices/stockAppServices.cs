@@ -1,4 +1,4 @@
-﻿using SuministrosProject.Domain;
+using SuministrosProject.Domain;
 using SuministrosProject.Models;
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace SuministrosProject.AppServices
             bool numeroParteExiste = buscarNumeroParteEnStock != null;
             if (numeroParteExiste)
             {
-                return "Este numero de parte ya esta en stock";
+                return "This part number is already exist in stock";
             }
             var respuestaStockDomain = StockDomain.validarIngresoStock(stock);
             bool ErrorEnDomain = respuestaStockDomain != null;
@@ -57,7 +57,7 @@ namespace SuministrosProject.AppServices
                 return null;
             }
 
-            return "Error, Aun tiene Suministros en existencia de este Item, de salida a todos los suministros para poder eliminarlo";
+            return "Error, You still have Supplies in stock for this Item, output to all supplies to be able to eliminate it";
         }
 
     }

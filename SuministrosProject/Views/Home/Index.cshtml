@@ -1,19 +1,25 @@
-﻿@{
+@{
     ViewBag.Title = "Home Page";
 }
+<link href="~/Content/styles/suministros.css" rel="stylesheet" />
 
-    <div class="">
-        <br />
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-8">
-                <br />
-                <h1>Administracion de sumistros</h1>
-            </div>
+
+<script>
+    if (sessionStorage.length == 0 || sessionStorage.getItem("connected") == "false") {
+        window.location.href = '/Home/Login';
+    }
+</script>
+
+<div>
+    <br />
+    <div class="Home">
+            Administracion de suministros IT
         </div>
         <br />
         <br />
-        <img src="~/Content/assets/img/Lear_Corporation_logo.svg.png" />
+        <br />
+        <br />
+        <img id="imgLogoLear" src="~/Content/assets/img/Lear_Corporation_logo.svg.png" />
         <br />
         <br />
         <br />
@@ -21,4 +27,5 @@
         <br />
         <br />
     </div>
+
 
