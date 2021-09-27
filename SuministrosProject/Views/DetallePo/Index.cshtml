@@ -14,10 +14,10 @@
 </div>
 
 <div class="row" style="border:double; background-color:white">
-    <div class="col-sm-3"> <p style="font-weight:bold;">Orden de Compra: </p><p>@ViewData["PO"]</p> </div>
-    <div class="col-sm-3"> <p style="font-weight:bold;">Fecha de PO: </p><p>@ViewData["fecha"]</p> </div>
-    <div class="col-sm-3"><p style="font-weight:bold;">Estado PO: </p><p>@ViewData["estado"]</p>  </div>
-    <div class="col-sm-3"> <p style="font-weight:bold;"># De Requisicion:  </p><p>@ViewData["req"]</p></div>
+    <div class="col-sm-3"> <p style="font-weight:bold;">PRODUCT ORDER: </p><p>@ViewData["PO"]</p> </div>
+    <div class="col-sm-3"> <p style="font-weight:bold;">PO DATE: </p><p>@ViewData["fecha"]</p> </div>
+    <div class="col-sm-3"><p style="font-weight:bold;">PO STATE: </p><p>@ViewData["estado"]</p>  </div>
+    <div class="col-sm-3"> <p style="font-weight:bold;"># REQUISITION:  </p><p>@ViewData["req"]</p></div>
 </div>
 
 @*<br />*@
@@ -35,19 +35,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.IdProductOrderNavigation.Codigo)
+                CODE
             </th>
             <th>
-                # Parte
+                # PART
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.cantidadPedido)
+                ORDER QUANTITY
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CantidadPendiente)
+                PENDENTING
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Observacion)
+                OBSERVATION
             </th>
             <th></th>
         </tr>
@@ -78,13 +78,13 @@
                     }
                     @if (HayPendientes && statePendiente)
                     {
-                        <button type="button" onclick="GetCreateEntrada(@item.IdNumeroParte, @item.IdProductOrder)">Recibir</button>
+                        <button type="button" onclick="GetCreateEntrada(@item.IdNumeroParte, @item.IdProductOrder)">Recive</button>
                         <button type="button" onclick="">Enmienda</button>
                     }
 
                     @if (stateIsNew)
                     {
-                        <button onclick="deleteDetallePo(@item.IdDetallePo)" type="button">Eliminar</button>
+                        <button onclick="deleteDetallePo(@item.IdDetallePo)" type="button">Delete</button>
                     }
 
                     @if (!HayPendientes)
@@ -115,7 +115,7 @@
 {
     <br />
     int IdPO = Convert.ToInt32(@ViewBag.idPO);
-    <button type="button" onclick="Cambiar_estado_a_cerrada(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4; padding-left:50px;"><i class="s7-close"> Cerrar PO</i></button>
+    <button type="button" onclick="Cambiar_estado_a_cerrada(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4; padding-left:50px;"><i class="s7-close"> CLOSE PO</i></button>
     <br />
     <br />
 }
