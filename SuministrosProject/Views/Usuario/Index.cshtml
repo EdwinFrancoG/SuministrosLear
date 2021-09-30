@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SuministrosProject.Models.Usuario>
+@model IEnumerable<SuministrosProject.Models.Usuario>
 
 @{
     ViewBag.Title = "Index";
@@ -56,7 +56,6 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.IdGafete }) |
-                @Html.ActionLink("Details", "Details", new { id = item.IdGafete }) |
                 @Html.ActionLink("Delete", "Delete", new { id = item.IdGafete })
             </td>
         </tr>
