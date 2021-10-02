@@ -1,0 +1,58 @@
+@model SuministrosProject.Models.Usuario
+
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+<link href="~/Content/styles/StylesApp.css" rel="stylesheet" />
+
+<div class="" style="text-align:center;">
+    <h2>NEW USER</h2>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <h4>Usuario</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-md-6">
+            @Html.Label("CREATE BY", new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.IdGafete, new { htmlAttributes = new { @class = "form-control", @id = "idCreateBy" } })
+            @Html.ValidationMessageFor(model => model.IdGafete, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-10">
+            @Html.Label("NAME", new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", @id = "idName" } })
+            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-6">
+            @Html.Label("LAST NAME", new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control", @id = "idlastName" } })
+            @Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-6">
+            @Html.Label("USER", new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.usuario, new { htmlAttributes = new { @class = "form-control", @id = "User" } })
+            @Html.ValidationMessageFor(model => model.usuario, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="col-md-6">
+            @Html.Label("PERFIL", new { htmlAttributes = new { @class = "form-control" } })
+            @Html.DropDownList("IdPerfil", null, htmlAttributes: new { @class = "form-control", @id = "idperfil" })
+            @Html.ValidationMessageFor(model => model.IdPerfil, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="modal-footer">
+            <br />
+            <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+            <button type="button" onclick="SaveUser()" data-dismiss="modal" class="btn btn-primary">SAVE</button>
+        </div>
+    </div>
+}

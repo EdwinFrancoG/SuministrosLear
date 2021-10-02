@@ -74,7 +74,7 @@ function DeleteLocation(_id) {
 
             error: function (error) {
                 // si hay un error lanzara el mensaje de error
-                notificacioError('Error', 'An unknown error occurred, communicating with the server);
+                notificacioError('Error', 'An unknown error occurred, communicating with the server');
             }
         });
 }
