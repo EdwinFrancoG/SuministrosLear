@@ -380,7 +380,7 @@ namespace SuministrosProject.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.usuario)
+                entity.Property(e => e.Usuario1)
                     .HasColumnName("usuario")
                     .HasMaxLength(50)
                     .IsUnicode(false);

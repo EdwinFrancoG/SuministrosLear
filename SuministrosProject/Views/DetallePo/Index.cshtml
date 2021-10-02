@@ -13,10 +13,10 @@
 </div>
 
 <div class="row" style="border:double; background-color:white">
-    <div class="col-sm-3"> <p style="font-weight:bold;">PRODUCT ORDER: </p><p>@ViewData["PO"]</p> </div>
-    <div class="col-sm-3"> <p style="font-weight:bold;">PO DATE: </p><p>@ViewData["fecha"]</p> </div>
-    <div class="col-sm-3"><p style="font-weight:bold;">PO STATE: </p><p>@ViewData["estado"]</p>  </div>
-    <div class="col-sm-3"> <p style="font-weight:bold;"># REQUISITION:  </p><p>@ViewData["req"]</p></div>
+    <div class="col-sm-3"> <p style="font-weight:bold;">Orden de Compra: </p><p>@ViewData["PO"]</p> </div>
+    <div class="col-sm-3"> <p style="font-weight:bold;">Fecha de PO: </p><p>@ViewData["fecha"]</p> </div>
+    <div class="col-sm-3"><p style="font-weight:bold;">Estado PO: </p><p>@ViewData["estado"]</p>  </div>
+    <div class="col-sm-3"> <p style="font-weight:bold;"># De Requisicion:  </p><p>@ViewData["req"]</p></div>
 </div>
 <br />
 <hr />
@@ -33,19 +33,19 @@
     <thead>
         <tr>
             <th>
-                CODE
+                @Html.DisplayNameFor(model => model.IdProductOrderNavigation.Codigo)
             </th>
             <th>
-                # PART
+                # Parte
             </th>
             <th>
-                ORDER QUANTITY
+                @Html.DisplayNameFor(model => model.cantidadPedido)
             </th>
             <th>
-                PENDENTING
+                @Html.DisplayNameFor(model => model.CantidadPendiente)
             </th>
             <th>
-                OBSERVATION
+                @Html.DisplayNameFor(model => model.Observacion)
             </th>
             <th></th>
         </tr>
@@ -76,12 +76,16 @@
                     }
                     @if (HayPendientes && statePendiente)
                     {
-                        <button type="button" onclick="GetCreateEntrada(@item.IdNumeroParte, @item.IdProductOrder)">Recive</button>
+                        <button type="button" onclick="GetCreateEntrada(@item.IdNumeroParte, @item.IdProductOrder)">Recibir</button>
                         <button type="button" onclick="">Enmienda</button>
                     }
 
                     @if (stateIsNew)
                     {
+<<<<<<< HEAD
+=======
+                        <button onclick="deleteDetallePo(@item.IdDetallePo)" type="button">Eliminar</button>
+>>>>>>> parent of 4ac67b5 (En espera)
                     }
                         @Html.Label("RECIVED");
                     }
@@ -109,7 +113,7 @@
 {
     <br />
     int IdPO = Convert.ToInt32(@ViewBag.idPO);
-    <button type="button" onclick="Cambiar_estado_a_cerrada(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4; padding-left:50px;"><i class="s7-close"> CLOSE PO</i></button>
+    <button type="button" onclick="Cambiar_estado_a_cerrada(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4; padding-left:50px;"><i class="s7-close"> Cerrar PO</i></button>
     <br />
     <br />
 }

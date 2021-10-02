@@ -26,107 +26,57 @@
         <div class="container">
             <a href="#" class="navbar-brand"></a>
             @*nav navbar-nav float-lg-right mai-user-nav*@
-        <ul class="nav navbar-nav float-lg-right mai-user-nav">
-            <!--HOME-->
-            <li class="dropdown nav-item" style="margin-right:5px;">
-                <a href="#" onclick="redireccionarHome()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-home"></span>           HOME</span></a>
-            </li>
+            <ul class="nav navbar-nav float-lg-right mai-user-nav">
+                <!--HOME-->
+                <li class="dropdown nav-item" style="margin-right:5px;">
+                    <a href="#" onclick="redireccionarHome()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-home"></span>           Home</span></a>
+                </li>
 
-            <li class="dropdown nav-item" style="margin-right:5px;">
-                <a href="#" onclick="redireccionarPO()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-arc"></span>              PO</span></a>
-            </li>
+                <li class="dropdown nav-item" style="margin-right:5px;">
+                    <a href="#" onclick="redireccionarPO()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-arc"></span>              PO</span></a>
+                </li>
 
-            <li class="dropdown nav-item" style="margin-right:5px;">
-                <a href="#" onclick="redireccionarStock()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-ticket"></span>     STOCK</span></a>
-            </li>
+                <li class="dropdown nav-item" style="margin-right:5px;">
+                    <a href="#" onclick="redireccionarStock()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-ticket"></span>     Stock</span></a>
+                </li>
 
-            <li class="dropdown nav-item" style="margin-right:5px;">
-                <a href="#" onclick="GetCreateSalida()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-back-2"></span>     OUTPUT</span></a>
-            </li>
+                <li class="dropdown nav-item" style="margin-right:5px;">
+                    <a href="#" onclick="GetCreateSalida()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-back-2"></span>     Salida</span></a>
+                </li>
 
-            @* Reportes del sistema *@
-            <li class="dropdown nav-item" style="margin-right:5px;">
-                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-notebook"></span>     REPORTS<span class="angle-down s7-angle-down"></span></span></a>
-                <div role="menu" class="dropdown-menu">
-                    <a href="#" onclick="ReportByNumberPart()" class="dropdown-item"><span class="icon s7-news-paper"></span>   REPORT BY PART NUMBER</a>
-                    <a href="#" onclick="viewReportSalida()" class="dropdown-item"><span class="icon s7-news-paper"> </span>REPORT BETWEEN DATES</a>
-                    <a href="#" onclick="ReportByEquipment()" class="dropdown-item"> <span class="icon s7-news-paper"> </span>REPORT BY EQUIPMENT</a>
-                </div>
-            </li>
-
-
-            @*<li class="dropdown nav-item" style="margin-right:5px;">
-            <a href="#" onclick="redireccionarHome()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-home"></span>           Home</span></a>
-        </li>
-
-        <li class="dropdown nav-item" style="margin-right:5px;">
-            <a href="#" onclick="redireccionarPO()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-arc"></span>              PO</span></a>
-        </li>
-
-        <li class="dropdown nav-item" style="margin-right:5px;">
-            <a href="#" onclick="redireccionarStock()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-ticket"></span>     Stock</span></a>
-        </li>
-
-        <li class="dropdown nav-item" style="margin-right:5px;">
-            <a href="#" onclick="GetCreateSalida()" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-back-2"></span>     Salida</span></a>
-        </li>
-
-         Reportes del sistema
-        <li class="dropdown nav-item" style="margin-right:5px;">
-            <a href="#" onclick="" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-notebook"></span>     Reportes<span class="angle-down s7-angle-down"></span></span></a>
-            <div role="menu" class="dropdown-menu">
-                <a href="#" onclick="ReportByNumberPart()" class="dropdown-item"><span class="icon s7-news-paper"></span>   REPORT BY PART NUMBER</a>
-                <a href="#" onclick="viewReportSalida()" class="dropdown-item"><span class="icon s7-news-paper"> </span>REPORT BETWEEN DATES</a>
-                <a href="#" onclick="ReportByEquipment()" class="dropdown-item"> <span class="icon s7-news-paper"> </span>REPORT BY EQUIPMENT</a>
-            </div>
-        </li>*@
+                @* Reportes del sistema *@
+                <li class="dropdown nav-item" style="margin-right:5px;">
+                    <a href="#" onclick="" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name"> <span class="icon s7-notebook"></span>     Reportes<span class="angle-down s7-angle-down"></span></span></a>
+                    <div role="menu" class="dropdown-menu">
+                        <a href="#" onclick="ReportByNumberPart()" class="dropdown-item"><span class="icon s7-news-paper"></span>   REPORT BY PART NUMBER</a>
+                        <a href="#" onclick="viewReportSalida()" class="dropdown-item"><span class="icon s7-news-paper"> </span>REPORT BETWEEN DATES</a>
+                        <a href="#" onclick="ReportByEquipment()" class="dropdown-item"> <span class="icon s7-news-paper"> </span>REPORT BY EQUIPMENT</a>
+                    </div>
+                </li>
 
 
-            <!--Suministro-->
-            @*<li class="dropdown nav-item" style="margin-right:5px;">
-                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name">Suministros</span><span class="angle-down s7-angle-down"></span></a>
-                <div role="menu" class="dropdown-menu">
-                    <a href="#" onclick="redireccionarCategorias()" class="dropdown-item"><span class="icon s7-ticket"></span>   Tipo suministro</a>
-                    <a href="#" onclick="redireccionarSuministros()" class="dropdown-item"><span class="icon s7-notebook"> </span>Registro Suministros</a>
-                    <a href="#" onclick="redireccionarNumeroParte()" class="dropdown-item"> <span class="icon s7-news-paper"> </span>Numeros de Partes</a>
-                    <a href="#" onclick="redireccionarLocalizacion()" class="dropdown-item"> <span class="icon s7-map"> </span>Localizacion</a>
-                    <a href="#" onclick="redirectEntradas()" class="dropdown-item"> <span class="icon s7-edit"> </span>Registro Entradas</a>
-                    <a href="#" onclick="IndexSalida()" class="dropdown-item"> <span class="icon s7-back"> </span>Registro Salidas</a>
-                </div>
-            </li>
+                <!--Suministro-->
+                <li class="dropdown nav-item" style="margin-right:5px;">
+                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name">Suministros</span><span class="angle-down s7-angle-down"></span></a>
+                    <div role="menu" class="dropdown-menu">
+                        <a href="#" onclick="redireccionarCategorias()" class="dropdown-item"><span class="icon s7-ticket"></span>   Tipo suministro</a>
+                        <a href="#" onclick="redireccionarSuministros()" class="dropdown-item"><span class="icon s7-notebook"> </span>Registro Suministros</a>
+                        <a href="#" onclick="redireccionarNumeroParte()" class="dropdown-item"> <span class="icon s7-news-paper"> </span>Numeros de Partes</a>
+                        <a href="#" onclick="redireccionarLocalizacion()" class="dropdown-item"> <span class="icon s7-map"> </span>Localizacion</a>
+                        <a href="#" onclick="redirectEntradas()" class="dropdown-item"> <span class="icon s7-edit"> </span>Registro Entradas</a>
+                        <a href="#" onclick="IndexSalida()" class="dropdown-item"> <span class="icon s7-back"> </span>Registro Salidas</a>
+                    </div>
+                </li>
 
-            Users
-            <li class="dropdown nav-item">
-                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name">Usuarios</span><span class="angle-down s7-angle-down"></span></a>
-                <div role="menu" class="dropdown-menu">
-                    <a href="#" onclick="" class="dropdown-item"><span class="icon s7-ticket"></span>  Usuarios</a>
-                    <a href="#" onclick="redireccionarPerfil()" class="dropdown-item"><span class="icon s7-notebook"> </span>Perfil</a>
-                </div>
-            </li>
-        </ul>*@
-
-            <!--Suministro-->
-            <li class="dropdown nav-item" style="margin-right:5px;">
-                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name">SUPPLY</span><span class="angle-down s7-angle-down"></span></a>
-                <div role="menu" class="dropdown-menu">
-                    <a href="#" onclick="redireccionarCategorias()" class="dropdown-item"><span class="icon s7-ticket"></span>   SUPPLY TYPE</a>
-                    <a href="#" onclick="redireccionarSuministros()" class="dropdown-item"><span class="icon s7-notebook"> </span>SUPPLY RECORD</a>
-                    <a href="#" onclick="redireccionarNumeroParte()" class="dropdown-item"> <span class="icon s7-news-paper"> </span>PART NUMBER</a>
-                    <a href="#" onclick="redireccionarLocalizacion()" class="dropdown-item"> <span class="icon s7-map"> </span>LOCATIONS</a>
-                    <a href="#" onclick="redirectEntradas()" class="dropdown-item"> <span class="icon s7-edit"> </span>INPUTS RECORD</a>
-                    <a href="#" onclick="IndexSalida()" class="dropdown-item"> <span class="icon s7-back"> </span>OUTPUTS RECORD</a>
-                </div>
-            </li>
-
-            <!--Users-->
-            <li class="dropdown nav-item">
-                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name">USERS</span><span class="angle-down s7-angle-down"></span></a>
-                <div role="menu" class="dropdown-menu">
-                    <a href="#" onclick="" class="dropdown-item"><span class="icon s7-ticket"></span>  USERS</a>
-                    <a href="#" onclick="redireccionarPerfil()" class="dropdown-item"><span class="icon s7-notebook"> </span>PERFIL</a>
-                </div>
-            </li>
-        </ul>
+                <!--Users-->
+                <li class="dropdown nav-item">
+                    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="dropdown-toggle nav-link"><span class="user-name">Usuarios</span><span class="angle-down s7-angle-down"></span></a>
+                    <div role="menu" class="dropdown-menu">
+                        <a href="#" onclick="" class="dropdown-item"><span class="icon s7-ticket"></span>  Usuarios</a>
+                        <a href="#" onclick="redireccionarPerfil()" class="dropdown-item"><span class="icon s7-notebook"> </span>Perfil</a>
+                    </div>
+                </li>
+            </ul>
 
             <!--User Menu-->
             <ul class="nav navbar-nav float-lg-right mai-user-nav">
