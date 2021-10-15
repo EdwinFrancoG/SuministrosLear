@@ -4,12 +4,20 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<script>
+    if (sessionStorage.length == 0 || sessionStorage.getItem("connected") == "false") {
+        window.location.href = '/Login/loginGet';
+    }
+</script>
+
+
 <br />
 <div style="text-align:center;">
     <h2>PRODUCT ORDER LIST</h2>
 </div>
 
-<button type="button" onclick="NewPO()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">NEW</i></button>
+<button type="button" onclick="NewPO()" class="btn btn-secondary" style="font-size:22px; border:none; color:#2cc185"><i class="s7-note">NEW</i></button>
 <br />
 <br />
 <table id="Tabla-PO" class="table table-hover table-striped table-filter-title">
@@ -63,7 +71,7 @@
                     {
                         @Html.RouteLink("Add  |  ", "IndexDetPO", new { idProdOrder = item.IdProductOrder })
                         <a href="#" onclick="DeletePO(@item.IdProductOrder)">delete</a>
-                       // @Html.ActionLink(" | Delete", "Delete", new { id = item.IdProductOrder })
+                        // @Html.ActionLink(" | Delete", "Delete", new { id = item.IdProductOrder })
                     }
                     @if (item.Estado == "Pendiente")
                     {
