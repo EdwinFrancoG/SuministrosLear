@@ -1,8 +1,13 @@
 ﻿
-@{
-    ViewBag.Title = "ReportByNumberPart";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+@{ ViewBag.Title = "ReportByNumberPart";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
 }
+
+<script>
+    if (sessionStorage.length == 0 || sessionStorage.getItem("connected") == "false") {
+        window.location.href = '/Login/loginGet';
+    }
+</script>
 
 
 <br />
