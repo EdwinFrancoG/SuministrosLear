@@ -5,6 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script>
+    if (sessionStorage.length == 0 || sessionStorage.getItem("connected") == "false") {
+        window.location.href = '/Login/loginGet';
+    }
+</script>
+
+
 <br />
 <br />
 <div style="text-align:center;">
@@ -38,7 +45,7 @@
             <th>
                 PART NUMBER
             </th>
-            <th>    
+            <th>
                 ORDER QUANTITY
             </th>
             <th>
@@ -76,13 +83,16 @@
                     }
                     @if (HayPendientes && statePendiente)
                     {
-                        <button type="button" onclick="GetCreateEntrada(@item.IdNumeroParte, @item.IdProductOrder)">RECIVE</button>
-                        <button type="button" onclick="">ENMIENDA</button>
+                        //<button onclick="deleteDetallePo(@item.IdDetallePo)" type="button" class="btn btn-rounded btn-danger">X</button>
+                        <button type="button" onclick="GetCreateEntrada(@item.IdNumeroParte, @item.IdProductOrder)" class="btn btn-primary">RECIVE</button>
+                        //<button type="button" onclick="">ENMIENDA</button>
                     }
 
                     @if (stateIsNew)
                     {
-                        <button onclick="deleteDetallePo(@item.IdDetallePo)" type="button">DELETE</button>
+                        <button onclick="deleteDetallePo(@item.IdDetallePo)" type="button" class="btn btn-rounded btn-danger">X</button>
+                        //<button onclick="deleteDetallePo(@item.IdDetallePo)" type="button" value="delete" class="btn btn-danger" style="">X</button>
+                        //<button onclick="deleteDetallePo(@item.IdDetallePo)" type="button">DELETE</button>
                     }
 
                     @if (!HayPendientes)
@@ -103,8 +113,8 @@
     <br />
     <br />
     int IdPO = Convert.ToInt32(@ViewBag.idPO);
-    <button type="button" onclick="mostrarDetallePO(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note"> ADD </i></button>
-    <button type="button" onclick="Cambiar_estado_a_pendiente(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4; padding-left:50px;"><i class="s7-check"> ACEPT</i></button>
+    <button type="button" onclick="mostrarDetallePO(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; color:#2cc185"><i class="s7-note"> ADD </i></button>
+    <button type="button" onclick="Cambiar_estado_a_pendiente(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; color:#2cc185"><i class="s7-check"> ACEPT</i></button>
     <br />
     <br />
 }
@@ -113,7 +123,7 @@
 {
     <br />
     int IdPO = Convert.ToInt32(@ViewBag.idPO);
-    <button type="button" onclick="Cambiar_estado_a_cerrada(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4; padding-left:50px;"><i class="s7-close"> CLOSE PO</i></button>
+    <button type="button" onclick="Cambiar_estado_a_cerrada(@IdPO)" class="btn btn-secondary" style="font-size:22px; border:none; color:#2cc185"><i class="s7-close"> CLOSE PO</i></button>
     <br />
     <br />
 }
@@ -121,12 +131,11 @@
 
 
 
-@* Modal para el get de una nueva entrada, aqu se mostrara el diseño del formulario *@
+@* Modal para el get de una nueva entrada, aqui se mostrara el diseño del formulario *@
 <div class="modal fade" id="CreateEntrada" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content" style="max-width: 750px;">
             <div class="modal-header">
-                <h4 class="modal-title" id="exampleModalLabel">NEW SUPPLY ENTRY</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
