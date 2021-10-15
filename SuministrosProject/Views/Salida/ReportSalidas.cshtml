@@ -3,6 +3,11 @@
 @{ ViewBag.Title = "ReportSalidas";
     Layout = null; }
 
+<script>
+    if (sessionStorage.length == 0 || sessionStorage.getItem("connected") == "false") {
+        window.location.href = '/Login/loginGet';
+    }
+</script>
 
 
 <table class="table table-hover table-striped table-filter-title">
@@ -27,23 +32,22 @@
     @foreach (var item in Model)
     {
         i = i + 1;
-        <tr>
-            <td>
-                @i
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.serieSuministro)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.numeroParte)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.fechaSalida)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.equipo)
-            </td>
-        </tr>
-    }
+<tr>
+    <td>
+        @i
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.serieSuministro)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.numeroParte)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.fechaSalida)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.equipo)
+    </td>
+</tr>}
 
 </table>
