@@ -5,13 +5,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script>
+    if (sessionStorage.length == 0 || sessionStorage.getItem("connected") == "false") {
+        window.location.href = '/Login/loginGet';
+    }
+</script>
+
 <br />
 <div class="" style="text-align:center;">
     <h2>SUPPLY  LIST</h2>
 </div>
 
 
-<button type="button" onclick="NewSuministroGet()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">NEW</i></button>
+<button type="button" onclick="NewSuministroGet()" class="btn btn-secondary" style="font-size:22px; border:none; color:#2cc185"><i class="s7-note">NEW</i></button>
 <br />
 <br />
 
