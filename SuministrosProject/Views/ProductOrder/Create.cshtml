@@ -1,4 +1,4 @@
-﻿@model SuministrosProject.Models.ProductOrder
+@model SuministrosProject.Models.ProductOrder
 
 @{
     ViewBag.Title = "Create";
@@ -15,39 +15,39 @@
 {
     @Html.ValidationSummary()
 
-    <div class="row">
-        <div class="form-group col-md-6">
-            @Html.Label("CODE")
+<div class="row">
+    <div class="form-group col-md-6">
+        @Html.Label("CODE")
             @Html.EditorFor(model => model.Codigo, new { htmlAttributes = new { @class = "form-control focus", @id = "idCodigo" } })
             @Html.ValidationMessageFor(model => model.Codigo, "", new { @class = "text-danger" })
-        </div>
+    </div>
 
-        <div class="form-group col-md-6">
-            @Html.Label("REQUISITION")
+    <div class="form-group col-md-6">
+        @Html.Label("REQUISITION")
             @Html.EditorFor(model => model.Requisicion, new { htmlAttributes = new { @class = "form-control", @id = "idRequisicion" } })
             @Html.ValidationMessageFor(model => model.Requisicion, "", new { @class = "text-danger" })
-        </div>
+    </div>
 
-        <div class="form-group col-md-6">
-            <br />
-            @Html.Label("DESCRIPTION")
+    <div class="form-group col-md-6">
+        <br />
+        @Html.Label("DESCRIPTION")
             @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control", @id = "idDescripcion" } })
             @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-        </div>
+    </div>
 
-        <div class="form-group col-md-6">
-            <br />
-            @Html.Label("USER ID")
+    <div class="form-group col-md-6">
+        <br />
+        @Html.Label("USER ID")
             @Html.DropDownList("IdGafete", null, htmlAttributes: new { @class = "form-control", @id = "idGafete" })
             @Html.ValidationMessageFor(model => model.IdGafete, "", new { @class = "text-danger" })
-        </div>
-
-        <div class="modal-footer">
-            <br />
-            <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
-            <button type="button" onclick="GuardarPO()" class="btn btn-primary">SAVE</button>
-        </div>
     </div>
+
+    <div class="modal-footer">
+        <br />
+        <button type="button" data-dismiss="modal" class="btn btn-secondary" data-dismiss="modal">CANCEL</button>
+        <button type="button" onclick="GuardarPO()" class="btn btn-primary">SAVE</button>
+    </div>
+</div>
 
 }
 
