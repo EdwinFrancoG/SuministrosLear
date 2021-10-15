@@ -5,6 +5,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script>
+    if (sessionStorage.length == 0 || sessionStorage.getItem("connected") == "false") {
+        window.location.href = '/Login/loginGet';
+    }
+</script>
+
+
 <br />
 <div style="text-align:center;">
     <h2>SUPPLIES IN STOCK</h2>
@@ -14,7 +21,7 @@
 
 <p>
     @*<button onclick="NewStock()" class="btn btn-rounded btn-space btn-info"><i class="s7-plus"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">  Nuevo</font></font></button>*@
-    <button type="button" onclick="NewStock()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">New</i></button>
+    <button type="button" onclick="NewStock()" class="btn btn-secondary" style="font-size:22px; border:none; color:#2cc185"><i class="s7-note">New</i></button>
 </p>
 
 <table id="Tabla-Stock" class="table table-hover table-filter-title table-striped">
