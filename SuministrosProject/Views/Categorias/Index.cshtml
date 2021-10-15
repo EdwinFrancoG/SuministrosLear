@@ -1,9 +1,19 @@
 @model IEnumerable<SuministrosProject.Models.Categoria>
 
 @{
+    /**/
+
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<script>
+    if (sessionStorage.length == 0 || sessionStorage.getItem("connected") == "false") {
+        window.location.href = '/Login/loginGet';
+    }
+</script>
+
+
 <br />
 <br />
 <div class="" style="text-align:center;">
@@ -15,34 +25,34 @@
         <div class="col-sm-12">
             <div class="panel panel-default panel-table">
                 <div class="panel-heading">
-                    <button type="button" onclick="NewCategoria()" class="btn btn-secondary" style="font-size:22px; border:none;"><i class="s7-note">NEW</i></button>
+                    <button type="button" onclick="NewCategoria()" class="btn btn-secondary" style="font-size:22px; border:none;color:#2cc185"><i class="s7-note">NEW</i></button>
                 </div>
 
                 <div class="panel-body">
                     <table id="table1" class="table table-hover table-filter-title table-striped">
+                        <tr>
+                            <th>TYPE</th>
+                            <th>OBSERVATION</th>
+                            <th></th>
+                        </tr>
+                        @foreach (var item in Model)
+                        {
                             <tr>
-                                <th>TYPE</th>
-                                <th>OBSERVATION</th>
-                                <th></th>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CategoriaDescripcion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Observacion)
+                                </td>
+                                <td>
+                                    @{
+                                        int id = Convert.ToInt32(item.IdCategoria);
+                                    }
+                                    <a href="#" onclick="EditCat(@id)"> Edit</a>  |
+                                    <a href="#" onclick="DeleteCat(@id)"> Delete</a>
+                                </td>
                             </tr>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.CategoriaDescripcion)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.Observacion)
-                                    </td>
-                                    <td>
-                                        @{ 
-                                            int id = Convert.ToInt32(item.IdCategoria);
-                                        }
-                                        <a href="#" onclick="EditCat(@id)"> Edit</a>  |
-                                        <a href="#" onclick="DeleteCat(@id)"> Delete</a>
-                                    </td>
-                                </tr>
-                            }
+                        }
                     </table>
                 </div>
             </div>
