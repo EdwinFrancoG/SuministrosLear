@@ -5,11 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script>
-    if (sessionStorage.length == 0 || sessionStorage.getItem("connected") == "false") {
-        window.location.href = '/Login/loginGet';
-    }
-</script>
+
 
 <br />
 <br />
@@ -18,14 +14,17 @@
 </div>
 <br />
 
-<button type="button" onclick="NewUser()" class="btn btn-secondary" style="font-size:22px; border:none; background-color:#f4f4f4;"><i class="s7-note">New</i></button>
+<button type="button" onclick="NewUser()" class="btn btn-secondary" style="font-size:22px; border:none; color:#2cc185"><i class="s7-note">New</i></button>
 <br />
 <br />
 
 <table class="table table-hover table-striped table-filter-title">
     <tr>
         <th>
-           PERFIL
+            ID
+        </th>
+        <th>
+            PERFIL
         </th>
         <th>
             NAME
@@ -33,15 +32,15 @@
         <th>
             LAST NAME
         </th>
-        <th>
-            STATE
-        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdGafete)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdPerfilNavigation.PerfilName)
             </td>
@@ -52,15 +51,13 @@
                 @Html.DisplayFor(modelItem => item.Apellido)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.IdGafete }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.IdGafete })
+                <a href="#" onclick="EditUser('@item.IdGafete')"> Edit</a>  |
+                <a href="#" onclick="DeleteUser('@item.IdGafete')"> Delete</a>
             </td>
         </tr>
     }
 
 </table>
 
+<script src="~/Content/JavaS/RedirectionsPages.js"></script>
 <script src="~/Content/JavaS/User.js"></script>
