@@ -6,6 +6,10 @@ function redireccionarPage(id) {
     window.location.href = '/DetallePo/Index/?idProdOrder=' + id
 }
 
+function PageRedirection(url) {
+    window.location.href = url;
+}
+
 function RedireccionarUser() {
     window.location.href = "/Usuario/Index"
 }
