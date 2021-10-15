@@ -1,14 +1,19 @@
-﻿@{
-    ViewBag.Title = "viewReportSalida";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@{ ViewBag.Title = "viewReportSalida";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
 
-    <br />
+<script>
+    if (sessionStorage.length == 0 || sessionStorage.getItem("connected") == "false") {
+        window.location.href = '/Login/loginGet';
+    }
+</script>
+
+
+<br />
 <div class="" style="text-align:center;">
     <h2>SUPPLY OUTPUT REPORT</h2>
 </div>
 <br />
-<br />  
+<br />
 
 <form id="ReportOutput">
     <div class="row">
@@ -30,12 +35,12 @@
         </div>
     </div>
     <br />
-    <br /> 
+    <br />
 </form>
 
 
 <div id="idReportSalida">
-    
+
 </div>
 
 <script src="~/Content/JavaS/salidasFucntion.js"></script>
